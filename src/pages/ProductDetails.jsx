@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ThumbGallery from "../components/ThumbGallery";
 import Button from "../components/Button";
 import useProduct from "../hooks/useProduct";
-import { MarketplaceProduct } from "../components/Marketplace";
+import { MarketplaceProduct } from "../components/Marketplace/Index";
 
 const ProductDetails = () => {
   const { productNo } = useParams();
