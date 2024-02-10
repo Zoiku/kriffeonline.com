@@ -1,0 +1,24 @@
+.about-page-header {
+  height: 400px;
+  background-color: rgba(166, 199, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.about-page-header-background-image {
+  height: 100%;
+}
+
+.about-page-header-background-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.about-page-header-text-container {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

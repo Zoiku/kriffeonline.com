@@ -1,0 +1,149 @@
+.marketplace-display {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #efefef;
+}
+
+.marketplace-display-filters {
+  width: 250px;
+  user-select: none;
+  padding: 20px;
+}
+
+.marketplace-display-filters-sticky {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.marketplace-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: small;
+}
+
+.marketplace-filter-group-title {
+  font-weight: 600;
+}
+
+.marketplace-display-products {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.marketplace-display-products-sort-by {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.marketplace-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px 10px;
+}
+
+.marketplace-product {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: small;
+  color: inherit;
+  text-decoration: none;
+}
+
+.marketplace-product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.marketplace-product-details-name {
+  text-transform: capitalize;
+}
+
+.marketplace-product-image {
+  position: relative;
+  height: 150px !important;
+  overflow: clip;
+  background-color: #efefef;
+}
+
+.marketplace-product-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  display: none;
+}
+
+.marketplace-product-bookmark-btn {
+  position: absolute;
+  bottom: -100px;
+  right: 10px;
+  z-index: 1;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.1s ease;
+}
+
+.marketplace-product-image:hover .marketplace-product-bookmark-btn {
+  bottom: -100px;
+}
+
+.marketplace-filter-checkbox-input {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.marketplace-filter-single-input span:hover {
+  text-decoration: underline;
+}
+
+.marketplace-quick-categories {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border: 1px solid #efefef;
+}
+
+.marketplace-quick-category {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.marketplace-quick-category-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #efefef;
+}
+
+.marketplace-product-details-name-and-views {
+  display: flex;
+  justify-content: space-between;
+}
+
+.marketplace-product-details-views {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.marketplace-product-details-views > div {
+  display: flex;
+  align-items: center;
+}
+
+.marketplace-product-details-views-icon {
+  color: #c5c5c5;
+}

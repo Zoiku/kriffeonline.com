@@ -1,0 +1,27 @@
+.counter {
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.count-inner {
+  display: flex;
+  align-items: center;
+}
+
+.counter-input {
+  all: unset;
+  width: 100%;
+  height: 100%;
+  font-weight: 700;
+}
+
+.counter-btn {
+  cursor: pointer;
+  user-select: none;
+  padding: 5px;
+}
+
+.counter-value {
+  text-align: center;
+  width: 50px;
+}

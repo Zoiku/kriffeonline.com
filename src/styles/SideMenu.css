@@ -1,0 +1,17 @@
+.side-menu {
+  height: 100vh;
+  background-color: #24252a;
+  transition: all 0.3s ease-in-out;
+}
+
+.side-menu.expanded {
+  width: 200px;
+}
+
+.side-menu.contracted {
+  width: 0;
+}
+
+.side-menu-links {
+  height: 100%;
+}

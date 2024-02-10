@@ -1,0 +1,84 @@
+.checkout-page {
+  padding: 0 0 100px 0;
+}
+
+.checkout-page-section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkout-page-section-group-title {
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+}
+
+.checkout-page-details-inputs {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.checkout-page-details-payment-inputs-duo {
+  display: flex;
+  gap: 10px;
+}
+
+.checkout-page-details-payment-inputs-duo > div {
+  flex: 1;
+}
+
+.checkout-page-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-page-details {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.checkout-page-summary {
+  width: 300px;
+}
+
+.checkout-page-summary-sticky {
+  position: sticky;
+  top: 20px;
+}
+
+.checkout-page-summary-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkout-page-order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkout-page-order-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.checkout-page-order-item-image {
+  height: 60px;
+  width: 60px;
+}
+
+.checkout-page-order-item-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+.checkout-page-order-item-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}

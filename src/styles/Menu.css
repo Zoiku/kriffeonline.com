@@ -1,0 +1,13 @@
+.menu-box {
+  cursor: pointer;
+}
+
+.menu-box-inner {
+  display: flex;
+  align-items: center;
+}
+
+.menu-box-inner span {
+  display: flex;
+  align-items: center;
+}
