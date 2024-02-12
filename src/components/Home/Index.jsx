@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import CenteredSection from "../Centered";
 
 export const HomeSectionWithHeading = ({
   children,
@@ -6,7 +7,7 @@ export const HomeSectionWithHeading = ({
   headingHelper,
   to,
 }) => (
-  <div className="home-section">
+  <CenteredSection className="home-section">
     <div className="home-section-head">
       <div className={"home-section-head-text"}>
         <div className="home-section-head-title">{heading}</div>
@@ -22,5 +23,5 @@ export const HomeSectionWithHeading = ({
       )}
     </div>
     {children}
-  </div>
+  </CenteredSection>
 );

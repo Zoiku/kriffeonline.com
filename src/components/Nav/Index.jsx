@@ -1,15 +1,32 @@
 import { NavLink, useNavigate } from "react-router-dom";
 
+export const styles = {
+  "/": {
+    backgroundColor: "rgb(20 30 36)",
+    color: "white",
+  },
+  "/about": {
+    backgroundColor: "rgba(166, 199, 255, 0.5)",
+    color: "black",
+  },
+  "/events": {
+    backgroundColor: "rgba(166, 199, 255, 0.5)",
+    color: "black",
+  },
+};
+
 export const Link = ({ label, to }) => (
   <NavLink to={to} className={"nav-link"}>
     {label}
   </NavLink>
 );
 
-export const NavActionButton = ({ icon, to }) => {
+export const NavActionButton = ({ icon, to, onClick }) => {
   const navigate = useNavigate();
+  const handleAction = to ? () => navigate(to) : onClick;
+
   return (
-    <div onClick={() => navigate(to)} className="nav-action-button">
+    <div onClick={handleAction} className="nav-action-button">
       {icon}
     </div>
   );

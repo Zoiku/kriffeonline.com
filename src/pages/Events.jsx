@@ -74,7 +74,7 @@ const Events = () => {
               ))}
             </div>
           ) : isFetchingEventsError ? (
-            <>Uh oh...</>
+            <>Something went wrong</>
           ) : events ? (
             events.length === 0 ? (
               <>No events</>
@@ -86,7 +86,7 @@ const Events = () => {
               </div>
             )
           ) : (
-            <>Uh oh...Again</>
+            <>Something went wrongAgain</>
           )}
         </div>
       </CenteredSection>

@@ -10,7 +10,7 @@ const Alert = () => {
       open={alert.open}
       autoHideDuration={5000}
       onClose={handleCloseAlert}
-      anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
     >
       <MuiAlert
         variant={"standard"}

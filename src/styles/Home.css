@@ -18,8 +18,8 @@
 .home-sections {
   display: flex;
   flex-direction: column;
-  gap: 50px;
-  padding: 50px;
+  gap: 100px;
+  padding: 50px 0;
 }
 
 .home-section {

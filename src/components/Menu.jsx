@@ -36,6 +36,9 @@ const Menu = ({
           paper: {
             elevation: 0,
             className: "menu",
+            sx: {
+              mt: 1,
+            },
           },
         }}
         MenuListProps={{

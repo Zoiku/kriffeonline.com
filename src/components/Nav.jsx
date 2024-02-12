@@ -1,26 +1,13 @@
 import "../styles/Nav.css";
 import CenteredSection from "./Centered";
 import { BiUser, BiSearch, BiCartAlt, BiHeart } from "react-icons/bi";
-import { useLocation } from "react-router-dom";
 import { Link, NavActionButton } from "./Nav/Index";
+import Menu from "../components/Menu";
+import { MenuItem, MenuList } from "@mui/material";
+import useNav from "../hooks/useNav";
 
 const Nav = () => {
-  const location = useLocation();
-  const styles = {
-    "/": {
-      backgroundColor: "rgb(20 30 36)",
-      color: "white",
-    },
-    "/about": {
-      backgroundColor: "rgba(166, 199, 255, 0.5)",
-      color: "black",
-    },
-    "/events": {
-      backgroundColor: "rgba(166, 199, 255, 0.5)",
-      color: "black",
-    },
-  };
-  const style = styles[location?.pathname];
+  const { navLinks, style, accountIconMenu, signOut, isLogged } = useNav();
 
   return (
     <div>
@@ -28,13 +15,12 @@ const Nav = () => {
         <div className="nav-first">
           <div>KriffeOnline</div>
           <div className="nav-links">
-            <Link to={"/"} label={"Home"} />
-            <Link to={"/about"} label={"About"} />
-            <Link to={"/marketplace"} label={"Marketplace"} />
-            <Link to={"/events"} label={"Events"} />
-            <Link to={"/contact"} label={"Contact"} />
+            {navLinks.map((navLink, index) => (
+              <Link key={index} to={navLink.to} label={navLink.label} />
+            ))}
           </div>
         </div>
+
         <div className="nav-action-buttons">
           <NavActionButton icon={<BiSearch size={17} />} />
           <NavActionButton
@@ -43,7 +29,25 @@ const Nav = () => {
             icon={<BiCartAlt size={17} />}
           />
           <NavActionButton icon={<BiHeart size={17} />} />
-          <NavActionButton to={"/signin"} icon={<BiUser size={18} />} />
+          {isLogged ? (
+            <Menu
+              anchorEl={accountIconMenu.anchorEl}
+              open={accountIconMenu.open}
+              handleClose={accountIconMenu.handleClose}
+              custom={
+                <NavActionButton
+                  onClick={accountIconMenu.handleClick}
+                  icon={<BiUser size={18} />}
+                />
+              }
+            >
+              <MenuList dense>
+                <MenuItem onClick={signOut}>Logout</MenuItem>
+              </MenuList>
+            </Menu>
+          ) : (
+            <NavActionButton to={"/signin"} icon={<BiUser size={18} />} />
+          )}
         </div>
       </CenteredSection>
     </div>

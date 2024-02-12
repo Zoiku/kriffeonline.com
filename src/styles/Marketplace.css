@@ -55,30 +55,6 @@
   text-decoration: none;
 }
 
-.marketplace-product-details {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.marketplace-product-details-name {
-  text-transform: capitalize;
-}
-
-.marketplace-product-image {
-  position: relative;
-  height: 150px !important;
-  overflow: clip;
-  background-color: #efefef;
-}
-
-.marketplace-product-image img {
-  height: 100%;
-  width: 100%;
-  object-fit: fill;
-  display: none;
-}
-
 .marketplace-product-bookmark-btn {
   position: absolute;
   bottom: -100px;
@@ -95,6 +71,55 @@
   bottom: -100px;
 }
 
+.marketplace-product-image {
+  position: relative;
+  height: 150px !important;
+  overflow: clip;
+  background-color: #efefef;
+}
+
+.marketplace-product-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  display: none;
+}
+
+.marketplace-product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.marketplace-product-details-name {
+  text-transform: capitalize;
+}
+
+.marketplace-product-details-name-and-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.marketplace-product-details-stats-container {
+  display: flex;
+  gap: 8px;
+}
+
+.marketplace-product-details-stats {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.marketplace-product-details-stats > div {
+  display: flex;
+  align-items: center;
+}
+
+.marketplace-product-details-stats-icon {
+  color: #c5c5c5;
+}
+
 .marketplace-filter-checkbox-input {
   display: flex;
   gap: 5px;
@@ -103,47 +128,4 @@
 
 .marketplace-filter-single-input span:hover {
   text-decoration: underline;
-}
-
-.marketplace-quick-categories {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  border: 1px solid #efefef;
-}
-
-.marketplace-quick-category {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.marketplace-quick-category-image {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  background-color: #efefef;
-}
-
-.marketplace-product-details-name-and-views {
-  display: flex;
-  justify-content: space-between;
-}
-
-.marketplace-product-details-views {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.marketplace-product-details-views > div {
-  display: flex;
-  align-items: center;
-}
-
-.marketplace-product-details-views-icon {
-  color: #c5c5c5;
 }

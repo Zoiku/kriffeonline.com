@@ -63,8 +63,8 @@ const Checkout = () => {
                 <Input label={"Card Number"} />
               </div>
               <div className="checkout-page-details-payment-inputs-duo">
-                <Input label={"Expiration Date"} />
                 <Input type={"password"} label={"CVC Code"} />
+                <Input label={"Expiration Date"} />
               </div>
             </div>
           </CheckoutSectionGroup>
@@ -83,7 +83,7 @@ const Checkout = () => {
               </div>
 
               <div className="checkout-page-summary-pricing">
-                <Button fullWidth theme={"theme2"} label={"Make Payment"} />
+                <Button fullWidth theme={"theme3"} label={"Make Payment"} />
               </div>
             </div>
           </CheckoutSectionGroup>

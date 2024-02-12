@@ -10,9 +10,9 @@ import useEvents from "../hooks/useEvents";
 import { HomeSectionWithHeading } from "../components/Home/Index";
 
 const HomePage = () => {
+  const { events, isFetchingEvents, isFetchingEventsError } = useEvents();
   const { products, isFetchingProducts, isFetchingProductsError } =
     useMarketplace();
-  const { events, isFetchingEvents, isFetchingEventsError } = useEvents();
 
   return (
     <div className="home-page">
@@ -34,7 +34,7 @@ const HomePage = () => {
                 <MarketplaceProductSeleton key={index} />
               ))
             ) : isFetchingProductsError ? (
-              <>Uh oh...</>
+              <>Something went wrong</>
             ) : products ? (
               products.length === 0 ? (
                 <>Uh oh, no items</>
@@ -47,7 +47,7 @@ const HomePage = () => {
                   ))
               )
             ) : (
-              <>Uh oh...</>
+              <>Something went wrong</>
             )}
           </div>
         </HomeSectionWithHeading>
@@ -64,7 +64,7 @@ const HomePage = () => {
                 <EventItemSkeleton key={index} />
               ))
             ) : isFetchingEventsError ? (
-              <>Uh oh...</>
+              <>Something went wrong</>
             ) : events ? (
               events.length === 0 ? (
                 <>Uh oh, no items</>
@@ -77,7 +77,7 @@ const HomePage = () => {
                   ))
               )
             ) : (
-              <>Uh oh...</>
+              <>Something went wrong</>
             )}
           </div>
         </HomeSectionWithHeading>

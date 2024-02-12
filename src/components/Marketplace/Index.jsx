@@ -2,6 +2,7 @@ import image from "../../assets/ipad.jpg";
 import { NavLink } from "react-router-dom";
 import { Skeleton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 
 export const MarketplaceProductSeleton = () => (
   <div className="marketplace-product">
@@ -15,29 +16,42 @@ export const MarketplaceProductSeleton = () => (
   </div>
 );
 
-export const MarketplaceProduct = ({ product }) => (
-  <NavLink
-    to={`/marketplace/${product.product_no}`}
-    className="marketplace-product"
-  >
-    <div className="marketplace-product-image">
-      <div className="marketplace-product-bookmark-btn"></div>
-      <img src={image} alt="" />
-    </div>
-    <div className="marketplace-product-details">
-      <div className="marketplace-product-details-name-and-views">
-        <div>{product.name}</div>
-        <div className="marketplace-product-details-views">
-          <div className="marketplace-product-details-views-icon">
-            <VisibilityIcon fontSize="inherit" />
-          </div>
-          <div>{product.views}</div>
-        </div>
+export const MarketplaceProduct = ({ product }) => {
+  console.log(product);
+
+  return (
+    <NavLink
+      to={`/marketplace/${product.product_no}`}
+      className="marketplace-product"
+    >
+      <div className="marketplace-product-image">
+        <div className="marketplace-product-bookmark-btn"></div>
+        <img src={image} alt="" />
       </div>
-      <div>GHS{product.price}</div>
-    </div>
-  </NavLink>
-);
+      <div className="marketplace-product-details">
+        <div className="marketplace-product-details-name-and-stats">
+          <div>{product.name}</div>
+          <div className="marketplace-product-details-stats-container">
+            <div className="marketplace-product-details-stats">
+              <div className="marketplace-product-details-stats-icon">
+                <FavoriteRoundedIcon fontSize="inherit" />
+              </div>
+              <div>{product.saves}</div>
+            </div>
+            <div className="marketplace-product-details-stats">
+              <div className="marketplace-product-details-stats-icon">
+                <VisibilityIcon fontSize="inherit" />
+              </div>
+              <div>{product.views}</div>
+            </div>
+          </div>
+        </div>
+
+        <div>GHS{product.price}</div>
+      </div>
+    </NavLink>
+  );
+};
 
 export const SelectFilterValue = ({ value, selected, onClick }) => (
   <div className="marketplace-filter-single-input">

@@ -92,19 +92,17 @@
 
 .product-order-summary {
   width: 250px;
-  background-color: #efefef;
+  border: 1px solid;
 }
 
 .product-order-summary-sticky {
   width: 100%;
   display: flex;
-  display: none;
   flex-direction: column;
   gap: 10px;
   position: sticky;
   top: 10px;
-  border: 1px solid #c5c5c5;
-  padding: 15px;
+  display: none;
 }
 
 .product-order-summary-actions {
