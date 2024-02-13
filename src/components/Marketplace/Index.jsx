@@ -17,8 +17,6 @@ export const MarketplaceProductSeleton = () => (
 );
 
 export const MarketplaceProduct = ({ product }) => {
-  console.log(product);
-
   return (
     <NavLink
       to={`/marketplace/${product.product_no}`}

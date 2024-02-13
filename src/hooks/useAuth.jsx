@@ -12,7 +12,6 @@ const useAuth = () => {
     return token !== null;
   }, [token]);
   const signIn = (authToken) => {
-    console.log(authToken);
     setToken(authToken);
     navigate("/");
   };

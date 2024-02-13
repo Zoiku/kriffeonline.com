@@ -5,16 +5,24 @@ import { useNavigate, useParams } from "react-router-dom";
 import ThumbGallery from "../components/ThumbGallery";
 import Button from "../components/Button";
 import useProduct from "../hooks/useProduct";
-import { MarketplaceProduct } from "../components/Marketplace/Index";
+import {
+  ProductDetailsError,
+  ProductDetailsLoading,
+} from "../components/ProductDetails/Index";
 
 const ProductDetails = () => {
-  const { productNo } = useParams();
   const navigate = useNavigate();
-  const { getProduct, getRelatedProducts } = useProduct();
-  const product = getProduct(productNo);
-  const relatedProducts = getRelatedProducts(product.category);
+  const { productNo } = useParams();
+  const { product, isFetchingProduct, isFetchingProductError } =
+    useProduct(productNo);
 
-  return (
+  console.log(product);
+
+  return isFetchingProduct ? (
+    <ProductDetailsLoading />
+  ) : isFetchingProductError ? (
+    <ProductDetailsError message={"Uh oh, something went wrong"} />
+  ) : product ? (
     <div className="product-details-page">
       <CenteredSection>
         <div
@@ -45,19 +53,13 @@ const ProductDetails = () => {
                 </div>
               </div>
               <div className="product-overview-details-about-item">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam
-                voluptatem debitis quaerat assumenda dicta corporis, doloribus
-                eveniet deleniti. Similique dicta maiores facilis eum dolorem
-                quasi incidunt nisi. Molestiae laudantium adipisci nisi quasi
-                enim porro placeat rem quos in, est repellat!
+                {product.description}
               </div>
               <div className="product-overview-details-about-item">
                 <ul className="product-overview-details-about-item-list">
-                  {Array.from(Array(5)).map((_, index) => (
+                  {product.product_details.map((detail, index) => (
                     <li key={index}>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Magni accusantium culpa cum deserunt assumenda excepturi
-                      quasi labore hic amet numquam?
+                      {detail.attribute_name}: {detail.attribute_value}
                     </li>
                   ))}
                 </ul>
@@ -84,12 +86,14 @@ const ProductDetails = () => {
           Related Products
         </div>
         <div className="product-page-related-products">
-          {relatedProducts.slice(0, 4).map((relatedProduct, index) => (
-            <MarketplaceProduct key={index} product={relatedProduct} />
-          ))}
+          {/* {relatedProducts.slice(0, 4).map((relatedProduct, index) => (
+        <MarketplaceProduct key={index} product={relatedProduct} />
+      ))} */}
         </div>
       </CenteredSection>
     </div>
+  ) : (
+    <ProductDetailsError message={"Uh oh, something went wrong"} />
   );
 };
 
