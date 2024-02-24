@@ -1,4 +1,4 @@
-import image from "../../assets/ipad.jpg";
+import image from "../../assets/Products/ipad.jpg";
 import { NavLink } from "react-router-dom";
 import { Skeleton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";

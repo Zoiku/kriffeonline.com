@@ -1,5 +1,5 @@
 import "../styles/Home.css";
-import headerImage from "../assets/manlookingatphone.4815b53271661be2a51c.png";
+import headerImage from "../assets/Overview/manlookingatphone.4815b53271661be2a51c.png";
 import { EventItem, EventItemSkeleton } from "../components/Events/Index";
 import {
   MarketplaceProduct,

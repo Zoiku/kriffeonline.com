@@ -22,6 +22,6 @@ export const ProductDetailsError = ({ message }) => (
 
 export const ProductDetailsLoading = () => (
   <div className="product-details-loading-page">
-    <div>Loading</div>
+    <div>Please wait...</div>
   </div>
 );

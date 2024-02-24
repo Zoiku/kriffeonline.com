@@ -6,8 +6,7 @@ import {
   SelectFilterValue,
   MarketplaceProductSeleton,
 } from "../components/Marketplace/Index";
-import Menu from "../components/Menu";
-import { MenuItem, MenuList } from "@mui/material";
+import CenteredSection from "../components/Centered";
 
 const Marketplace = () => {
   const {
@@ -19,12 +18,11 @@ const Marketplace = () => {
     handleSelectFilterValues,
     isSelectedFilterValue,
     isCheckedFilterValue,
-    sortMenu,
   } = useMarketplace();
 
   return (
     <div className="marketplace-page">
-      <div className="marketplace-display">
+      <CenteredSection className="marketplace-display">
         <div className="marketplace-display-inner marketplace-display-filters">
           <div className="marketplace-display-filters-sticky">
             {filters.map((filter, index) => (
@@ -66,19 +64,6 @@ const Marketplace = () => {
           </div>
         </div>
         <div className="marketplace-display-inner marketplace-display-products">
-          <div className="marketplace-display-products-sort-by">
-            <Menu
-              anchorEl={sortMenu.anchorEl}
-              open={sortMenu.open}
-              handleClick={sortMenu.handleClick}
-              handleClose={sortMenu.handleClose}
-              label={"Sort by"}
-            >
-              <MenuList dense>
-                <MenuItem>Select</MenuItem>
-              </MenuList>
-            </Menu>
-          </div>
           {isFetchingProducts ? (
             <div className="marketplace-products">
               {Array.from(Array(20)).map((_, index) => (
@@ -101,7 +86,7 @@ const Marketplace = () => {
             <>Hmm...idk</>
           )}
         </div>
-      </div>
+      </CenteredSection>
     </div>
   );
 };

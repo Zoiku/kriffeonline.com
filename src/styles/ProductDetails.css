@@ -67,6 +67,19 @@
   font-size: xx-large;
 }
 
+.product-details-page-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.product-details-page-tag {
+  display: inline-block;
+  background-color: #f3f3f3;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .product-overview-details-technical-specifications {
   display: flex;
   flex-direction: column;
@@ -92,7 +105,6 @@
 
 .product-order-summary {
   width: 250px;
-  border: 1px solid;
 }
 
 .product-order-summary-sticky {
@@ -102,7 +114,6 @@
   gap: 10px;
   position: sticky;
   top: 10px;
-  display: none;
 }
 
 .product-order-summary-actions {
@@ -141,8 +152,4 @@
   display: grid;
   place-content: center;
   text-align: center;
-}
-
-.product-details-error {
-  border: 2px solid red;
 }

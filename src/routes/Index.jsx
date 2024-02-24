@@ -12,11 +12,11 @@ import EventsPage from "../pages/Events";
 import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
 import CartPage from "../pages/Cart";
+import FavoritesPage from "../pages/Favorites";
 import CheckoutPage from "../pages/Checkout";
 import EventDetailsPage from "../pages/EventDetails";
 import AuthProtectedRoutes from "./AuthProtected";
 import UserDashboardPage from "../pages/user/Dashboard";
-import UserBookmarksPage from "../pages/user/Bookmarks";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -39,12 +39,12 @@ const AppRoutes = () => {
           <Route path="/events/:event_no" element={<EventDetailsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
         </Route>
         <Route element={<AuthProtectedRoutes />}>
           <Route element={<UserLayout />}>
             <Route path="/user/dashboard" element={<UserDashboardPage />} />
-            <Route path="/user/bookmarks" element={<UserBookmarksPage />} />
           </Route>
         </Route>
       </Routes>

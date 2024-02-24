@@ -1,0 +1,147 @@
+import useCart from "../../hooks/useCart";
+import Currency from "../../components/Currency";
+import Button from "../../components/Button";
+import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+import { IconButton } from "@mui/material";
+
+export const CartHead = () => (
+  <thead className="cart-table-head">
+    <tr className="cart-table-row">
+      <th className="cart-table-heading">Product</th>
+      <th className="cart-table-heading">Description</th>
+      <th className="cart-table-heading">Quantity</th>
+      <th className="cart-table-heading">Total</th>
+      <th className="cart-table-heading"></th>
+    </tr>
+  </thead>
+);
+
+export const CartBody = ({ cartItems }) => {
+  return (
+    <tbody className="cart-table-body">
+      {cartItems.map((cartItem, index) => (
+        <CartItem key={index} cartItemIndex={index} cartItem={cartItem} />
+      ))}
+    </tbody>
+  );
+};
+
+export const CartItem = ({ cartItem, cartItemIndex }) => {
+  const {
+    handleRemoveCartItem,
+    handleIncreaseCartItemQuantity,
+    handleReduceCartItemQuantity,
+    handleChangeCartItemQuantity,
+  } = useCart();
+  return (
+    <tr className="cart-table-row">
+      <td className="cart-table-data">
+        <div className="cart-item-image">
+          <img src={cartItem.details.image} alt="Img" />
+        </div>
+      </td>
+      <td className="cart-table-data">
+        <div className="cart-item-description">
+          <div>
+            <small>{cartItem.details.category}</small>
+          </div>
+          <div className="cart-item-name">{cartItem.details.name}</div>
+          <div>
+            <small>
+              <Currency value={cartItem.details.price} />
+            </small>
+          </div>
+        </div>
+      </td>
+      <td className="cart-table-data">
+        <CartQuantityInput
+          cartItemIndex={cartItemIndex}
+          value={cartItem.pricing.quantity}
+          handleIncreaseCartItemQuantity={handleIncreaseCartItemQuantity}
+          handleReduceCartItemQuantity={handleReduceCartItemQuantity}
+          onChange={(e) => handleChangeCartItemQuantity(e, cartItemIndex)}
+        />
+      </td>
+      <td className="cart-table-data">
+        <div className="cart-item-total">
+          <Currency value={cartItem.pricing.total} />
+        </div>
+      </td>
+      <td className="cart-table-data">
+        <div
+          className="cart-item-remove"
+          onClick={() => handleRemoveCartItem(cartItemIndex)}
+        >
+          <IconButton>
+            <DeleteOutlineRoundedIcon />
+          </IconButton>
+        </div>
+      </td>
+    </tr>
+  );
+};
+
+const CartQuantityInput = (props) => {
+  const {
+    cartItemIndex,
+    handleReduceCartItemQuantity,
+    handleIncreaseCartItemQuantity,
+    ...rest
+  } = props;
+
+  return (
+    <div className="cart-quantity-input-box">
+      <div
+        className="cart-quantity-input-button"
+        onClick={() => handleReduceCartItemQuantity(cartItemIndex)}
+      >
+        -
+      </div>
+      <div className="cart-quantity-input-container">
+        <input min={1} {...rest} className="cart-quantity-input" />
+      </div>
+      <div
+        className="cart-quantity-input-button"
+        onClick={() => handleIncreaseCartItemQuantity(cartItemIndex)}
+      >
+        +
+      </div>
+    </div>
+  );
+};
+
+export const CartSummary = () => {
+  const { cartPricing } = useCart();
+
+  return (
+    <div className="cart-total-summary-sticky">
+      <div className="cart-total-summary-body">
+        <div>Cart Summary</div>
+        <div className="cart-total-summary-body-details">
+          <div className="cart-total-summary-body-detail">
+            <span>Subtotal</span>
+            <span>
+              <Currency value={cartPricing.subTotal} />
+            </span>
+          </div>
+          <div className="cart-total-summary-body-detail">
+            <span>Fees</span>
+            <span>
+              <Currency value={cartPricing.fees} />
+            </span>
+          </div>
+          <div className="cart-total-summary-body-detail">
+            <span>Total</span>
+            <span>
+              <Currency value={cartPricing.total} />
+            </span>
+          </div>
+        </div>
+        <div className="cart-summary-buttons">
+          <Button theme={"theme0"} label={"Proceed to Checkout"} fullWidth />
+          <Button theme={"theme1"} label={"Continue Shopping"} fullWidth />
+        </div>
+      </div>
+    </div>
+  );
+};

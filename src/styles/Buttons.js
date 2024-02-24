@@ -8,11 +8,16 @@ const styleButton = (theme) => {
     case "theme0":
       return {
         onRest: {
-          border: "1px solid #555",
+          border: "1px solid",
+          borderColor: "#c5c5c5",
           color: "black",
+          backgroundColor: "white",
         },
         onHover: {
-          border: "1px solid black",
+          border: "1px solid",
+          backgroundColor: "white",
+          borderColor: "black",
+          color: "black",
         },
       };
 

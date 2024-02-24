@@ -23,12 +23,8 @@ const Nav = () => {
 
         <div className="nav-action-buttons">
           <NavActionButton icon={<BiSearch size={17} />} />
-          <NavActionButton
-            to={"/cart"}
-            onClick
-            icon={<BiCartAlt size={17} />}
-          />
-          <NavActionButton icon={<BiHeart size={17} />} />
+          <NavActionButton to={"/cart"} icon={<BiCartAlt size={17} />} />
+          <NavActionButton to={"/favorites"} icon={<BiHeart size={17} />} />
           {isLogged ? (
             <Menu
               anchorEl={accountIconMenu.anchorEl}

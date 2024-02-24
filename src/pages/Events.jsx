@@ -4,7 +4,7 @@ import useEvents from "../hooks/useEvents";
 import { EventItem, EventItemSkeleton } from "../components/Events/Index";
 import Menu from "../components/Menu";
 import { MenuItem, MenuList } from "@mui/material";
-import headerImage from "../assets/manreadings.6198af54313c7212de20.png";
+import headerImage from "../assets/Overview/manreadings.6198af54313c7212de20.png";
 
 const Events = () => {
   const {

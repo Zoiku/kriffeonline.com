@@ -3,20 +3,18 @@ import CenteredSection from "../components/Centered";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import ThumbGallery from "../components/ThumbGallery";
-import Button from "../components/Button";
 import useProduct from "../hooks/useProduct";
 import {
   ProductDetailsError,
   ProductDetailsLoading,
 } from "../components/ProductDetails/Index";
+import { categoryMap } from "../utils/categorymappings";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
   const { productNo } = useParams();
   const { product, isFetchingProduct, isFetchingProductError } =
     useProduct(productNo);
-
-  console.log(product);
 
   return isFetchingProduct ? (
     <ProductDetailsLoading />
@@ -59,7 +57,9 @@ const ProductDetails = () => {
                 <ul className="product-overview-details-about-item-list">
                   {product.product_details.map((detail, index) => (
                     <li key={index}>
-                      {detail.attribute_name}: {detail.attribute_value}
+                      {categoryMap[detail.attribute_name] ??
+                        detail.attribute_name}
+                      : {detail.attribute_value}
                     </li>
                   ))}
                 </ul>
@@ -67,28 +67,8 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="product-order-summary">
-            <div className="product-order-summary-sticky">
-              <div className="product-order-summary-inner product-order-summary-actions">
-                <Button theme={"theme2"} label={"Add to Cart"} fullWidth />
-                <Button
-                  onClick={() => navigate("/checkout")}
-                  theme={"theme3"}
-                  label={"Buy Now"}
-                  fullWidth
-                />
-              </div>
-            </div>
+            <div className="product-order-summary-sticky"></div>
           </div>
-        </div>
-      </CenteredSection>
-      <CenteredSection className={"product-page-related-products-container"}>
-        <div className="product-page-related-products-title">
-          Related Products
-        </div>
-        <div className="product-page-related-products">
-          {/* {relatedProducts.slice(0, 4).map((relatedProduct, index) => (
-        <MarketplaceProduct key={index} product={relatedProduct} />
-      ))} */}
         </div>
       </CenteredSection>
     </div>

@@ -1,6 +1,6 @@
 import "../styles/About.css";
-import headerImage1 from "../assets/redguy.68e2bfe3b91f011f92d6.png";
-import headerImage2 from "../assets/gree.50bd3a3e7657edd3d4e5.png";
+import headerImage1 from "../assets/Overview/redguy.68e2bfe3b91f011f92d6.png";
+import headerImage2 from "../assets/Overview/gree.50bd3a3e7657edd3d4e5.png";
 
 const About = () => {
   return (
