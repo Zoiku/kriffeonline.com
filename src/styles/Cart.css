@@ -25,11 +25,24 @@
 .cart-table-heading {
   font-weight: unset;
   text-align: left;
+  position: relative;
+}
+
+.cart-table-heading:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  height: 20px;
+  border-right: 1px solid #c5c5c5;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
 }
 
 .cart-item-image {
   width: 150px;
   height: 150px;
+  border: 1px solid #c5c5c5;
+  padding: 20px;
 }
 
 .cart-item-image img {

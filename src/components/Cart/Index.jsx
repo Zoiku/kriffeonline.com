@@ -2,6 +2,7 @@ import useCart from "../../hooks/useCart";
 import Currency from "../../components/Currency";
 import Button from "../../components/Button";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+import DeleteOutlineSharpIcon from '@mui/icons-material/DeleteOutlineSharp';
 import { IconButton } from "@mui/material";
 
 export const CartHead = () => (
@@ -73,7 +74,7 @@ export const CartItem = ({ cartItem, cartItemIndex }) => {
           onClick={() => handleRemoveCartItem(cartItemIndex)}
         >
           <IconButton>
-            <DeleteOutlineRoundedIcon />
+            <DeleteOutlineSharpIcon />
           </IconButton>
         </div>
       </td>

@@ -17,7 +17,7 @@ export const cartItems = [
   {
     details: {
       category: "Jewelry and Accessories",
-      name: "Gold Cross Chain Women",
+      name: "Gold Cross Chain (Men)",
       image: img1,
       price: 3000,
     },
