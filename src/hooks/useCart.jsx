@@ -1,31 +1,48 @@
-import { atom, useAtom } from "jotai";
-import { cartItems, calculateCartPricing } from "../utils/cart";
+import { useAtom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
+import { calculateCartPricing } from "../utils/cart";
 import { useMemo } from "react";
+import useAlert from "./useAlert";
 
-const cartItemsAtom = atom(cartItems);
+const cartItemsAtom = atomWithStorage(
+  "cart",
+  localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
+);
 
 const useCart = () => {
+  const { handleOpenSuccessAlert } = useAlert();
   const [cartItems, setCartItems] = useAtom(cartItemsAtom);
-
   const cartPricing = useMemo(
     () => calculateCartPricing(cartItems),
     [cartItems]
   );
-
-  const handleAddCartItem = (cartItem) => {
-    setCartItems([...cartItems, cartItem]);
+  const handleAddCartItem = (productItem) => {
+    setCartItems([
+      ...cartItems,
+      {
+        id: productItem.id,
+        category: productItem.category,
+        description: productItem.description,
+        name: productItem.name,
+        price: productItem.price,
+        pricing: {
+          quantity: 1,
+          total: productItem.price,
+        },
+      },
+    ]);
+    handleOpenSuccessAlert("Added to Cart");
   };
-
-  const handleChangeCartItemQuantity = (e, cartItemIndex) => {
+  const handleChangeCartItemQuantity = (e, id) => {
     let quantity = Number(e.target.value);
-    let updatedCartItems = cartItems.map((cartItem, index) => {
-      if (cartItemIndex === index) {
+    let updatedCartItems = cartItems.map((cartItem) => {
+      if (id === cartItem.id) {
         return {
           ...cartItem,
           pricing: {
             ...cartItem.pricing,
             quantity,
-            total: quantity * cartItem.details.price,
+            total: quantity * cartItem.price,
           },
         };
       }
@@ -33,16 +50,15 @@ const useCart = () => {
     });
     setCartItems(updatedCartItems);
   };
-
-  const handleIncreaseCartItemQuantity = (cartItemIndex) => {
-    let updatedCartItems = cartItems.map((cartItem, index) => {
-      if (cartItemIndex === index) {
+  const handleIncreaseCartItemQuantity = (id) => {
+    let updatedCartItems = cartItems.map((cartItem) => {
+      if (id === cartItem.id) {
         return {
           ...cartItem,
           pricing: {
             ...cartItem.pricing,
             quantity: cartItem.pricing.quantity + 1,
-            total: (cartItem.pricing.quantity + 1) * cartItem.details.price,
+            total: (cartItem.pricing.quantity + 1) * cartItem.price,
           },
         };
       }
@@ -50,16 +66,15 @@ const useCart = () => {
     });
     setCartItems(updatedCartItems);
   };
-
-  const handleReduceCartItemQuantity = (cartItemIndex) => {
-    let updatedCartItems = cartItems.map((cartItem, index) => {
-      if (cartItemIndex === index) {
+  const handleReduceCartItemQuantity = (id) => {
+    let updatedCartItems = cartItems.map((cartItem) => {
+      if (id === cartItem.id) {
         return {
           ...cartItem,
           pricing: {
             ...cartItem.pricing,
             quantity: cartItem.pricing.quantity - 1,
-            total: (cartItem.pricing.quantity - 1) * cartItem.details.price,
+            total: (cartItem.pricing.quantity - 1) * cartItem.price,
           },
         };
       }
@@ -67,19 +82,22 @@ const useCart = () => {
     });
     setCartItems(updatedCartItems);
   };
-
-  const handleRemoveCartItem = (cartItemIndex) => {
-    let updatedCartItems = cartItems.filter((cartItem, index) => {
-      if (cartItemIndex !== index) {
+  const handleRemoveCartItem = (id) => {
+    let updatedCartItems = cartItems.filter((cartItem) => {
+      if (id !== cartItem.id) {
         return cartItem;
       }
     });
     setCartItems(updatedCartItems);
   };
+  const isProductItemAddedToCart = (id) => {
+    return cartItems.some((cartItem) => cartItem.id === id);
+  };
 
   return {
     cartItems,
     cartPricing,
+    isProductItemAddedToCart,
     handleAddCartItem,
     handleChangeCartItemQuantity,
     handleIncreaseCartItemQuantity,

@@ -1,33 +1,10 @@
 import useCart from "../../hooks/useCart";
 import Currency from "../../components/Currency";
 import Button from "../../components/Button";
-import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
-import DeleteOutlineSharpIcon from '@mui/icons-material/DeleteOutlineSharp';
+import DeleteOutlineSharpIcon from "@mui/icons-material/DeleteOutlineSharp";
 import { IconButton } from "@mui/material";
 
-export const CartHead = () => (
-  <thead className="cart-table-head">
-    <tr className="cart-table-row">
-      <th className="cart-table-heading">Product</th>
-      <th className="cart-table-heading">Description</th>
-      <th className="cart-table-heading">Quantity</th>
-      <th className="cart-table-heading">Total</th>
-      <th className="cart-table-heading"></th>
-    </tr>
-  </thead>
-);
-
-export const CartBody = ({ cartItems }) => {
-  return (
-    <tbody className="cart-table-body">
-      {cartItems.map((cartItem, index) => (
-        <CartItem key={index} cartItemIndex={index} cartItem={cartItem} />
-      ))}
-    </tbody>
-  );
-};
-
-export const CartItem = ({ cartItem, cartItemIndex }) => {
+export const CartItem = ({ cartItem }) => {
   const {
     handleRemoveCartItem,
     handleIncreaseCartItemQuantity,
@@ -38,29 +15,29 @@ export const CartItem = ({ cartItem, cartItemIndex }) => {
     <tr className="cart-table-row">
       <td className="cart-table-data">
         <div className="cart-item-image">
-          <img src={cartItem.details.image} alt="Img" />
+          <img src={""} alt="Img" />
         </div>
       </td>
       <td className="cart-table-data">
         <div className="cart-item-description">
           <div>
-            <small>{cartItem.details.category}</small>
+            <small>{cartItem.category}</small>
           </div>
-          <div className="cart-item-name">{cartItem.details.name}</div>
+          <div className="cart-item-name">{cartItem.name}</div>
           <div>
             <small>
-              <Currency value={cartItem.details.price} />
+              <Currency value={cartItem.price} />
             </small>
           </div>
         </div>
       </td>
       <td className="cart-table-data">
         <CartQuantityInput
-          cartItemIndex={cartItemIndex}
+          cartItemId={cartItem.id}
           value={cartItem.pricing.quantity}
           handleIncreaseCartItemQuantity={handleIncreaseCartItemQuantity}
           handleReduceCartItemQuantity={handleReduceCartItemQuantity}
-          onChange={(e) => handleChangeCartItemQuantity(e, cartItemIndex)}
+          onChange={(e) => handleChangeCartItemQuantity(e, cartItem.id)}
         />
       </td>
       <td className="cart-table-data">
@@ -71,10 +48,10 @@ export const CartItem = ({ cartItem, cartItemIndex }) => {
       <td className="cart-table-data">
         <div
           className="cart-item-remove"
-          onClick={() => handleRemoveCartItem(cartItemIndex)}
+          onClick={() => handleRemoveCartItem(cartItem.id)}
         >
           <IconButton>
-            <DeleteOutlineSharpIcon />
+            <DeleteOutlineSharpIcon fontSize={"small"} />
           </IconButton>
         </div>
       </td>
@@ -84,7 +61,7 @@ export const CartItem = ({ cartItem, cartItemIndex }) => {
 
 const CartQuantityInput = (props) => {
   const {
-    cartItemIndex,
+    cartItemId,
     handleReduceCartItemQuantity,
     handleIncreaseCartItemQuantity,
     ...rest
@@ -94,7 +71,7 @@ const CartQuantityInput = (props) => {
     <div className="cart-quantity-input-box">
       <div
         className="cart-quantity-input-button"
-        onClick={() => handleReduceCartItemQuantity(cartItemIndex)}
+        onClick={() => handleReduceCartItemQuantity(cartItemId)}
       >
         -
       </div>
@@ -103,7 +80,7 @@ const CartQuantityInput = (props) => {
       </div>
       <div
         className="cart-quantity-input-button"
-        onClick={() => handleIncreaseCartItemQuantity(cartItemIndex)}
+        onClick={() => handleIncreaseCartItemQuantity(cartItemId)}
       >
         +
       </div>
@@ -111,27 +88,48 @@ const CartQuantityInput = (props) => {
   );
 };
 
+export const CartHead = () => (
+  <thead className="cart-table-head">
+    <tr className="cart-table-row">
+      <th className="cart-table-heading">Product</th>
+      <th className="cart-table-heading">Description</th>
+      <th className="cart-table-heading">Quantity</th>
+      <th className="cart-table-heading">Sub Total</th>
+      <th className="cart-table-heading"></th>
+    </tr>
+  </thead>
+);
+
+export const CartBody = ({ cartItems }) => {
+  return (
+    <tbody className="cart-table-body">
+      {cartItems.map((cartItem, index) => (
+        <CartItem key={index} cartItem={cartItem} />
+      ))}
+    </tbody>
+  );
+};
+
 export const CartSummary = () => {
   const { cartPricing } = useCart();
-
   return (
-    <div className="cart-total-summary-sticky">
-      <div className="cart-total-summary-body">
+    <div className="cart-summary-sticky">
+      <div className="cart-summary-body">
         <div>Cart Summary</div>
-        <div className="cart-total-summary-body-details">
-          <div className="cart-total-summary-body-detail">
+        <div className="cart-summary-body-details">
+          <div className="cart-summary-body-detail">
             <span>Subtotal</span>
             <span>
               <Currency value={cartPricing.subTotal} />
             </span>
           </div>
-          <div className="cart-total-summary-body-detail">
+          <div className="cart-summary-body-detail">
             <span>Fees</span>
             <span>
               <Currency value={cartPricing.fees} />
             </span>
           </div>
-          <div className="cart-total-summary-body-detail">
+          <div className="cart-summary-body-detail">
             <span>Total</span>
             <span>
               <Currency value={cartPricing.total} />

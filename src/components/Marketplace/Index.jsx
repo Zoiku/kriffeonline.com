@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Skeleton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
+import Currency from "../Currency";
 
 export const MarketplaceProductSeleton = () => (
   <div className="marketplace-product">
@@ -45,7 +46,7 @@ export const MarketplaceProduct = ({ product }) => {
           </div>
         </div>
 
-        <div>GHS{product.price}</div>
+        <div><Currency value={product.price} /></div>
       </div>
     </NavLink>
   );

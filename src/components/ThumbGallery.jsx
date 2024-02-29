@@ -1,20 +1,20 @@
 import "../styles/ThumbGallery.css";
 import useThumbGallery from "../hooks/useThumbGallery";
 
-const ThumbGallery = () => {
-  const { thumbs, handleChangeSelectedThumbIndex, selectedThmb, isSelected } =
-    useThumbGallery();
+const ThumbGallery = ({ imageSrcs }) => {
+  const { handleChangeSelectedThumbIndex, selectedThmb, isSelected } =
+    useThumbGallery(imageSrcs);
 
   return (
     <div className="thumb-gallery">
       <div className="thumb-gallery-inner thumb-gallery-thumbs">
-        {thumbs.map((src, index) => (
+        {imageSrcs.map((imageSrc, index) => (
           <div
             key={index}
             onClick={() => handleChangeSelectedThumbIndex(index)}
             className={`thumb-gallery-thumb ${isSelected(index) && "selected"}`}
           >
-            <img src={src} alt="" />
+            <img src={imageSrc} alt="" />
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import { format } from "../utils/currency";
 
 const Currency = ({ value }) => {
-  return <>GHS {format(value)}</>;
+  return <>$ {format(value)}</>;
 };
 
 export default Currency;

@@ -1,79 +1,92 @@
 import "../styles/ProductDetails.css";
 import CenteredSection from "../components/Centered";
-import { BiArrowBack } from "react-icons/bi";
-import { useNavigate, useParams } from "react-router-dom";
-import ThumbGallery from "../components/ThumbGallery";
+import ThumbsGallery from "../components/ThumbGallery";
+import { useParams } from "react-router-dom";
 import useProduct from "../hooks/useProduct";
 import {
   ProductDetailsError,
   ProductDetailsLoading,
+  ProductOverviewSection,
+  ProductOverviewFeature,
 } from "../components/ProductDetails/Index";
-import { categoryMap } from "../utils/categorymappings";
+import Button from "../components/Button";
 
 const ProductDetails = () => {
-  const navigate = useNavigate();
   const { productNo } = useParams();
-  const { product, isFetchingProduct, isFetchingProductError } =
-    useProduct(productNo);
+  const {
+    product,
+    isFetchingProduct,
+    isFetchingProductError,
+    handleAddCartItem,
+    handleAddFavoriteItem,
+    isProductItemAddedToCart,
+    isProductAddedToFavorite,
+  } = useProduct(productNo);
 
-  return isFetchingProduct ? (
-    <ProductDetailsLoading />
-  ) : isFetchingProductError ? (
-    <ProductDetailsError message={"Uh oh, something went wrong"} />
-  ) : product ? (
+  return (
     <div className="product-details-page">
-      <CenteredSection>
-        <div
-          className="product-details-go-back-button-container"
-          onClick={() => navigate(-1)}
-        >
-          <div className="product-details-go-back-button">
-            <BiArrowBack fontSize={"inherit"} />
-            <div>Back</div>
+      {isFetchingProduct ? (
+        <ProductDetailsLoading />
+      ) : isFetchingProductError ? (
+        <ProductDetailsError message={"Uh oh..."} />
+      ) : (
+        <CenteredSection className={"product-details"}>
+          <div className="product-details-gallery">
+            <ThumbsGallery imageSrcs={[{}, {}, {}, {}, {}, {}]} />
           </div>
-        </div>
-      </CenteredSection>
+          <div className="product-overview-sections">
+            <ProductOverviewSection className={"product-overview-head"}>
+              <div>
+                <small>{product.category}</small>
+              </div>
+              <div className="product-detail-name">{product.name}</div>
+            </ProductOverviewSection>
+            <ProductOverviewSection>
+              <div>{product.description}</div>
+            </ProductOverviewSection>
 
-      <CenteredSection>
-        <div className="product-details-content">
-          <div className="product-overview">
-            <div className="product-overview-thumb-gallery">
-              <div className="product-overview-thumb-gallery-sticky">
-                <ThumbGallery />
-              </div>
-            </div>
-            <div className="product-overview-details-container">
-              <div className="product-overview-details-head">
-                <div className="product-overview-details-header">
-                  <div className="product-overview-details-title">
-                    {product.name}
-                  </div>
-                </div>
-              </div>
-              <div className="product-overview-details-about-item">
-                {product.description}
-              </div>
-              <div className="product-overview-details-about-item">
-                <ul className="product-overview-details-about-item-list">
-                  {product.product_details.map((detail, index) => (
-                    <li key={index}>
-                      {categoryMap[detail.attribute_name] ??
-                        detail.attribute_name}
-                      : {detail.attribute_value}
-                    </li>
+            {product.product_details && product.product_details.length > 0 && (
+              <ProductOverviewSection
+                className={"product-overview-features-container"}
+              >
+                <div>Features</div>
+                <div className="product-overview-features">
+                  {product.product_details.map((feature, index) => (
+                    <ProductOverviewFeature
+                      key={index}
+                      name={feature.attribute_name}
+                      value={feature.attribute_value}
+                    />
                   ))}
-                </ul>
-              </div>
-            </div>
+                </div>
+              </ProductOverviewSection>
+            )}
+
+            <ProductOverviewSection className={"product-overview-buttons"}>
+              <Button
+                onClick={() => handleAddCartItem(product)}
+                fullWidth
+                label={"Add to Cart"}
+                theme={"theme2"}
+                disabled={isProductItemAddedToCart(product.id)}
+              />
+              <Button
+                fullWidth
+                onClick={() =>
+                  handleAddFavoriteItem({ ...product, product_no: productNo })
+                }
+                label={
+                  isProductAddedToFavorite(product.id)
+                    ? "Remove from favorites"
+                    : "Add to Favorites"
+                }
+                theme={isProductAddedToFavorite(product.id) ? "theme1" : "theme0"}
+              />
+            </ProductOverviewSection>
           </div>
-          <div className="product-order-summary">
-            <div className="product-order-summary-sticky"></div>
-          </div>
-        </div>
-      </CenteredSection>
+        </CenteredSection>
+      )}
     </div>
-  ) : (
-    <ProductDetailsError message={"Uh oh, something went wrong"} />
   );
 };
 

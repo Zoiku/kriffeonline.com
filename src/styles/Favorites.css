@@ -1,0 +1,15 @@
+.favorites-page {
+  padding: 0 0 50px;
+}
+
+.favorite-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.favorite-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px 10px;
+}

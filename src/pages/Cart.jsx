@@ -17,7 +17,7 @@ const Cart = () => {
                 <CartBody cartItems={cartItems} />
               </table>
             </div>
-            <div className="cart-page-inner cart-total-summary">
+            <div className="cart-page-inner cart-summary">
               <CartSummary />
             </div>
           </>

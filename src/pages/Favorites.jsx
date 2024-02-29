@@ -1,5 +1,32 @@
+import "../styles/Favorites.css";
+import CenteredSection from "../components/Centered";
+import useFavorites from "../hooks/useFavorites";
+import { MarketplaceProduct } from "../components/Marketplace";
+import { NoFavoritesPage } from "../components/Favorites/Index";
+
 const Favorites = () => {
-  return <div></div>;
+  const { favoriteItems } = useFavorites();
+
+  return (
+    <div className="favorites-page">
+      {favoriteItems ? (
+        favoriteItems.length > 0 ? (
+          <CenteredSection className={"favorite-items-container"}>
+            <div>Your Favorites</div>
+            <div className="favorite-items">
+              {favoriteItems.map((favoriteItem) => (
+                <MarketplaceProduct product={favoriteItem} />
+              ))}
+            </div>
+          </CenteredSection>
+        ) : (
+          <NoFavoritesPage />
+        )
+      ) : (
+        <NoFavoritesPage />
+      )}
+    </div>
+  );
 };
 
 export default Favorites;

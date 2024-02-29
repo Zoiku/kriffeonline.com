@@ -7,6 +7,7 @@ const Button = (props) => {
   const { onRest, onHover } = styleButton(theme);
   const MuiButton = styled(LoadingButton)({
     textTransform: "none",
+    borderRadius: 0,
     ...onRest,
     fontFamily: [].join(","),
     "&:hover": {
@@ -15,7 +16,7 @@ const Button = (props) => {
   });
 
   return (
-    <MuiButton {...rest} disableElevation variant="text">
+    <MuiButton {...rest} disableElevation variant="contained">
       {label}
     </MuiButton>
   );

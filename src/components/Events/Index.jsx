@@ -1,5 +1,6 @@
 import { Skeleton } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import CenteredSection from "../Centered";
 
 export const EventItem = ({ event }) => (
   <NavLink to={`/events/${event.event_no}`} className="event-item">
@@ -53,5 +54,18 @@ export const EventItemSkeleton = () => (
         <Skeleton animation="wave" variant="text" width={"30%"} />
       </div>
     </div>
+  </div>
+);
+
+export const EventPageLoading = () => (
+  <div>
+    <CenteredSection>Please wait...</CenteredSection>
+  </div>
+);
+
+export const EventDateBox = ({ month, day }) => (
+  <div className="event-date-box">
+    <div>{month}</div>
+    <div>{day}</div>
   </div>
 );

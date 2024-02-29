@@ -25,10 +25,14 @@ const styleButton = (theme) => {
       return {
         onRest: {
           backgroundColor: "#efefef",
+          border: "1px solid",
+          borderColor: "#efefef",
           color: "black",
         },
         onHover: {
-          backgroundColor: "#c5c5c5",
+          backgroundColor: "#efefef",
+          borderColor: "#efefef",
+          border: "1px solid #efefef",
         },
       };
 
@@ -46,11 +50,12 @@ const styleButton = (theme) => {
     case "theme3":
       return {
         onRest: {
-          backgroundColor: "#ffa41c",
-          color: "black",
+          backgroundColor: "black",
+          color: "white",
         },
         onHover: {
-          backgroundColor: "#ffa41c",
+          backgroundColor: "black",
+          color: "white",
         },
       };
 

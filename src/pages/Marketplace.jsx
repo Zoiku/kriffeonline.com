@@ -71,7 +71,9 @@ const Marketplace = () => {
               ))}
             </div>
           ) : isFetchingProductsError ? (
-            <div className="marketplace-error-no-products">Something went wrong</div>
+            <div className="marketplace-error-no-products">
+              Something went wrong
+            </div>
           ) : products ? (
             products.length === 0 ? (
               <>No products...</>
