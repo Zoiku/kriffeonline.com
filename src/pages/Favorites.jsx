@@ -1,7 +1,7 @@
 import "../styles/Favorites.css";
 import CenteredSection from "../components/Centered";
 import useFavorites from "../hooks/useFavorites";
-import { MarketplaceProduct } from "../components/Marketplace";
+import { MarketplaceProduct } from "../components/Marketplace/Index";
 import { NoFavoritesPage } from "../components/Favorites/Index";
 
 const Favorites = () => {

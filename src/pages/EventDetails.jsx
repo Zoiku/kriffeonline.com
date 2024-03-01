@@ -25,7 +25,9 @@ const EventDetails = () => {
                 <CenteredSection className={"event-detail-header"}>
                   <div>
                     <div>
-                      <span><small>{event.event_category_name}</small></span>
+                      <span>
+                        <small>{event.event_category_name}</small>
+                      </span>
                     </div>
                     <div className="event-detail-name">
                       <span>{event.name}</span>
@@ -33,7 +35,10 @@ const EventDetails = () => {
                   </div>
                   <div>
                     <div>
-                      <small>Hosted by</small> <span><small>{event.host}</small></span>
+                      <small>Hosted by</small>{" "}
+                      <span>
+                        <small>{event.host}</small>
+                      </span>
                     </div>
                   </div>
                 </CenteredSection>
@@ -79,7 +84,7 @@ const EventDetails = () => {
                 </div>
               </div>
               <div className="event-details">
-                <div>{event.description}</div>
+                <p>{event.description}</p>
               </div>
             </CenteredSection>
           </div>

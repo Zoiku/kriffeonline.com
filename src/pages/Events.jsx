@@ -86,7 +86,7 @@ const Events = () => {
               </div>
             )
           ) : (
-            <>Something went wrongAgain</>
+            <>Something went wrong</>
           )}
         </div>
       </CenteredSection>
