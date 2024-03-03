@@ -1,6 +1,6 @@
 import "../styles/Menu.css";
 import MuiMenu from "@mui/material/Menu";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 
 const Menu = ({
   anchorEl,
@@ -19,7 +19,7 @@ const Menu = ({
           <div className="menu-box-inner">
             <span>{selectedItem ?? label}</span>
             <span>
-              <KeyboardArrowDownIcon fontSize="inherit" />
+              <UnfoldMoreIcon sx={{ height: 14 }} />
             </span>
           </div>
         </div>

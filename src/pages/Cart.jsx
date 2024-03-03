@@ -10,17 +10,20 @@ const Cart = () => {
     <div>
       <CenteredSection className={"cart-page"}>
         {cartItems && cartItems.length > 0 ? (
-          <>
-            <div className="cart-page-inner cart-items-container">
-              <table className="cart-table">
-                <CartHead />
-                <CartBody cartItems={cartItems} />
-              </table>
+          <div className="carts-container">
+            <div className="page-title">Cart Items</div>
+            <div className="cart-page-things">
+              <div className="cart-page-inner cart-items-container">
+                <table className="cart-table">
+                  <CartHead />
+                  <CartBody cartItems={cartItems} />
+                </table>
+              </div>
+              <div className="cart-page-inner cart-summary">
+                <CartSummary />
+              </div>
             </div>
-            <div className="cart-page-inner cart-summary">
-              <CartSummary />
-            </div>
-          </>
+          </div>
         ) : (
           <>Your cart is empty</>
         )}

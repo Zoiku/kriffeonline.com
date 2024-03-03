@@ -10,6 +10,7 @@ import {
   ProductOverviewFeature,
 } from "../components/ProductDetails/Index";
 import Button from "../components/Button";
+import Currency from "../components/Currency";
 
 const ProductDetails = () => {
   const { productNo } = useParams();
@@ -36,9 +37,7 @@ const ProductDetails = () => {
           </div>
           <div className="product-overview-sections">
             <ProductOverviewSection className={"product-overview-head"}>
-              <div>
-                <small>{product.category}</small>
-              </div>
+              <div className="product-detail-category">{product.category}</div>
               <div className="product-detail-name">{product.name}</div>
             </ProductOverviewSection>
             <ProductOverviewSection>
@@ -49,8 +48,7 @@ const ProductDetails = () => {
               <ProductOverviewSection
                 className={"product-overview-features-container"}
               >
-                <div>Features</div>
-                <div className="product-overview-features">
+                <ul className="product-overview-features">
                   {product.product_details.map((feature, index) => (
                     <ProductOverviewFeature
                       key={index}
@@ -58,13 +56,19 @@ const ProductDetails = () => {
                       value={feature.attribute_value}
                     />
                   ))}
-                </div>
+                </ul>
               </ProductOverviewSection>
             )}
 
+            <ProductOverviewSection>
+              <div className="product-detail-price">
+                <Currency value={product.price} />
+              </div>
+            </ProductOverviewSection>
+
             <ProductOverviewSection className={"product-overview-buttons"}>
               <Button
-                onClick={() => handleAddCartItem(product)}
+                onClick={() => handleAddCartItem({ ...product, productNo })}
                 fullWidth
                 label={"Add to Cart"}
                 theme={"theme2"}
@@ -80,7 +84,9 @@ const ProductDetails = () => {
                     ? "Remove from favorites"
                     : "Add to Favorites"
                 }
-                theme={isProductAddedToFavorite(product.id) ? "theme1" : "theme0"}
+                theme={
+                  isProductAddedToFavorite(product.id) ? "theme1" : "theme0"
+                }
               />
             </ProductOverviewSection>
           </div>

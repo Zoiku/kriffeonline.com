@@ -3,7 +3,7 @@ import CenteredSection from "../components/Centered";
 import useEvents from "../hooks/useEvents";
 import { EventItem, EventItemSkeleton } from "../components/Events/Index";
 import Menu from "../components/Menu";
-import { MenuItem, MenuList } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import headerImage from "../assets/Overview/manreadings.6198af54313c7212de20.png";
 
 const Events = () => {
@@ -27,7 +27,7 @@ const Events = () => {
 
       <CenteredSection className={"events-container"}>
         <div className="events-header">
-          <div>Upcoming Events</div>
+          <div className="page-title">Upcoming Events</div>
           <div className="events-header-filters">
             <Menu
               open={categoryFilterMenu.open}
@@ -36,9 +36,7 @@ const Events = () => {
               handleClose={categoryFilterMenu.handleClose}
               label={"Category"}
             >
-              <MenuList dense>
-                <MenuItem>Select Category</MenuItem>
-              </MenuList>
+              <MenuItem>Select Category</MenuItem>
             </Menu>
 
             <Menu
@@ -48,9 +46,7 @@ const Events = () => {
               handleClose={eventTypeFilterMenu.handleClose}
               label={"Event Type"}
             >
-              <MenuList dense>
-                <MenuItem>Select Event Type</MenuItem>
-              </MenuList>
+              <MenuItem>Select Event Type</MenuItem>
             </Menu>
 
             <Menu
@@ -60,9 +56,7 @@ const Events = () => {
               handleClose={dateFilterMenu.handleClose}
               label={"Date"}
             >
-              <MenuList dense>
-                <MenuItem>Select Date</MenuItem>
-              </MenuList>
+              <MenuItem>Select Date</MenuItem>
             </Menu>
           </div>
         </div>

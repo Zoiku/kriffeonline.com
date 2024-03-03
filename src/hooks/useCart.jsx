@@ -21,6 +21,7 @@ const useCart = () => {
       ...cartItems,
       {
         id: productItem.id,
+        productNo: productItem.productNo,
         category: productItem.category,
         description: productItem.description,
         name: productItem.name,

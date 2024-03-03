@@ -12,28 +12,23 @@ const getProducts = async () => {
 const useMarketplace = () => {
   const sortMenu = useMenu();
   const { isLogged } = useAuth();
-
-  const { data, isFetching, isError } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     ["products", isLogged],
     getProducts
   );
-
   const [filterSelection, setFilterSelection] = useQueryParam(
     "filter",
     JsonParam
   );
-
   const handleSelectFilterValue = (name, value) => {
     setFilterSelection({
       ...filterSelection,
       [name]: value,
     });
   };
-
   const isSelectedFilterValue = (name, value) => {
     return filterSelection && filterSelection[name] === value;
   };
-
   const handleSelectFilterValues = (name, value, checked) => {
     if (filterSelection === undefined) {
       setFilterSelection({
@@ -56,7 +51,6 @@ const useMarketplace = () => {
       }
     }
   };
-
   const isCheckedFilterValue = (name, value) => {
     return (
       filterSelection &&
@@ -67,7 +61,7 @@ const useMarketplace = () => {
 
   return {
     products: data,
-    isFetchingProducts: isFetching,
+    isFetchingProducts: isLoading,
     isFetchingProductsError: isError,
     filters,
     handleSelectFilterValue,

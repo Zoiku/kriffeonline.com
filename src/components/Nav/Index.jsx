@@ -6,12 +6,16 @@ export const styles = {
     color: "white",
   },
   "/about": {
-    backgroundColor: "rgba(166, 199, 255, 0.5)",
+    backgroundColor: "rgba(166, 199, 255)",
     color: "black",
   },
   "/events": {
-    backgroundColor: "rgba(166, 199, 255, 0.5)",
+    backgroundColor: "rgba(166, 199, 255)",
     color: "black",
+  },
+  "/contact": {
+    backgroundColor: "rgb(20 30 36)",
+    color: "white",
   },
 };
 

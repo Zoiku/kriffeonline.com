@@ -3,6 +3,7 @@ import Currency from "../../components/Currency";
 import Button from "../../components/Button";
 import DeleteOutlineSharpIcon from "@mui/icons-material/DeleteOutlineSharp";
 import { IconButton } from "@mui/material";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const CartItem = ({ cartItem }) => {
   const {
@@ -14,9 +15,11 @@ export const CartItem = ({ cartItem }) => {
   return (
     <tr className="cart-table-row">
       <td className="cart-table-data">
-        <div className="cart-item-image">
-          <img src={""} alt="Img" />
-        </div>
+        <NavLink to={`/marketplace/${cartItem.productNo}`}>
+          <div className="cart-item-image">
+            <img src={"/"} alt="" />
+          </div>
+        </NavLink>
       </td>
       <td className="cart-table-data">
         <div className="cart-item-description">
@@ -112,6 +115,8 @@ export const CartBody = ({ cartItems }) => {
 
 export const CartSummary = () => {
   const { cartPricing } = useCart();
+  const navigate = useNavigate();
+
   return (
     <div className="cart-summary-sticky">
       <div className="cart-summary-body">
@@ -137,8 +142,18 @@ export const CartSummary = () => {
           </div>
         </div>
         <div className="cart-summary-buttons">
-          <Button theme={"theme0"} label={"Proceed to Checkout"} fullWidth />
-          <Button theme={"theme1"} label={"Continue Shopping"} fullWidth />
+          <Button
+            onClick={() => navigate("/checkout")}
+            theme={"theme0"}
+            label={"Proceed to Checkout"}
+            fullWidth
+          />
+          <Button
+            onClick={() => navigate("/marketplace")}
+            theme={"theme1"}
+            label={"Continue Shopping"}
+            fullWidth
+          />
         </div>
       </div>
     </div>

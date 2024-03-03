@@ -1,17 +1,31 @@
 import "../styles/About.css";
-import headerImage1 from "../assets/Overview/redguy.68e2bfe3b91f011f92d6.png";
-import headerImage2 from "../assets/Overview/gree.50bd3a3e7657edd3d4e5.png";
+import CenteredSection from "../components/Centered";
+import image from "../assets/Placeholder/image1.png";
 
 const About = () => {
   return (
     <div className="about-page">
       <div className="about-page-header">
-        <div className="about-page-header-background-image">
-          <img src={headerImage1} alt="" />
-        </div>
-        <div className="about-page-header-text-container"></div>
-        <div className="about-page-header-background-image">
-          <img src={headerImage2} alt="" />
+        <CenteredSection className={"about-us-intro"}>
+          <div className="about-us-intro-head">
+            <div className="about-us-intro-title-helper-top">Who we are</div>
+            <p className="about-us-intro-title">
+              Our journey began with a simple yet profound realization: the
+              Ghanaian Christian community lacked a dedicated platform that
+              could meet its unique needs.
+            </p>
+          </div>
+          <p className="about-us-intro-title-helper">
+            Inspired by this gap, we embarked on a mission to pioneer a
+            transformative e-commerce platform that would seamlessly integrate
+            Christian product offerings and event ticketing. Our story is one of
+            purpose, driven by faith, and anchored in the desire to provide
+            believers with a secure and enriching environment to access
+            faith-based resources and events.
+          </p>
+        </CenteredSection>
+        <div className="about-intro-background">
+          <img src={image} alt="" />
         </div>
       </div>
     </div>

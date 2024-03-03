@@ -12,7 +12,7 @@ const Favorites = () => {
       {favoriteItems ? (
         favoriteItems.length > 0 ? (
           <CenteredSection className={"favorite-items-container"}>
-            <div>Your Favorites</div>
+            <div className="page-title">Favorites Products</div>
             <div className="favorite-items">
               {favoriteItems.map((favoriteItem) => (
                 <MarketplaceProduct product={favoriteItem} />

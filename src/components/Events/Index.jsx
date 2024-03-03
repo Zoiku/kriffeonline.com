@@ -1,22 +1,15 @@
 import { Skeleton } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import CenteredSection from "../Centered";
+import { getDay, getMonth } from "../../utils/date";
 
 export const EventItem = ({ event }) => (
   <NavLink to={`/events/${event.event_no}`} className="event-item">
     <div className="event-item-image"></div>
     <div className="event-item-details">
       <div className="event-item-details-date-container">
-        <div>
-          {new Date(event.date).toLocaleDateString("en-US", {
-            month: "short",
-          })}
-        </div>
-        <div>
-          {new Date(event.date).toLocaleDateString("en-US", {
-            day: "2-digit",
-          })}
-        </div>
+        <div>{getMonth(event.date)}</div>
+        <div>{getDay(event.date)}</div>
       </div>
       <div className="event-item-details-info">
         <div>{event.location}</div>
@@ -63,9 +56,18 @@ export const EventPageLoading = () => (
   </div>
 );
 
-export const EventDateBox = ({ month, day }) => (
+export const EventDateBox = ({ date }) => (
   <div className="event-date-box">
-    <div>{month}</div>
-    <div>{day}</div>
+    <div className="event-date-box-inner">
+      <div>{getMonth(date)}</div>
+      <div>{getDay(date)}</div>
+    </div>
+  </div>
+);
+
+export const EventDetailsSection = ({ title, children }) => (
+  <div className="event-details-section">
+    <div className="event-details-section-title">{title}</div>
+    {children}
   </div>
 );

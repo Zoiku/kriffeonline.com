@@ -1,0 +1,104 @@
+.contact-page-header {
+  height: 300px;
+  background-color: rgb(20 30 36);
+}
+
+.contact-page-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  padding: 50px 0 0;
+  color: white;
+}
+
+.contact-page-header-text-title {
+  font-size: xx-large;
+}
+
+.contact-page-header-text-title-helper {
+  color: gray;
+}
+
+.contact-cards-container {
+  position: relative;
+  top: -100px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-cards-container-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  width: 800px;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.contact-card {
+  height: 300px;
+  background-color: white;
+  border: 1px solid #c5c5c5;
+  position: relative;
+}
+
+.contact-svg {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  height: 100px;
+  width: 100px;
+}
+
+.contact-svg img {
+  height: 100%;
+  width: 100%;
+}
+
+.faqs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faqs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faqs-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+}
+
+.faqs-section-title {
+  font-size: x-large;
+}
+
+.faqs-section-title-helper {
+  color: gray;
+}
+
+.faq {
+  padding: 20px !important;
+  border: 1px solid #c5c5c5;
+  user-select: none;
+}
+
+.faq-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq-answer {
+  margin-top: 30px;
+  color: gray;
+}

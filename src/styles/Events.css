@@ -1,6 +1,6 @@
 .event-page-header {
   height: 400px;
-  background-color: rgba(166, 199, 255, 0.5);
+  background-color: rgba(166, 199, 255);
   display: flex;
   align-items: center;
 }
@@ -21,7 +21,7 @@
 .events-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .events-header {
@@ -73,6 +73,10 @@
 .event-item-skeleton-details {
   display: flex;
   gap: 10px;
+}
+
+.event-item-details-date--day {
+  font-size: x-large;
 }
 
 .event-item-skeleton-details-date {

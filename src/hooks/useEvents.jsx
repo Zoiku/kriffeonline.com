@@ -7,15 +7,14 @@ const getEvents = async () => {
 };
 
 const useEvents = () => {
-  const { data, isFetching, isError } = useQuery("events", getEvents);
-
+  const { data, isLoading, isError } = useQuery("events", getEvents);
   const categoryFilterMenu = useMenu();
   const eventTypeFilterMenu = useMenu();
   const dateFilterMenu = useMenu();
 
   return {
     events: data,
-    isFetchingEvents: isFetching,
+    isFetchingEvents: isLoading,
     isFetchingEventsError: isError,
     categoryFilterMenu,
     eventTypeFilterMenu,

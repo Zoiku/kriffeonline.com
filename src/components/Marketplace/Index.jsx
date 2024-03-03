@@ -46,7 +46,9 @@ export const MarketplaceProduct = ({ product }) => {
           </div>
         </div>
 
-        <div><Currency value={product.price} /></div>
+        <div>
+          <Currency value={product.price} />
+        </div>
       </div>
     </NavLink>
   );

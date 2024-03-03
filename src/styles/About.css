@@ -1,24 +1,41 @@
 .about-page-header {
-  height: 400px;
-  background-color: rgba(166, 199, 255, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background-color: rgba(166, 199, 255);
   position: relative;
+  overflow: clip;
+  height: 500px;
 }
 
-.about-page-header-background-image {
-  height: 100%;
+.about-us-intro-wrapper {
+  padding: 40px 0 100px 0;
 }
 
-.about-page-header-background-image img {
+.about-us-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-us-intro-title {
+  font-size: xx-large;
+  max-width: 65%;
+  font-weight: 700;
+}
+
+.about-us-intro-title-helper {
+  max-width: 65%;
+  font-weight: 600;
+  color: rgb(40, 40, 40);
+}
+
+.about-intro-background {
+  width: 100%;
+  position: absolute;
+  bottom: -200px;
+  opacity: 0.03;
+}
+
+.about-intro-background img {
   height: 100%;
   width: 100%;
-}
-
-.about-page-header-text-container {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  object-fit: cover;
 }

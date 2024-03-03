@@ -2,13 +2,18 @@ import "../styles/EventDetails.css";
 import CenteredSection from "../components/Centered";
 import { useParams } from "react-router-dom";
 import useEvent from "../hooks/useEvent";
-import { EventDateBox, EventPageLoading } from "../components/Events/Index";
+import {
+  EventDateBox,
+  EventDetailsSection,
+  EventPageLoading,
+} from "../components/Events/Index";
 import Button from "../components/Button";
+import eventimg from "../assets/Placeholder/placeholder1.jpeg";
+import { getLongDate, getWeekDay } from "../utils/date";
 
 const EventDetails = () => {
   const { eventNo } = useParams();
   const { event, isFetchingEvent, isFetchingEventError } = useEvent(eventNo);
-  console.log(event);
 
   return (
     <div className="event-details-page-container">
@@ -19,15 +24,15 @@ const EventDetails = () => {
       ) : event ? (
         <div className="event-details-page">
           <div className="event-detail-background-header">
-            <div className="event-detail-background-image"></div>
+            <div className="event-detail-background-image">
+              <img src={eventimg} alt="" />
+            </div>
             <div className="event-detail-background-header-backdrop">
               <div className="event-detail-header-container">
                 <CenteredSection className={"event-detail-header"}>
                   <div>
                     <div>
-                      <span>
-                        <small>{event.event_category_name}</small>
-                      </span>
+                      <span>{event.event_category_name}</span>
                     </div>
                     <div className="event-detail-name">
                       <span>{event.name}</span>
@@ -35,10 +40,7 @@ const EventDetails = () => {
                   </div>
                   <div>
                     <div>
-                      <small>Hosted by</small>{" "}
-                      <span>
-                        <small>{event.host}</small>
-                      </span>
+                      Hosted by <span>{event.host}</span>
                     </div>
                   </div>
                 </CenteredSection>
@@ -49,42 +51,28 @@ const EventDetails = () => {
             <CenteredSection className={"event-detail-body"}>
               <div className="event-detail-description-box">
                 <div className="event-date-box-container">
-                  <EventDateBox
-                    month={new Date(event.date).toLocaleDateString("en-US", {
-                      month: "short",
-                    })}
-                    day={new Date(event.date).toLocaleDateString("en-US", {
-                      day: "2-digit",
-                    })}
-                  />
+                  <EventDateBox date={event.date} />
                   <div className="event-date-details">
-                    <div>
-                      <strong>
-                        {new Date(event.date).toLocaleDateString("en-US", {
-                          weekday: "long",
-                        })}
-                      </strong>
-                    </div>
-                    <div>
-                      <strong>
-                        {new Date(event.date).toLocaleDateString("en-US", {
-                          dateStyle: "long",
-                        })}
-                      </strong>
-                    </div>
-                    <div>{event.date}</div>
+                    <div>{getWeekDay(event.date)}</div>
+                    <div>{getLongDate(event.date)}</div>
                   </div>
                 </div>
                 <div>
                   <Button
                     fullWidth
-                    theme={"theme3"}
+                    theme={"theme1"}
                     label={"Purchase your ticket"}
+                    sx={{ display: "none" }}
                   />
                 </div>
               </div>
-              <div className="event-details">
-                <p>{event.description}</p>
+              <div className="event-details-sections">
+                <EventDetailsSection title={"More about this event"}>
+                  <div>{event.description}</div>
+                </EventDetailsSection>
+                <EventDetailsSection title={"Social Media"}>
+                  <div></div>
+                </EventDetailsSection>
               </div>
             </CenteredSection>
           </div>

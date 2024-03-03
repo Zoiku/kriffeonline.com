@@ -24,8 +24,10 @@ export const ProductOverviewSection = (props) => {
 };
 
 export const ProductOverviewFeature = ({ name, value }) => (
-  <div className="product-overview-feature">
-    <div className="product-overview-feature-name">{categoryMap[name]}:</div>
-    <div className="product-overview-feature-value">{value}</div>
-  </div>
+  <li>
+    <div className="product-overview-feature">
+      <div className="product-overview-feature-name">{categoryMap[name]}:</div>
+      <div className="product-overview-feature-value">{value}</div>
+    </div>
+  </li>
 );

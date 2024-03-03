@@ -1,9 +1,15 @@
+.menu {
+  padding: 0 5px;
+  border: 2px solid #c5c5c5;
+}
+
 .menu-box {
   cursor: pointer;
 }
 
 .menu-box-inner {
   display: flex;
+  gap: 5px;
   align-items: center;
 }
 
