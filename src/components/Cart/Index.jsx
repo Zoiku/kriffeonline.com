@@ -120,7 +120,7 @@ export const CartSummary = () => {
   return (
     <div className="cart-summary-sticky">
       <div className="cart-summary-body">
-        <div>Cart Summary</div>
+        <div className="cart-summary-title">Cart Summary</div>
         <div className="cart-summary-body-details">
           <div className="cart-summary-body-detail">
             <span>Subtotal</span>

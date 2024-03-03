@@ -10,9 +10,11 @@ const About = () => {
           <div className="about-us-intro-head">
             <div className="about-us-intro-title-helper-top">Who we are</div>
             <p className="about-us-intro-title">
-              Our journey began with a simple yet profound realization: the
-              Ghanaian Christian community lacked a dedicated platform that
-              could meet its unique needs.
+              Our journey began with a simple yet profound realization:{" "}
+              <span className="highlight">
+                the Ghanaian Christian community lacks a dedicated platform that
+                could meet its unique needs.
+              </span>
             </p>
           </div>
           <p className="about-us-intro-title-helper">

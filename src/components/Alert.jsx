@@ -8,7 +8,7 @@ const Alert = () => {
   return (
     <MuiSnackbar
       open={alert.open}
-      autoHideDuration={5000}
+      autoHideDuration={3000}
       onClose={handleCloseAlert}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
     >

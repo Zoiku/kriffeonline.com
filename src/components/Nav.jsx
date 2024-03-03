@@ -32,7 +32,7 @@ const Nav = () => {
               custom={
                 <NavActionButton
                   onClick={accountIconMenu.handleClick}
-                  icon={<BiUser size={18} />}
+                  icon={<BiUser size={17} />}
                 />
               }
             >

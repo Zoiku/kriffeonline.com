@@ -134,6 +134,11 @@
   border: 1px solid #c5c5c5;
 }
 
+.cart-summary-title {
+  font-size: large;
+  font-weight: 600;
+}
+
 .cart-summary-body-details {
   display: flex;
   flex-direction: column;
@@ -142,7 +147,7 @@
 .cart-summary-body-detail {
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
+  padding: 8px 0;
 }
 
 .cart-summary-body-detail span:nth-child(1) {
