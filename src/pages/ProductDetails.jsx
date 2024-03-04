@@ -15,7 +15,6 @@ import Chip from "@mui/material/Chip";
 import Button from "../components/Button";
 import useAuth from "../hooks/useAuth";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
-import { MarketplaceProduct } from "../components/Marketplace";
 
 const ProductDetails = () => {
   const { productNo } = useParams();
