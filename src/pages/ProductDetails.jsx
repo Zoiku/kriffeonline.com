@@ -8,21 +8,20 @@ import {
   ProductDetailsLoading,
   ProductOverviewSection,
   ProductOverviewFeature,
+  ProductOverviewSectionCollapsable,
 } from "../components/ProductDetails/Index";
-import Button from "../components/Button";
 import Currency from "../components/Currency";
+import Chip from "@mui/material/Chip";
+import Button from "../components/Button";
+import useAuth from "../hooks/useAuth";
+import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
+import { MarketplaceProduct } from "../components/Marketplace";
 
 const ProductDetails = () => {
   const { productNo } = useParams();
-  const {
-    product,
-    isFetchingProduct,
-    isFetchingProductError,
-    handleAddCartItem,
-    handleAddFavoriteItem,
-    isProductItemAddedToCart,
-    isProductAddedToFavorite,
-  } = useProduct(productNo);
+  const { isLogged } = useAuth();
+  const { product, isFetchingProduct, isFetchingProductError } =
+    useProduct(productNo);
 
   return (
     <div className="product-details-page">
@@ -41,53 +40,74 @@ const ProductDetails = () => {
               <div className="product-detail-name">{product.name}</div>
             </ProductOverviewSection>
             <ProductOverviewSection>
-              <div>{product.description}</div>
+              <p>{product.description}</p>
             </ProductOverviewSection>
 
-            {product.product_details && product.product_details.length > 0 && (
-              <ProductOverviewSection
-                className={"product-overview-features-container"}
-              >
-                <ul className="product-overview-features">
-                  {product.product_details.map((feature, index) => (
+            {product.product_details.length > 0 && (
+              <ProductOverviewSectionCollapsable title={"Specifications"}>
+                <div className="product-overview-features-container">
+                  {product.product_details.map((productDetail, index) => (
                     <ProductOverviewFeature
                       key={index}
-                      name={feature.attribute_name}
-                      value={feature.attribute_value}
+                      name={productDetail.attribute_name}
+                      value={productDetail.attribute_value}
                     />
                   ))}
-                </ul>
-              </ProductOverviewSection>
+                </div>
+              </ProductOverviewSectionCollapsable>
             )}
 
-            <ProductOverviewSection>
-              <div className="product-detail-price">
-                <Currency value={product.price} />
-              </div>
-            </ProductOverviewSection>
+            {isLogged && (
+              <ProductOverviewSectionCollapsable title={"Seller Details"}>
+                <div className="product-seller-details">
+                  <div className="product-seller-detail">
+                    <div className="product-seller-label">Name:</div>
+                    <div>{product.sellername}</div>
+                  </div>
+                  <div className="product-seller-detail">
+                    <div className="product-seller-label">Telephone:</div>
+                    <div>{product.sellerphonenumber}</div>
+                  </div>
+                  <div className="product-seller-detail">
+                    <div className="product-seller-label">Location:</div>
+                    <div>{product.location}</div>
+                  </div>
+                  <Button fullWidth label={"Call Seller"} />
+                </div>
+              </ProductOverviewSectionCollapsable>
+            )}
 
-            <ProductOverviewSection className={"product-overview-buttons"}>
-              <Button
-                onClick={() => handleAddCartItem({ ...product, productNo })}
-                fullWidth
-                label={"Add to Cart"}
-                theme={"theme2"}
-                disabled={isProductItemAddedToCart(product.id)}
-              />
-              <Button
-                fullWidth
-                onClick={() =>
-                  handleAddFavoriteItem({ ...product, product_no: productNo })
-                }
-                label={
-                  isProductAddedToFavorite(product.id)
-                    ? "Remove from favorites"
-                    : "Add to Favorites"
-                }
-                theme={
-                  isProductAddedToFavorite(product.id) ? "theme1" : "theme0"
-                }
-              />
+            <ProductOverviewSectionCollapsable title={"Product Tags"}>
+              <div className="product-tags">
+                {product.tags.map((tag, index) => (
+                  <Chip
+                    sx={{ borderRadius: 1 }}
+                    variant="contained"
+                    size="small"
+                    label={tag}
+                    key={index}
+                  />
+                ))}
+              </div>
+            </ProductOverviewSectionCollapsable>
+
+            <ProductOverviewSection>
+              <div className="tip">
+                <div className="tip-icon">
+                  <WarningAmberRoundedIcon color="inherit" />
+                </div>
+                <div className="tip-detail">
+                  <div className="tip-title">Safety Tips</div>
+                  <div className="tip-content">
+                    <ul className="tip-content-list">
+                      <li>Avoid sending any prepayments</li>
+                      <li>Meet with the seller at a safe public place</li>
+                      <li>Inspect what you're going to buy</li>
+                      <li>Pay only if you're satisfied</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </ProductOverviewSection>
           </div>
         </CenteredSection>

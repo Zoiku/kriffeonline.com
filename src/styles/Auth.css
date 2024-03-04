@@ -1,21 +1,23 @@
 .auth-page {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 40px 0;
 }
 
 .auth-page-inner {
   width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.auth-logo {
-  text-align: center;
-  font-size: x-large;
+.auth-page-logo {
+  display: flex;
+  justify-content: center;
 }
 
-.auth-logo span {
-  cursor: pointer;
-  display: none;
+.auth-page-logo img {
+  width: 140px;
 }
 
 .auth-form {

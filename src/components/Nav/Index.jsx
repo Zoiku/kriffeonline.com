@@ -6,7 +6,7 @@ export const styles = {
     color: "white",
   },
   "/about": {
-    backgroundColor: "rgba(166, 199, 255)",
+    backgroundColor: "#f3f3f3",
     color: "black",
   },
   "/events": {
@@ -14,7 +14,7 @@ export const styles = {
     color: "black",
   },
   "/contact": {
-    backgroundColor: "rgb(20 30 36)",
+    backgroundColor: "black",
     color: "white",
   },
 };

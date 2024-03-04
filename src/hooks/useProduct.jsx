@@ -1,5 +1,4 @@
 import { useQuery } from "react-query";
-import useCart from "./useCart";
 import useFavorites from "./useFavorites";
 import axios from "../services/axios";
 
@@ -13,16 +12,13 @@ const useProduct = (productNo) => {
     () => getProductByProductNo(productNo),
     { cacheTime: 0 }
   );
-  const { handleAddCartItem, isProductItemAddedToCart } = useCart();
   const { handleAddFavoriteItem, isProductAddedToFavorite } = useFavorites();
 
   return {
     product: data,
     isFetchingProduct: isLoading,
     isFetchingProductError: isError,
-    handleAddCartItem,
     handleAddFavoriteItem,
-    isProductItemAddedToCart,
     isProductAddedToFavorite,
   };
 };

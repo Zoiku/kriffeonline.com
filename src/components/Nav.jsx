@@ -1,9 +1,9 @@
 import "../styles/Nav.css";
 import CenteredSection from "./Centered";
-import { BiUser, BiCartAlt, BiHeart } from "react-icons/bi";
+import { BiUser, BiHeart } from "react-icons/bi";
 import { Link, NavActionButton } from "./Nav/Index";
 import Menu from "../components/Menu";
-import { MenuItem, MenuList } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import useNav from "../hooks/useNav";
 
 const Nav = () => {
@@ -22,7 +22,6 @@ const Nav = () => {
         </div>
 
         <div className="nav-action-buttons">
-          <NavActionButton to={"/cart"} icon={<BiCartAlt size={17} />} />
           <NavActionButton to={"/favorites"} icon={<BiHeart size={17} />} />
           {isLogged ? (
             <Menu

@@ -8,7 +8,6 @@ const About = () => {
       <div className="about-page-header">
         <CenteredSection className={"about-us-intro"}>
           <div className="about-us-intro-head">
-            <div className="about-us-intro-title-helper-top">Who we are</div>
             <p className="about-us-intro-title">
               Our journey began with a simple yet profound realization:{" "}
               <span className="highlight">

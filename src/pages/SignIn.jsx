@@ -2,8 +2,9 @@ import "../styles/Auth.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
+import logo from "../assets/logo-dark.png";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -13,6 +14,9 @@ const SignIn = () => {
   return (
     <div className="auth-page">
       <div className="auth-page-inner">
+        <NavLink to={"/"} className="auth-page-logo">
+          <img src={logo} alt="" />
+        </NavLink>
         <Box component={"form"} onSubmit={handleSubmit} className={"auth-form"}>
           <div className="auth-form-body">
             <div className="auth-form-body-title">Sign in</div>
@@ -38,16 +42,17 @@ const SignIn = () => {
             <div>
               <Button
                 loading={isSubmitting}
-                theme={"theme0"}
                 type={"submit"}
                 label={"Sign in"}
                 fullWidth
+                variant={"contained"}
+                color={"common"}
               />
             </div>
             <div>
               <small>
-                By continuing, you agree to Kriffee Online's Conditions of Use and Privacy
-                Notice.
+                By continuing, you agree to Kriffee Online's Conditions of Use
+                and Privacy Notice.
               </small>
             </div>
           </div>

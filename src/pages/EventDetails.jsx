@@ -31,17 +31,13 @@ const EventDetails = () => {
               <div className="event-detail-header-container">
                 <CenteredSection className={"event-detail-header"}>
                   <div>
-                    <div>
-                      <span>{event.event_category_name}</span>
-                    </div>
+                    <div><span>{event.event_category_name}</span></div>
                     <div className="event-detail-name">
                       <span>{event.name}</span>
                     </div>
                   </div>
                   <div>
-                    <div>
-                      Hosted by <span>{event.host}</span>
-                    </div>
+                    <span> Hosted by {event.host}</span>
                   </div>
                 </CenteredSection>
               </div>
@@ -50,22 +46,9 @@ const EventDetails = () => {
           <div>
             <CenteredSection className={"event-detail-body"}>
               <div className="event-detail-description-box">
-                <div className="event-date-box-container">
-                  <EventDateBox date={event.date} />
-                  <div className="event-date-details">
-                    <div>{getWeekDay(event.date)}</div>
-                    <div>{getLongDate(event.date)}</div>
-                  </div>
-                </div>
-                <div>
-                  <Button
-                    fullWidth
-                    theme={"theme1"}
-                    label={"Purchase your ticket"}
-                    sx={{ display: "none" }}
-                  />
-                </div>
+                <div></div>
               </div>
+
               <div className="event-details-sections">
                 <EventDetailsSection title={"More about this event"}>
                   <div>{event.description}</div>

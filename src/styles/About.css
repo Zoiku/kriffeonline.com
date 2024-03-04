@@ -1,12 +1,11 @@
 .about-page-header {
-  background-color: rgba(166, 199, 255);
+  background-color: #f3f3f3;
   position: relative;
   overflow: clip;
-  height: 500px;
 }
 
 .about-us-intro-wrapper {
-  padding: 40px 0 100px 0;
+  padding: 50px 0 200px 0;
 }
 
 .about-us-intro {
@@ -22,7 +21,7 @@
 }
 
 .about-us-intro-title .highlight {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0);
   color: white;
 }
 
@@ -36,7 +35,7 @@
   width: 100%;
   position: absolute;
   bottom: -200px;
-  opacity: 0.03;
+  opacity: 0.1;
 }
 
 .about-intro-background img {

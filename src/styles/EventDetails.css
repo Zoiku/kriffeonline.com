@@ -32,7 +32,7 @@
   bottom: 20px;
   left: 0;
   right: 0;
-  color: #c5c5c5;
+  color: #efefef;
 }
 
 .event-detail-header {
@@ -67,7 +67,7 @@
   flex-direction: column;
   gap: 20px;
   height: 200px;
-  width: 300px;
+  width: 200px;
 }
 
 .event-date-box-container {

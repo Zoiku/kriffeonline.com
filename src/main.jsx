@@ -7,6 +7,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { QueryParamProvider } from "use-query-params";
 import { ReactRouter6Adapter } from "use-query-params/adapters/react-router-6";
+import { ThemeProvider } from "@mui/material/";
+import { theme } from "./utils/theme.js";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +17,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Router>
       <QueryParamProvider adapter={ReactRouter6Adapter}>
         <QueryClientProvider client={queryClient}>
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
           <ScrollToTop />
         </QueryClientProvider>
       </QueryParamProvider>

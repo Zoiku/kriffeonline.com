@@ -1,24 +1,17 @@
 import { LoadingButton } from "@mui/lab";
-import { styled } from "@mui/material";
-import styleButton from "../styles/Buttons";
 
 const Button = (props) => {
-  const { label, theme, ...rest } = props;
-  const { onRest, onHover } = styleButton(theme);
-  const MuiButton = styled(LoadingButton)({
-    textTransform: "none",
-    borderRadius: 0,
-    ...onRest,
-    fontFamily: [].join(","),
-    "&:hover": {
-      ...onHover,
-    },
-  });
+  const { label, ...rest } = props;
 
   return (
-    <MuiButton {...rest} disableElevation variant="contained">
+    <LoadingButton
+      {...rest}
+      variant="outlined"
+      disableElevation
+      color="primary"
+    >
       {label}
-    </MuiButton>
+    </LoadingButton>
   );
 };
 

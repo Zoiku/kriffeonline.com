@@ -25,7 +25,7 @@ const HomePage = () => {
       <div className="home-sections">
         <HomeSectionWithHeading
           heading={"Top Trending Products"}
-          to={{ path: "/marketplace", label: "View All Products" }}
+          to={{ path: "/marketplace", label: "View all products" }}
           headingHelper={"Discover the latest and hottest ads and deals"}
         >
           <div className="home-page-section-trending-grid">
@@ -53,7 +53,7 @@ const HomePage = () => {
         </HomeSectionWithHeading>
         <HomeSectionWithHeading
           heading={"Top Trending Events"}
-          to={{ path: "/events", label: "See All Events" }}
+          to={{ path: "/events", label: "See all events" }}
           headingHelper={
             "Discover and purchase your tickets for the latest events"
           }
