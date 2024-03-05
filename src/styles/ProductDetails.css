@@ -8,6 +8,10 @@
   gap: 100px;
 }
 
+.product-details-page > div {
+  border: 1px solid red;
+}
+
 .product-details {
   display: flex;
   gap: 20px;
