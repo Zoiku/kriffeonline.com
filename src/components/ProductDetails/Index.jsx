@@ -2,6 +2,8 @@ import { categoryMap } from "../../utils/categorymappings";
 import CenteredSection from "../Centered";
 import { useState } from "react";
 import Collapse from "@mui/material/Collapse";
+import { Skeleton } from "@mui/material";
+import Rating from "@mui/material/Rating";
 
 export const ProductDetailsError = ({ message }) => (
   <CenteredSection className="product-details-error">
@@ -54,3 +56,23 @@ export const ProductOverviewSectionCollapsable = ({ title, children }) => {
     </div>
   );
 };
+
+export const SellerReview = ({ review }) => (
+  <div className="seller-review">
+    <div>
+      <Rating size="small" name="read-only" value={review.rating} readOnly />
+    </div>
+    <div>{review.feedback_text}</div>
+    <div className="reviewer-name">
+      <small>{review.feedback_from ? review.feedback_from : "Anonymous"}</small>
+    </div>
+  </div>
+);
+
+export const SellerReviewSkeleton = () => (
+  <div className="seller-review">
+    <Skeleton variant="text" width={"20%"} />
+    <Skeleton variant="text" width={"100%"} />
+    <Skeleton variant="text" width={"40%"} />
+  </div>
+);

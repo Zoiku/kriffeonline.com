@@ -4,6 +4,31 @@ import { Skeleton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import Currency from "../Currency";
+import { useState } from "react";
+import Collapse from "@mui/material/Collapse";
+
+export const MarketFilterGroupCollapsable = ({ title, children }) => {
+  const [open, setOpen] = useState(false);
+  const handleToggleOpen = () => setOpen(!open);
+  return (
+    <div className="marketplace-filter-group-collapsable">
+      <div
+        onClick={handleToggleOpen}
+        className="marketplace-filter-group-collapsable-head"
+      >
+        <div className="marketplace-filter-group-collapsable-title">
+          {title}
+        </div>
+        <div>{open ? "-" : "+"}</div>
+      </div>
+      <Collapse in={open}>
+        <div className="marketplace-filter-group-collapsable-content">
+          {children}
+        </div>
+      </Collapse>
+    </div>
+  );
+};
 
 export const MarketplaceProductSeleton = () => (
   <div className="marketplace-product">

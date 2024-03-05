@@ -2,15 +2,8 @@ import "../styles/Contact.css";
 import useFaqs from "../hooks/useFaqs";
 import Skeleton from "@mui/material/Skeleton";
 import Collapse from "@mui/material/Collapse";
-import cloud from "../assets/Svgs/cloud.svg";
 
-const ContactCard = () => (
-  <div className="contact-card">
-    <div className="contact-svg">
-      <img src={cloud} alt="" />
-    </div>
-  </div>
-);
+const ContactCard = () => <div className="contact-card"></div>;
 
 const Contact = () => {
   const {
@@ -76,7 +69,9 @@ const Contact = () => {
                       <div>{isSelectedFaqIndex(index) ? "-" : "+"}</div>
                     </div>
                     <Collapse in={isSelectedFaqIndex(index)}>
-                      <div className="faq-answer"><strong>{faq.answer}</strong></div>
+                      <div className="faq-answer">
+                        <strong>{faq.answer}</strong>
+                      </div>
                     </Collapse>
                   </div>
                 ))}
