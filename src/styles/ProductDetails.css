@@ -13,11 +13,6 @@
   gap: 20px;
 }
 
-.product-details > div {
-  border: 1px solid red;
-}
-
-
 .product-details-gallery {
   width: 700px;
   height: 100%;
