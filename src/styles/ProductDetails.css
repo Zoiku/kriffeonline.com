@@ -126,3 +126,9 @@
 .reviewer-name {
   font-weight: 600;
 }
+
+.related-products-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
