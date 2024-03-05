@@ -114,6 +114,9 @@ const ProductDetails = () => {
           </ProductOverviewSection>
         </div>
       </CenteredSection>
+      <CenteredSection>
+        <div className="page-title">Related Products</div>
+      </CenteredSection>
       <CenteredSection className={"seller-review-container"}>
         <div className="page-title">Customer Feedback</div>
         {isFetchingReviews ? (
