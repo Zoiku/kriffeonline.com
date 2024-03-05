@@ -114,8 +114,9 @@ const ProductDetails = () => {
           </ProductOverviewSection>
         </div>
       </CenteredSection>
-      <CenteredSection>
+      <CenteredSection className={"related-products-container"}>
         <div className="page-title">Related Products</div>
+        <div>Loading...</div>
       </CenteredSection>
       <CenteredSection className={"seller-review-container"}>
         <div className="page-title">Customer Feedback</div>
