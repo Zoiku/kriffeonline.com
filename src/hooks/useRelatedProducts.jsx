@@ -2,7 +2,8 @@ import axios from "../services/axios";
 import { useQuery } from "react-query";
 
 const getRelatedProducts = async (category) => {
-  return axios.get(`/list_products?category=${category}`);
+  const { id } = await axios.get('categoryendpoint').data.category;
+  return axios.get(`/list_products?category=${id}`).data.products;
 };
 
 const useRelatedProducts = (category) => {
