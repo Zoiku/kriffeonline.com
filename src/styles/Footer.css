@@ -1,6 +1,7 @@
 .footer-component {
   background-color: rgb(20 30 36);
   color: white;
+  font-size: small;
 }
 
 .footer-header {
@@ -66,7 +67,6 @@
   color: rgb(84, 84, 84);
   padding: 20px 0 50px;
   font-size: small;
-  font-weight: bold;
 }
 
 .footer-footer {

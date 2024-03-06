@@ -4,6 +4,7 @@ import { useState } from "react";
 import Collapse from "@mui/material/Collapse";
 import { Skeleton } from "@mui/material";
 import Rating from "@mui/material/Rating";
+import Avatar from "@mui/material/Avatar";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 
 export const ProductDetailsError = () => (
@@ -66,23 +67,68 @@ export const ProductOverviewSectionCollapsable = ({ title, children }) => {
   );
 };
 
+export const SellerReviews = ({ data }) => {
+  const reviewsLength = data.length;
+  const [isCollapsed, setIsCollapsed] = useState(reviewsLength > 1);
+  const reviews = isCollapsed ? data.slice(0, 1) : data;
+  const handleToggleCollapse = () => setIsCollapsed(!isCollapsed);
+
+  return (
+    <div className="seller-reviews">
+      <div>
+        {reviews.map((review, index) => (
+          <SellerReview key={index} review={review} />
+        ))}
+      </div>
+      {reviewsLength > 1 && (
+        <div>
+          <small
+            onClick={handleToggleCollapse}
+            style={{ cursor: "pointer", color: "blue" }}
+          >
+            {isCollapsed ? `Show more reviews (${reviewsLength - 1})` : "Show less reviews"}
+          </small>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const SellerReview = ({ review }) => (
   <div className="seller-review">
+    <div className="seller-review-profile">
+      <div>
+        <Avatar
+          className="seller-review-profile-icon"
+          src={"/"}
+          alt={review.feedback_from}
+        ></Avatar>
+      </div>
+      <div>
+        <small>{review.feedback_from ?? "Anonymous"}</small>
+      </div>
+    </div>
     <div>
       <Rating size="small" name="read-only" value={review.rating} readOnly />
     </div>
     <div>{review.feedback_text}</div>
-    <div className="reviewer-name">
-      <small>{review.feedback_from ? review.feedback_from : "Anonymous"}</small>
-    </div>
   </div>
 );
 
 export const SellerReviewSkeleton = () => (
-  <div className="seller-review">
-    <Skeleton variant="text" width={"20%"} />
-    <Skeleton variant="text" width={"100%"} />
-    <Skeleton variant="text" width={"40%"} />
+  <div className="seller-review skeleton">
+    <div className="seller-review-profile">
+      <Skeleton variant="circular">
+        <Avatar className="seller-review-profile-icon" />
+      </Skeleton>
+      <Skeleton variant="text" width={"10%"} />
+    </div>
+    <div>
+      <Skeleton variant="text" width={"20%"} />
+    </div>
+    <div>
+      <Skeleton variant="text" width={"30%"} />
+    </div>
   </div>
 );
 

@@ -25,17 +25,17 @@
 .marketplace-display-filters-sticky {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  position: sticky;
-  top: 10px;
+  gap: 10px;
+  font-size: smaller;
 }
 
-.marketplace-filter-group-collapsable {
-  font-size: small;
+.marketplace-display-filters-container-label {
+  font-weight: 600;
 }
 
 .marketplace-filter-group-collapsable-head {
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
   padding: 0 0 5px;
   cursor: pointer;
@@ -44,11 +44,11 @@
 }
 
 .marketplace-filter-group-collapsable-title {
-  font-weight: 600;
+  padding: 10px 0 0;
 }
 
 .marketplace-filter-group-collapsable-content {
-  margin-top: 5px;
+  margin: 5px 0;
 }
 
 .marketplace-display-products {
@@ -71,22 +71,6 @@
   font-size: small;
   color: inherit;
   text-decoration: none;
-}
-
-.marketplace-product-bookmark-btn {
-  position: absolute;
-  bottom: -100px;
-  right: 10px;
-  z-index: 1;
-  width: 35px;
-  height: 35px;
-  background-color: white;
-  border-radius: 50%;
-  transition: all 0.1s ease;
-}
-
-.marketplace-product-image:hover .marketplace-product-bookmark-btn {
-  bottom: -100px;
 }
 
 .marketplace-product-image {

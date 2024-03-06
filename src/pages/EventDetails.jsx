@@ -49,7 +49,7 @@ const EventDetails = () => {
                 <div></div>
               </div>
               <div className="event-details-sections">
-                <EventDetailsSection title={"More about this event"}>
+                <EventDetailsSection title={"Event details"}>
                   <div className="event-detail-description-container">
                     <div>{event.description}</div>
                     <div className="event-detail-images">

@@ -1,7 +1,7 @@
 import CenteredSection from "../Centered";
 
 export const NoFavoritesPage = () => (
-  <div>
+  <div className="no-favorites-page">
     <CenteredSection>No favorites</CenteredSection>
   </div>
 );

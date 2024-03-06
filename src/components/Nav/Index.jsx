@@ -5,10 +5,6 @@ export const styles = {
     backgroundColor: "rgb(20 30 36)",
     color: "white",
   },
-  "/about": {
-    backgroundColor: "#f3f3f3",
-    color: "black",
-  },
   "/events": {
     backgroundColor: "rgba(166, 199, 255)",
     color: "black",

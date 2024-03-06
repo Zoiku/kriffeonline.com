@@ -11,7 +11,7 @@ export const EventDetailErrorPage = () => (
 
 export const EventPageLoading = () => (
   <div>
-    <CenteredSection className={"events-loading-page"}>Loading...</CenteredSection>
+    <CenteredSection className={"events-loading-page"}>Please wait...</CenteredSection>
   </div>
 );
 

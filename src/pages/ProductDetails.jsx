@@ -10,10 +10,10 @@ import {
   ProductOverviewSection,
   ProductOverviewFeature,
   ProductOverviewSectionCollapsable,
-  SellerReview,
   SellerReviewSkeleton,
   MarketPlaceProductSellerTip,
   MarketplaceSellerDetail,
+  SellerReviews,
 } from "../components/ProductDetails/Index";
 import Chip from "@mui/material/Chip";
 import Button from "../components/Button";
@@ -116,8 +116,8 @@ const ProductDetails = () => {
         <div className="page-title">Similar items you may like</div>
         {relatedProductsQuery.isLoading ? (
           <div className="related-products">
-            {Array.from(Array(4)).map(() => (
-              <MarketplaceProductSeleton />
+            {Array.from(Array(4)).map((_, index) => (
+              <MarketplaceProductSeleton key={index} />
             ))}
           </div>
         ) : relatedProductsQuery.isError ? (
@@ -140,18 +140,14 @@ const ProductDetails = () => {
         {isLogged ? (
           reviewsQuery.isLoading ? (
             <div className="seller-reviews">
-              {Array.from(Array(5)).map((_, index) => (
+              {Array.from(Array(1)).map((_, index) => (
                 <SellerReviewSkeleton key={index} />
               ))}
             </div>
           ) : reviewsQuery.isError ? (
             <>Something went wrong...</>
           ) : reviewsQuery.data && reviewsQuery.data.length > 0 ? (
-            <div className="seller-reviews">
-              {reviewsQuery.data.map((review, index) => (
-                <SellerReview key={index} review={review} />
-              ))}
-            </div>
+            <SellerReviews data={reviewsQuery.data} />
           ) : (
             <>No reviews</>
           )

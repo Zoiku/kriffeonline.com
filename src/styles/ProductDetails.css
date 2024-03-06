@@ -80,13 +80,13 @@
 }
 
 .tip {
-  border: 1px solid red;
   padding: 10px;
   border-radius: 5px;
   display: flex;
   gap: 20px;
   font-size: small;
-  color: red;
+  background-color: rgb(255, 236, 236);
+  border: 1px solid rgb(255, 162, 162);
 }
 
 .tip-detail {
@@ -113,21 +113,31 @@
 .seller-reviews {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .seller-review {
   padding: 10px 0;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.seller-review.skeleton {
+  padding: 0;
   gap: 5px;
 }
 
-.seller-review:not(:last-child) {
-  border-bottom: 1px solid #efefef;
+.seller-review-profile {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
-.reviewer-name {
-  font-weight: 600;
+.seller-review-profile-icon {
+  width: 30px !important;
+  height: 30px !important;
+  font-size: small !important;
 }
 
 .related-products {

@@ -1,5 +1,4 @@
 .about-page-header {
-  background-color: #f3f3f3;
   position: relative;
   overflow: clip;
 }
@@ -35,7 +34,7 @@
   width: 100%;
   position: absolute;
   bottom: -200px;
-  opacity: 0.1;
+  opacity: 0.05;
 }
 
 .about-intro-background img {
@@ -56,7 +55,7 @@
   border-left: 5px solid;
   border-color: #c5c5c5;
   transition: all 0.2s ease;
-  background-color: #fcfcfc;
+  background-color: white;
 }
 
 .provided-service:hover {

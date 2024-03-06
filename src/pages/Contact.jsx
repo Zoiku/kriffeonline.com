@@ -59,7 +59,7 @@ const Contact = () => {
 
             {isFetchingFaqs ? (
               <div className="faqs">
-                {Array.from(Array(2)).map((index) => (
+                {Array.from(Array(2)).map((_, index) => (
                   <Skeleton
                     key={index}
                     className="faq"

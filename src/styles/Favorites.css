@@ -1,3 +1,7 @@
+.no-favorites-page {
+  min-height: calc(100vh - 100px);
+}
+
 .favorites-page {
   padding: 0 0 50px;
 }

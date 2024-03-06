@@ -4,8 +4,6 @@ import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import useForm from "../hooks/useForm";
-import logo from "../assets/logo-dark.png";
-import { NavLink } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -15,9 +13,6 @@ const SignUp = () => {
   return (
     <div className="auth-page">
       <div className="auth-page-inner">
-        <NavLink to={"/"} className="auth-page-logo">
-          <img src={logo} alt="" />
-        </NavLink>
         <Box component={"form"} onSubmit={handleSubmit} className={"auth-form"}>
           <div className="auth-form-body">
             <div className="auth-form-body-title">Sign up</div>
