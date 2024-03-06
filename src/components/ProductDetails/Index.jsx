@@ -4,19 +4,21 @@ import { useState } from "react";
 import Collapse from "@mui/material/Collapse";
 import { Skeleton } from "@mui/material";
 import Rating from "@mui/material/Rating";
+import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 
-export const ProductDetailsError = ({ message }) => (
-  <CenteredSection className="product-details-error">
-    <div></div>
-    <div>
-      <div>{message}</div>
-    </div>
-  </CenteredSection>
+export const ProductDetailsError = () => (
+  <div>
+    <CenteredSection className="product-details-error-page">
+      <div>Something went wrong</div>
+    </CenteredSection>
+  </div>
 );
 
 export const ProductDetailsLoading = () => (
   <div>
-    <CenteredSection>Please wait...</CenteredSection>
+    <CenteredSection className={"product-detail-loading-page"}>
+      Please wait...
+    </CenteredSection>
   </div>
 );
 
@@ -31,6 +33,13 @@ export const ProductOverviewFeature = ({ name, value }) => (
   <div className="product-overview-feature">
     <div className="product-overview-feature-name">{categoryMap[name]}:</div>
     <div className="product-overview-feature-value">{value}</div>
+  </div>
+);
+
+export const MarketplaceSellerDetail = ({ label, value }) => (
+  <div className="product-seller-detail">
+    <div className="product-seller-label">{label}</div>
+    <div>{value}</div>
   </div>
 );
 
@@ -74,5 +83,24 @@ export const SellerReviewSkeleton = () => (
     <Skeleton variant="text" width={"20%"} />
     <Skeleton variant="text" width={"100%"} />
     <Skeleton variant="text" width={"40%"} />
+  </div>
+);
+
+export const MarketPlaceProductSellerTip = () => (
+  <div className="tip">
+    <div className="tip-icon">
+      <WarningAmberRoundedIcon color="inherit" />
+    </div>
+    <div className="tip-detail">
+      <div className="tip-title">Safety Tips</div>
+      <div className="tip-content">
+        <ul className="tip-content-list">
+          <li>Avoid sending any prepayments</li>
+          <li>Meet with the seller at a safe public place</li>
+          <li>Inspect what you're going to buy</li>
+          <li>Pay only if you're satisfied</li>
+        </ul>
+      </div>
+    </div>
   </div>
 );

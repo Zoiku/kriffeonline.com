@@ -6,6 +6,8 @@ import {
   SelectFilterValue,
   MarketplaceProductSeleton,
   MarketFilterGroupCollapsable,
+  MarketplaceNoProductsPage,
+  MarketplaceErrorPage,
 } from "../components/Marketplace/Index";
 import CenteredSection from "../components/Centered";
 
@@ -65,12 +67,10 @@ const Marketplace = () => {
               ))}
             </div>
           ) : isFetchingProductsError ? (
-            <div className="marketplace-error-no-products">
-              Something went wrong
-            </div>
+            <MarketplaceErrorPage />
           ) : products ? (
             products.length === 0 ? (
-              <>No products...</>
+              <MarketplaceNoProductsPage />
             ) : (
               <div className="marketplace-products">
                 {products.map((product, index) => (

@@ -1,7 +1,11 @@
 import "../styles/Events.css";
 import CenteredSection from "../components/Centered";
 import useEvents from "../hooks/useEvents";
-import { EventItem, EventItemSkeleton } from "../components/Events/Index";
+import {
+  EventItem,
+  EventItemSkeleton,
+  EventDetailErrorPage,
+} from "../components/Events/Index";
 import Menu from "../components/Menu";
 import { MenuItem } from "@mui/material";
 import headerImage from "../assets/Overview/manreadings.6198af54313c7212de20.png";
@@ -60,15 +64,16 @@ const Events = () => {
             </Menu>
           </div>
         </div>
+
         <div className="events-container">
           {isFetchingEvents ? (
             <div className="events">
-              {Array.from(Array(20)).map((_, index) => (
+              {Array.from(Array(10)).map((_, index) => (
                 <EventItemSkeleton key={index} />
               ))}
             </div>
           ) : isFetchingEventsError ? (
-            <>Something went wrong</>
+            <>Something went wrong...</>
           ) : events ? (
             events.length === 0 ? (
               <>No events</>
@@ -80,7 +85,7 @@ const Events = () => {
               </div>
             )
           ) : (
-            <>Something went wrong</>
+            <EventDetailErrorPage />
           )}
         </div>
       </CenteredSection>

@@ -14,7 +14,7 @@ export const styles = {
     color: "black",
   },
   "/contact": {
-    backgroundColor: "black",
+    backgroundColor: "rgb(20 30 36)",
     color: "white",
   },
 };

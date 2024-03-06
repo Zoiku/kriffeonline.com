@@ -3,6 +3,18 @@ import { NavLink } from "react-router-dom";
 import CenteredSection from "../Centered";
 import { getDay, getMonth } from "../../utils/date";
 
+export const EventDetailErrorPage = () => (
+  <div>
+    <CenteredSection>Something went wrong...</CenteredSection>
+  </div>
+);
+
+export const EventPageLoading = () => (
+  <div>
+    <CenteredSection className={"events-loading-page"}>Loading...</CenteredSection>
+  </div>
+);
+
 export const EventItem = ({ event }) => (
   <NavLink to={`/events/${event.event_no}`} className="event-item">
     <div className="event-item-image"></div>
@@ -47,12 +59,6 @@ export const EventItemSkeleton = () => (
         <Skeleton animation="wave" variant="text" width={"30%"} />
       </div>
     </div>
-  </div>
-);
-
-export const EventPageLoading = () => (
-  <div>
-    <CenteredSection>Please wait...</CenteredSection>
   </div>
 );
 

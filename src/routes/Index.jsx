@@ -16,7 +16,6 @@ import CheckoutPage from "../pages/Checkout";
 import EventDetailsPage from "../pages/EventDetails";
 import AuthProtectedRoutes from "./AuthProtected";
 import UserDashboardPage from "../pages/user/Dashboard";
-import Test from "../pages/Test";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -46,8 +45,6 @@ const AppRoutes = () => {
             <Route path="/user/dashboard" element={<UserDashboardPage />} />
           </Route>
         </Route>
-
-        <Route path="/test" element={<Test />} />
       </Routes>
     </animated.div>
   ));

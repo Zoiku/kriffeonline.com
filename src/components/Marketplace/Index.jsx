@@ -1,4 +1,3 @@
-import image from "../../assets/Products/ipad.jpg";
 import { NavLink } from "react-router-dom";
 import { Skeleton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -6,6 +5,14 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import Currency from "../Currency";
 import { useState } from "react";
 import Collapse from "@mui/material/Collapse";
+
+export const MarketplaceErrorPage = () => <div>Something went wrong...</div>;
+
+export const MarketplaceNoProductsPage = () => (
+  <div>
+    <div>No products</div>
+  </div>
+);
 
 export const MarketFilterGroupCollapsable = ({ title, children }) => {
   const [open, setOpen] = useState(false);
@@ -37,8 +44,10 @@ export const MarketplaceProductSeleton = () => (
       variant="rectangular"
       className="marketplace-product-image"
     />
-    <Skeleton animation="wave" width={"100%"} variant="text" />
-    <Skeleton animation="wave" width={"20%"} variant="text" />
+    <div>
+      <Skeleton animation="wave" width={"100%"} variant="text" />
+      <Skeleton animation="wave" width={"20%"} variant="text" />
+    </div>
   </div>
 );
 
@@ -50,7 +59,7 @@ export const MarketplaceProduct = ({ product }) => {
     >
       <div className="marketplace-product-image">
         <div className="marketplace-product-bookmark-btn"></div>
-        <img src={image} alt="" />
+        <img src="/" alt="" />
       </div>
       <div className="marketplace-product-details">
         <div className="marketplace-product-details-name-and-stats">
@@ -70,7 +79,6 @@ export const MarketplaceProduct = ({ product }) => {
             </div>
           </div>
         </div>
-
         <div>
           <Currency value={product.price} />
         </div>

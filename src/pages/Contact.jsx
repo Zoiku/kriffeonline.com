@@ -2,8 +2,10 @@ import "../styles/Contact.css";
 import useFaqs from "../hooks/useFaqs";
 import Skeleton from "@mui/material/Skeleton";
 import Collapse from "@mui/material/Collapse";
-
-const ContactCard = () => <div className="contact-card"></div>;
+import { ContactCard } from "../components/Contact/Index";
+import emailIcon from "../assets/Svgs/New message-cuate.svg";
+import callIcon from "../assets/Svgs/Calling-cuate.svg";
+import locationIcon from "../assets/Svgs/Smart mobility-pana.svg";
 
 const Contact = () => {
   const {
@@ -29,9 +31,21 @@ const Contact = () => {
       <div className="contact-cards-container">
         <div className="contact-cards-container-inner">
           <div className="contact-cards">
-            {Array.from(Array(3)).map((index) => (
-              <ContactCard key={index} />
-            ))}
+            <ContactCard
+              value={"info@kriffeonline.com"}
+              title={"Our Email"}
+              icon={emailIcon}
+            />
+            <ContactCard
+              value={"info@kriffeonline.com"}
+              title={"Our Contact"}
+              icon={callIcon}
+            />
+            <ContactCard
+              value={"info@kriffeonline.com"}
+              title={"Our Location"}
+              icon={locationIcon}
+            />
           </div>
           <div className="faqs-container">
             <div className="faqs-section-header">
@@ -55,7 +69,7 @@ const Contact = () => {
                 ))}
               </div>
             ) : isFetchingFaqsError ? (
-              <>Problem completing request...</>
+              <>Something went wrong...</>
             ) : (
               <div className="faqs">
                 {faqs.map((faq, index) => (
@@ -69,9 +83,7 @@ const Contact = () => {
                       <div>{isSelectedFaqIndex(index) ? "-" : "+"}</div>
                     </div>
                     <Collapse in={isSelectedFaqIndex(index)}>
-                      <div className="faq-answer">
-                        <strong>{faq.answer}</strong>
-                      </div>
+                      <div className="faq-answer">{faq.answer}</div>
                     </Collapse>
                   </div>
                 ))}

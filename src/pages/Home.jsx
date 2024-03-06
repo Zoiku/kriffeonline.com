@@ -8,6 +8,8 @@ import {
 import useMarketplace from "../hooks/useMarketplace";
 import useEvents from "../hooks/useEvents";
 import { HomeSectionWithHeading } from "../components/Home/Index";
+import { providedServices } from "../utils/about";
+import { ProvidedService } from "../components/About/Index";
 
 const HomePage = () => {
   const { events, isFetchingEvents, isFetchingEventsError } = useEvents();
@@ -24,6 +26,20 @@ const HomePage = () => {
       </div>
       <div className="home-sections">
         <HomeSectionWithHeading
+          heading={"Our Provided Services"}
+          to={{ label: "Read more", path: "/about" }}
+          headingHelper={
+            "At KriffeOnline we provide services tailored to our different categories of users"
+          }
+        >
+          <div className="home-page-provided-services">
+            {providedServices.slice(0, 4).map((providedService, index) => (
+              <ProvidedService key={index} providedService={providedService} />
+            ))}
+          </div>
+        </HomeSectionWithHeading>
+
+        <HomeSectionWithHeading
           heading={"Top Trending Products"}
           to={{ path: "/marketplace", label: "View all products" }}
           headingHelper={"Discover the latest and hottest ads and deals"}
@@ -34,10 +50,10 @@ const HomePage = () => {
                 <MarketplaceProductSeleton key={index} />
               ))
             ) : isFetchingProductsError ? (
-              <>Something went wrong</>
+              <>Something went wrong...</>
             ) : products ? (
               products.length === 0 ? (
-                <>Uh oh, no items</>
+                <>New products coming soon</>
               ) : (
                 products
                   ?.sort((a, b) => b.views - a.views)
@@ -47,7 +63,7 @@ const HomePage = () => {
                   ))
               )
             ) : (
-              <>Something went wrong</>
+              <>Something went wrong...</>
             )}
           </div>
         </HomeSectionWithHeading>
@@ -64,10 +80,10 @@ const HomePage = () => {
                 <EventItemSkeleton key={index} />
               ))
             ) : isFetchingEventsError ? (
-              <>Something went wrong</>
+              <>Something went wrong...</>
             ) : events ? (
               events.length === 0 ? (
-                <>Uh oh, no items</>
+                <>New events coming soon</>
               ) : (
                 events
                   ?.sort((a, b) => b.views - a.views)
@@ -77,7 +93,7 @@ const HomePage = () => {
                   ))
               )
             ) : (
-              <>Something went wrong</>
+              <>Something went wrong...</>
             )}
           </div>
         </HomeSectionWithHeading>

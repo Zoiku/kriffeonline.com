@@ -1,3 +1,7 @@
+.events-loading-page {
+  min-height: 100vh;
+}
+
 .event-details-page-container {
   padding: 0 0 50px;
 }
@@ -121,5 +125,25 @@
 }
 
 .event-details-section-title {
-  font-weight: 600;
+  color: gray;
+  font-size: small;
+  text-transform: uppercase;
+}
+
+.event-detail-description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.event-detail-images {
+  display: flex;
+  gap: 5px;
+}
+
+.event-detail-image {
+  height: 50px;
+  width: 50px;
+  background-color: #efefef;
+  border-radius: 5px;
 }

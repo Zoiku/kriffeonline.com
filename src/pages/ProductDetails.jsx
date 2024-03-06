@@ -1,9 +1,9 @@
 import "../styles/ProductDetails.css";
 import CenteredSection from "../components/Centered";
 import ThumbsGallery from "../components/ThumbGallery";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import useProduct from "../hooks/useProduct";
-import useReviews from "../hooks/useReviews";
+import { useQuery } from "react-query";
 import {
   ProductDetailsError,
   ProductDetailsLoading,
@@ -12,25 +12,38 @@ import {
   ProductOverviewSectionCollapsable,
   SellerReview,
   SellerReviewSkeleton,
+  MarketPlaceProductSellerTip,
+  MarketplaceSellerDetail,
 } from "../components/ProductDetails/Index";
 import Chip from "@mui/material/Chip";
 import Button from "../components/Button";
 import useAuth from "../hooks/useAuth";
-import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
+import {
+  getRelatedProducts,
+  getReviewsBySellerId,
+} from "../utils/product-details";
+import {
+  MarketplaceProduct,
+  MarketplaceProductSeleton,
+} from "../components/Marketplace/Index";
+import { selectRandomN } from "../utils/array";
 
 const ProductDetails = () => {
-  const { productNo } = useParams();
   const { isLogged } = useAuth();
+  const { productNo } = useParams();
   const { product, isFetchingProduct, isFetchingProductError } =
     useProduct(productNo);
-  const { reviews, isFetchingReviews, isFetchingReviewsError } = useReviews(
-    product?.user_id
+  const reviewsQuery = useQuery(["reviews", product], () =>
+    getReviewsBySellerId(product?.user_id)
+  );
+  const relatedProductsQuery = useQuery(["relatedProducts", product], () =>
+    getRelatedProducts(product?.category)
   );
 
   return isFetchingProduct ? (
     <ProductDetailsLoading />
   ) : isFetchingProductError ? (
-    <ProductDetailsError message={"Uh oh..."} />
+    <ProductDetailsError />
   ) : (
     <div className="product-details-page">
       <CenteredSection className={"product-details"}>
@@ -46,7 +59,7 @@ const ProductDetails = () => {
             <p>{product.description}</p>
           </ProductOverviewSection>
 
-          {product.product_details.length > 0 && (
+          {product.product_details && product.product_details.length > 0 && (
             <ProductOverviewSectionCollapsable title={"Specifications"}>
               <div className="product-overview-features-container">
                 {product.product_details.map((productDetail, index) => (
@@ -63,18 +76,18 @@ const ProductDetails = () => {
           {isLogged && (
             <ProductOverviewSectionCollapsable title={"Seller Details"}>
               <div className="product-seller-details">
-                <div className="product-seller-detail">
-                  <div className="product-seller-label">Name:</div>
-                  <div>{product.sellername}</div>
-                </div>
-                <div className="product-seller-detail">
-                  <div className="product-seller-label">Telephone:</div>
-                  <div>{product.sellerphonenumber}</div>
-                </div>
-                <div className="product-seller-detail">
-                  <div className="product-seller-label">Location:</div>
-                  <div>{product.location}</div>
-                </div>
+                <MarketplaceSellerDetail
+                  label={"Name"}
+                  value={product.sellername}
+                />
+                <MarketplaceSellerDetail
+                  label={"Telephone"}
+                  value={product.sellerphonenumber}
+                />
+                <MarketplaceSellerDetail
+                  label={"Location"}
+                  value={product.location}
+                />
                 <Button fullWidth label={"Call Seller"} />
               </div>
             </ProductOverviewSectionCollapsable>
@@ -95,47 +108,57 @@ const ProductDetails = () => {
           </ProductOverviewSectionCollapsable>
 
           <ProductOverviewSection>
-            <div className="tip">
-              <div className="tip-icon">
-                <WarningAmberRoundedIcon color="inherit" />
-              </div>
-              <div className="tip-detail">
-                <div className="tip-title">Safety Tips</div>
-                <div className="tip-content">
-                  <ul className="tip-content-list">
-                    <li>Avoid sending any prepayments</li>
-                    <li>Meet with the seller at a safe public place</li>
-                    <li>Inspect what you're going to buy</li>
-                    <li>Pay only if you're satisfied</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <MarketPlaceProductSellerTip />
           </ProductOverviewSection>
         </div>
       </CenteredSection>
       <CenteredSection className={"related-products-container"}>
-        <div className="page-title">Related Products</div>
-        <div>Loading...</div>
-      </CenteredSection>
-      <CenteredSection className={"seller-review-container"}>
-        <div className="page-title">Customer Feedback</div>
-        {isFetchingReviews ? (
-          <div className="seller-reviews">
-            {Array.from(Array(5)).map((_, index) => (
-              <SellerReviewSkeleton key={index} />
+        <div className="page-title">Similar items you may like</div>
+        {relatedProductsQuery.isLoading ? (
+          <div className="related-products">
+            {Array.from(Array(4)).map(() => (
+              <MarketplaceProductSeleton />
             ))}
           </div>
-        ) : isFetchingReviewsError ? (
-          <>Uh oh</>
-        ) : reviews.length > 0 ? (
-          <div className="seller-reviews">
-            {reviews.map((review, index) => (
-              <SellerReview key={index} review={review} />
-            ))}
+        ) : relatedProductsQuery.isError ? (
+          <>Something went wrong...</>
+        ) : relatedProductsQuery.data &&
+          relatedProductsQuery.data.length > 0 ? (
+          <div className="related-products">
+            {selectRandomN(relatedProductsQuery.data, 4).map(
+              (relatedProduct, index) => (
+                <MarketplaceProduct key={index} product={relatedProduct} />
+              )
+            )}
           </div>
         ) : (
-          <>No reviews</>
+          <>No related products</>
+        )}
+      </CenteredSection>
+      <CenteredSection className={"seller-review-container"}>
+        <div className="page-title">Customer feedback</div>
+        {isLogged ? (
+          reviewsQuery.isLoading ? (
+            <div className="seller-reviews">
+              {Array.from(Array(5)).map((_, index) => (
+                <SellerReviewSkeleton key={index} />
+              ))}
+            </div>
+          ) : reviewsQuery.isError ? (
+            <>Something went wrong...</>
+          ) : reviewsQuery.data && reviewsQuery.data.length > 0 ? (
+            <div className="seller-reviews">
+              {reviewsQuery.data.map((review, index) => (
+                <SellerReview key={index} review={review} />
+              ))}
+            </div>
+          ) : (
+            <>No reviews</>
+          )
+        ) : (
+          <div>
+            Please <NavLink to={"/signin"}>sign in</NavLink> to view reviews
+          </div>
         )}
       </CenteredSection>
     </div>

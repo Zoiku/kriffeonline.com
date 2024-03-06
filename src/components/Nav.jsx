@@ -8,7 +8,6 @@ import useNav from "../hooks/useNav";
 
 const Nav = () => {
   const { navLinks, style, accountIconMenu, signOut, isLogged } = useNav();
-
   return (
     <div>
       <CenteredSection style={style} className={"nav-desktop"}>

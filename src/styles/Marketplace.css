@@ -1,3 +1,7 @@
+.marketplace-page {
+  padding: 0 0 100px;
+}
+
 .marketplace-display-wrapper {
   border-top: 1px solid #efefef;
 }
@@ -36,7 +40,7 @@
   padding: 0 0 5px;
   cursor: pointer;
   user-select: none;
-  border-bottom: 1px solid #c5c5c5;
+  border-bottom: 1px solid #efefef;
 }
 
 .marketplace-filter-group-collapsable-title {
@@ -44,7 +48,7 @@
 }
 
 .marketplace-filter-group-collapsable-content {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .marketplace-display-products {

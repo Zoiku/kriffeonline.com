@@ -1,4 +1,4 @@
-export const selectRandomN(array, n) {
+export const selectRandomN = (array, n) => {
   if (n > array.length) {
     return array;
   }
@@ -8,4 +8,4 @@ export const selectRandomN(array, n) {
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
   return shuffled.slice(0, n);
-}
+};

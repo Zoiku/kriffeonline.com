@@ -1,6 +1,6 @@
 .contact-page-header {
   height: 300px;
-  background-color: black;
+  background-color: rgb(20 30 36);
 }
 
 .contact-page-header-text {
@@ -41,23 +41,36 @@
 }
 
 .contact-card {
-  height: 300px;
   background-color: white;
   border: 1px solid #c5c5c5;
   position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-.contact-svg {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  height: 100px;
-  width: 100px;
+.contact-card-icon {
+  height: 150px;
 }
 
-.contact-svg img {
+.contact-card-icon img {
   height: 100%;
   width: 100%;
+  display: none;
+}
+
+.contact-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  display: none;
+}
+
+.contact-card-details-title {
+  font-weight: 800;
+  font-size: larger;
 }
 
 .faqs-container {
@@ -88,7 +101,7 @@
 }
 
 .faq {
-  padding: 20px !important;
+  padding: 20px;
   border: 1px solid #c5c5c5;
   user-select: none;
 }
@@ -96,9 +109,9 @@
 .faq-header {
   display: flex;
   justify-content: space-between;
+  font-weight: 600;
 }
 
 .faq-answer {
   margin-top: 30px;
-  color: gray;
 }
