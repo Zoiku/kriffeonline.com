@@ -82,14 +82,14 @@ export const SellerReviews = ({ data }) => {
       </div>
       {reviewsLength > 1 && (
         <div>
-          <small
+          <span
             onClick={handleToggleCollapse}
             style={{ cursor: "pointer", color: "blue" }}
           >
             {isCollapsed
               ? `Show more reviews (${reviewsLength - 1})`
               : "Show less reviews"}
-          </small>
+          </span>
         </div>
       )}
     </div>
@@ -107,7 +107,7 @@ export const SellerReview = ({ review }) => (
         ></Avatar>
       </div>
       <div>
-        <small>{review.feedback_from ?? "Anonymous"}</small>
+        <span>{review.feedback_from ?? "Anonymous"}</span>
       </div>
     </div>
     <div>
