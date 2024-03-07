@@ -16,7 +16,6 @@ import {
   SellerReviews,
 } from "../components/ProductDetails/Index";
 import Chip from "@mui/material/Chip";
-import Button from "../components/Button";
 import useAuth from "../hooks/useAuth";
 import {
   getRelatedProducts,
@@ -88,7 +87,6 @@ const ProductDetails = () => {
                   label={"Location"}
                   value={product.location}
                 />
-                <Button fullWidth label={"Call Seller"} />
               </div>
             </ProductOverviewSectionCollapsable>
           )}
@@ -153,7 +151,11 @@ const ProductDetails = () => {
           )
         ) : (
           <div>
-            Please <NavLink to={"/signin"}>sign in</NavLink> to view reviews
+            Please{" "}
+            <NavLink to={`/signin?redirect_to=/marketplace/${productNo}`}>
+              sign in
+            </NavLink>{" "}
+            to view reviews
           </div>
         )}
       </CenteredSection>

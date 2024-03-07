@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 const tokenAtom = atomWithStorage("token", localStorage.getItem("token"));
 
 const useAuth = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const redirectTo = urlParams.get("redirect_to") ?? null;
   const navigate = useNavigate();
   const [token, setToken] = useAtom(tokenAtom);
   const isLogged = useMemo(() => {
@@ -13,11 +16,16 @@ const useAuth = () => {
   }, [token]);
   const signIn = (authToken) => {
     setToken(authToken);
-    navigate("/");
+    if (redirectTo) {
+      navigate(redirectTo);
+    } else {
+      navigate("/");
+    }
   };
   const signOut = () => {
     setToken(null);
     localStorage.removeItem("token");
+    navigate("/");
   };
 
   return { token, isLogged, signIn, signOut };

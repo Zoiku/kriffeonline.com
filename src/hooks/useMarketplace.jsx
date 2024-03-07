@@ -26,10 +26,10 @@ const useMarketplace = () => {
       [name]: value,
     });
   };
-  const isSelectedFilterValue = (name, value) => {
+  const isFilterValueSelected = (name, value) => {
     return filterSelection && filterSelection[name] === value;
   };
-  const handleSelectFilterValues = (name, value, checked) => {
+  const handleCheckboxFilterValues = (name, value, checked) => {
     if (filterSelection === undefined) {
       setFilterSelection({
         [name]: [value],
@@ -51,7 +51,7 @@ const useMarketplace = () => {
       }
     }
   };
-  const isCheckedFilterValue = (name, value) => {
+  const isCheckedFilterValueSelected = (name, value) => {
     return (
       filterSelection &&
       filterSelection[name] &&
@@ -65,9 +65,9 @@ const useMarketplace = () => {
     isFetchingProductsError: isError,
     filters,
     handleSelectFilterValue,
-    handleSelectFilterValues,
-    isSelectedFilterValue,
-    isCheckedFilterValue,
+    handleCheckboxFilterValues,
+    isFilterValueSelected,
+    isCheckedFilterValueSelected,
     sortMenu,
   };
 };

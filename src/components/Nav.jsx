@@ -5,9 +5,16 @@ import { Link, NavActionButton } from "./Nav/Index";
 import Menu from "../components/Menu";
 import { MenuItem } from "@mui/material";
 import useNav from "../hooks/useNav";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const { navLinks, style, accountIconMenu, signOut, isLogged } = useNav();
+  const navigate = useNavigate();
+  const handleMenuNavigate = (to) => {
+    accountIconMenu.handleClose();
+    navigate(to);
+  };
+
   return (
     <div>
       <CenteredSection style={style} className={"nav-desktop"}>
@@ -27,6 +34,7 @@ const Nav = () => {
               anchorEl={accountIconMenu.anchorEl}
               open={accountIconMenu.open}
               handleClose={accountIconMenu.handleClose}
+              position="right"
               custom={
                 <NavActionButton
                   onClick={accountIconMenu.handleClick}
@@ -34,6 +42,7 @@ const Nav = () => {
                 />
               }
             >
+              <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
               <MenuItem onClick={signOut}>Logout</MenuItem>
             </Menu>
           ) : (

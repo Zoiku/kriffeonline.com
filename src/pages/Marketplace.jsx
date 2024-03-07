@@ -1,7 +1,7 @@
 import "../styles/Marketplace.css";
 import useMarketplace from "../hooks/useMarketplace";
 import {
-  SelectFilterValues,
+  SelectCheckboxFilterValues,
   MarketplaceProduct,
   SelectFilterValue,
   MarketplaceProductSeleton,
@@ -18,9 +18,9 @@ const Marketplace = () => {
     isFetchingProductsError,
     filters,
     handleSelectFilterValue,
-    handleSelectFilterValues,
-    isSelectedFilterValue,
-    isCheckedFilterValue,
+    handleCheckboxFilterValues,
+    isFilterValueSelected,
+    isCheckedFilterValueSelected,
   } = useMarketplace();
 
   return (
@@ -28,20 +28,21 @@ const Marketplace = () => {
       <CenteredSection className="marketplace-display">
         <div className="marketplace-display-inner marketplace-display-filters">
           <div className="marketplace-display-filters-sticky">
-            <div className="marketplace-display-filters-container-label">
-              Filters
-            </div>
+            <div className="marketplace-display-filters-container-label">Filters</div>
             <div className="marketplace-display-filters-options">
               {filters.map((filter, index) => (
                 <MarketFilterGroupCollapsable key={index} title={filter.title}>
                   {filter.checkbox
                     ? filter.values.map((value, index) => (
-                        <SelectFilterValues
+                        <SelectCheckboxFilterValues
                           key={index}
                           value={value}
-                          checked={isCheckedFilterValue(filter.name, value)}
+                          checked={isCheckedFilterValueSelected(
+                            filter.name,
+                            value
+                          )}
                           onChange={(e) =>
-                            handleSelectFilterValues(
+                            handleCheckboxFilterValues(
                               filter.name,
                               value,
                               e.target.checked
@@ -53,7 +54,7 @@ const Marketplace = () => {
                         <SelectFilterValue
                           key={index}
                           value={value}
-                          selected={isSelectedFilterValue(filter.name, value)}
+                          selected={isFilterValueSelected(filter.name, value)}
                           onClick={() =>
                             handleSelectFilterValue(filter.name, value)
                           }

@@ -1,6 +1,7 @@
 .menu {
   padding: 0 5px;
   border: 1px solid #efefef;
+  min-width: 150px !important;
 }
 
 .menu-box {

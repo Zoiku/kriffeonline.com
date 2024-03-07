@@ -101,7 +101,7 @@ export const SelectFilterValue = ({ value, selected, onClick }) => (
   </div>
 );
 
-export const SelectFilterValues = ({ value, onChange, checked }) => (
+export const SelectCheckboxFilterValues = ({ value, onChange, checked }) => (
   <div className="marketplace-filter-checkbox-input">
     <input checked={checked} onChange={onChange} id={value} type="checkbox" />
     <label htmlFor={value}>{value}</label>

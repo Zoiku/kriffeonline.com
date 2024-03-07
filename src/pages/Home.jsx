@@ -29,7 +29,7 @@ const HomePage = () => {
           heading={"Our Provided Services"}
           to={{ label: "Read more", path: "/about" }}
           headingHelper={
-            "At KriffeOnline we provide services tailored to our different categories of users"
+            "Providing services tailored to our different categories of users"
           }
         >
           <div className="home-page-provided-services">

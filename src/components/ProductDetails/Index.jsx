@@ -39,7 +39,7 @@ export const ProductOverviewFeature = ({ name, value }) => (
 
 export const MarketplaceSellerDetail = ({ label, value }) => (
   <div className="product-seller-detail">
-    <div className="product-seller-label">{label}</div>
+    <div className="product-seller-label">{label}:</div>
     <div>{value}</div>
   </div>
 );
@@ -86,7 +86,9 @@ export const SellerReviews = ({ data }) => {
             onClick={handleToggleCollapse}
             style={{ cursor: "pointer", color: "blue" }}
           >
-            {isCollapsed ? `Show more reviews (${reviewsLength - 1})` : "Show less reviews"}
+            {isCollapsed
+              ? `Show more reviews (${reviewsLength - 1})`
+              : "Show less reviews"}
           </small>
         </div>
       )}

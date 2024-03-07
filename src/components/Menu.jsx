@@ -2,6 +2,17 @@ import "../styles/Menu.css";
 import MuiMenu from "@mui/material/Menu";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 
+const positionMap = {
+  left: {
+    transformOrigin: { horizontal: "left", vertical: "top" },
+    anchorOrigin: { horizontal: "left", vertical: "bottom" },
+  },
+  right: {
+    transformOrigin: { horizontal: "right", vertical: "top" },
+    anchorOrigin: { horizontal: "right", vertical: "bottom" },
+  },
+};
+
 const Menu = ({
   anchorEl,
   open,
@@ -11,6 +22,7 @@ const Menu = ({
   selectedItem,
   label,
   custom,
+  position = "left",
 }) => {
   return (
     <>
@@ -32,6 +44,8 @@ const Menu = ({
         anchorEl={anchorEl}
         autoFocus={false}
         onClose={handleClose}
+        transformOrigin={positionMap[position].transformOrigin}
+        anchorOrigin={positionMap[position].anchorOrigin}
         slotProps={{
           paper: {
             elevation: 0,

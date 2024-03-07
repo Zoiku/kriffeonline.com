@@ -41,13 +41,9 @@
 }
 
 .contact-card {
-  background-color: white;
-  border: 1px solid #c5c5c5;
+  background-color: #efefef;
   position: relative;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
 }
 
 .contact-card-icon {

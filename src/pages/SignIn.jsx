@@ -13,7 +13,11 @@ const SignIn = () => {
   return (
     <div className="auth-page">
       <div className="auth-page-inner">
-        <Box component={"form"} onSubmit={handleSubmit} className={"auth-form"}>
+        <Box
+          component={"form"}
+          onSubmit={(values) => handleSubmit(values)}
+          className={"auth-form"}
+        >
           <div className="auth-form-body">
             <div className="auth-form-body-title">Sign in</div>
             <div className="auth-form-inputs">

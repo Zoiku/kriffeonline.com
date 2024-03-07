@@ -2,6 +2,10 @@
   min-height: 100vh;
 }
 
+.event-details-page {
+  min-height: 100vh;
+}
+
 .event-details-page-container {
   padding: 0 0 50px;
 }
