@@ -28,7 +28,7 @@ const Marketplace = () => {
       <CenteredSection className="marketplace-display">
         <div className="marketplace-display-inner marketplace-display-filters">
           <div className="marketplace-display-filters-sticky">
-            <div className="marketplace-display-filters-container-label">Filters</div>
+            <div className="marketplace-display-filters-container-label page-title">Marketplace</div>
             <div className="marketplace-display-filters-options">
               {filters.map((filter, index) => (
                 <MarketFilterGroupCollapsable key={index} title={filter.title}>

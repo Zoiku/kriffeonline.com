@@ -28,11 +28,6 @@
   gap: 10px;
 }
 
-.marketplace-display-filters-container-label {
-  font-size: larger;
-  font-weight: 600;
-}
-
 .marketplace-display-filters-options {
   font-size: small;
 }
@@ -86,6 +81,17 @@
   height: 200px !important;
   overflow: clip;
   background-color: #efefef;
+  position: relative;
+}
+
+.marketplace-product-price {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  font-weight: 500;
 }
 
 .marketplace-product-image img {

@@ -2,18 +2,18 @@
   padding: 0 0 100px 0;
 }
 
-.event-page-header {
+.events-page-header {
   height: 400px;
   background-color: rgba(166, 199, 255);
   display: flex;
   align-items: center;
 }
 
-.event-page-header-background-image {
+.events-page-header-background-image {
   height: 100%;
 }
 
-.event-page-header-background-image img {
+.events-page-header-background-image img {
   height: 100%;
   width: 100%;
 }
@@ -50,8 +50,19 @@
 }
 
 .event-item-image {
-  height: 200px !important;
+  height: 150px !important;
   background-color: #efefef;
+  position: relative;
+}
+
+.event-item-price {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  font-weight: 500;
 }
 
 .event-item-image img {
@@ -70,8 +81,8 @@
   display: grid;
   place-content: center;
   text-align: center;
-  padding: 10px 20px;
-  background-color: #f3f3f3;
+  padding: 10px 15px;
+  background-color: #efefef;
 }
 
 .event-item-skeleton-details {
@@ -86,6 +97,13 @@
 .event-item-skeleton-details-date {
   width: 20%;
   height: 55px;
+}
+
+.event-item-details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px 0;
 }
 
 .event-item-skeleton-details-info {

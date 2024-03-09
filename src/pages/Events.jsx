@@ -22,8 +22,8 @@ const Events = () => {
 
   return (
     <div className="events-page">
-      <div className="event-page-header">
-        <div className="event-page-header-background-image">
+      <div className="events-page-header">
+        <div className="events-page-header-background-image">
           <img src={headerImage} alt="" />
         </div>
         <div className="event-page-header-text-container"></div>
@@ -59,6 +59,7 @@ const Events = () => {
               handleClick={dateFilterMenu.handleClick}
               handleClose={dateFilterMenu.handleClose}
               label={"Date"}
+              position="right"
             >
               <MenuItem>Select Date</MenuItem>
             </Menu>

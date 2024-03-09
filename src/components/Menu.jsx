@@ -31,7 +31,7 @@ const Menu = ({
           <div className="menu-box-inner">
             <span>{selectedItem ?? label}</span>
             <span>
-              <UnfoldMoreIcon sx={{ height: 14 }} />
+              <UnfoldMoreIcon sx={{ height: 12 }} />
             </span>
           </div>
         </div>

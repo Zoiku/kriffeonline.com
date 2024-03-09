@@ -9,10 +9,6 @@ export const styles = {
     backgroundColor: "rgba(166, 199, 255)",
     color: "black",
   },
-  "/contact": {
-    backgroundColor: "rgb(20 30 36)",
-    color: "white",
-  },
 };
 
 export const Link = ({ label, to }) => (

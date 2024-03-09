@@ -21,7 +21,7 @@ const Contact = () => {
       <div className="contact-page-header">
         <div className="contact-page-header-text">
           <div className="contact-page-header-text-title">
-            Get In Touch With Us
+            Get in touch with our friendly support team
           </div>
           <div className="contact-page-header-text-title-helper">
             We're happy to hear from you. What's on your mind

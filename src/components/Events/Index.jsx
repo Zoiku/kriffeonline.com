@@ -2,6 +2,7 @@ import { Skeleton } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import CenteredSection from "../Centered";
 import { getDay, getMonth } from "../../utils/date";
+import Currency from "../Currency";
 
 export const EventDetailErrorPage = () => (
   <div>
@@ -11,29 +12,39 @@ export const EventDetailErrorPage = () => (
 
 export const EventPageLoading = () => (
   <div>
-    <CenteredSection className={"events-loading-page"}>Please wait...</CenteredSection>
+    <CenteredSection className={"events-loading-page"}>
+      Please wait...
+    </CenteredSection>
   </div>
 );
 
-export const EventItem = ({ event }) => (
-  <NavLink to={`/events/${event.event_no}`} className="event-item">
-    <div className="event-item-image"></div>
-    <div className="event-item-details">
-      <div className="event-item-details-date-container">
-        <div>{getMonth(event.date)}</div>
-        <div>{getDay(event.date)}</div>
-      </div>
-      <div className="event-item-details-info">
-        <div>{event.location}</div>
-        <div>{event.name}</div>
-        <div>
-          {event.ticket_type.find((type) => type.package_type === "paid")
-            ?.price ?? "Free"}
+export const EventItem = ({ event }) => {
+  return (
+    <NavLink to={`/events/${event.event_no}`} className="event-item">
+      <div className="event-item-image">
+        <div className="event-item-price">
+          <span>
+            {event.ticket_type.at(0).package_type === "Free" ? (
+              "Free"
+            ) : (
+              <Currency value={event.ticket_type.at(0).price} />
+            )}
+          </span>
         </div>
       </div>
-    </div>
-  </NavLink>
-);
+      <div className="event-item-details">
+        <div className="event-item-details-date-container">
+          <div>{getMonth(event.date)}</div>
+          <div>{getDay(event.date)}</div>
+        </div>
+        <div className="event-item-details-info">
+          <div>{event.location}</div>
+          <div>{event.name}</div>
+        </div>
+      </div>
+    </NavLink>
+  );
+};
 
 export const EventItemSkeleton = () => (
   <div className="event-item">
@@ -54,9 +65,8 @@ export const EventItemSkeleton = () => (
         />
       </div>
       <div className="event-item-skeleton-details-info">
+        <Skeleton animation="wave" variant="text" width={"40%"} />
         <Skeleton animation="wave" variant="text" width={"60%"} />
-        <Skeleton animation="wave" variant="text" width={"50%"} />
-        <Skeleton animation="wave" variant="text" width={"30%"} />
       </div>
     </div>
   </div>

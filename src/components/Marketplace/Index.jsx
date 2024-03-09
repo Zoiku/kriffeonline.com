@@ -46,7 +46,6 @@ export const MarketplaceProductSeleton = () => (
     />
     <div>
       <Skeleton animation="wave" width={"100%"} variant="text" />
-      <Skeleton animation="wave" width={"20%"} variant="text" />
     </div>
   </div>
 );
@@ -58,12 +57,14 @@ export const MarketplaceProduct = ({ product }) => {
       className="marketplace-product"
     >
       <div className="marketplace-product-image">
-        <div className="marketplace-product-bookmark-btn"></div>
+        <div className="marketplace-product-price">
+          <Currency value={product.price} />
+        </div>
         <img src="/" alt="" />
       </div>
       <div className="marketplace-product-details">
         <div className="marketplace-product-details-name-and-stats">
-          <div>{product.name}</div>
+          <div className="marketplace-product-details-name">{product.name}</div>
           <div className="marketplace-product-details-stats-container">
             <div className="marketplace-product-details-stats">
               <div className="marketplace-product-details-stats-icon">
@@ -78,9 +79,6 @@ export const MarketplaceProduct = ({ product }) => {
               <div>{product.views}</div>
             </div>
           </div>
-        </div>
-        <div>
-          <Currency value={product.price} />
         </div>
       </div>
     </NavLink>
