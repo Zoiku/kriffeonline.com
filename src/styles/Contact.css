@@ -27,7 +27,7 @@
 .contact-cards-container-inner {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 100px;
   width: 800px;
 }
 

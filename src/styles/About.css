@@ -1,11 +1,128 @@
-.about-page {
-  min-height: 100vh;
-}
-
 .provided-service {
   display: flex;
   flex-direction: column;
   padding: 25px;
   background-color: #efefef;
   color: #efefef;
+}
+
+.home-page-about-items {
+  display: flex;
+  justify-content: center;
+  color: inherit;
+  margin-top: 20px;
+}
+
+.home-page-about-item {
+  position: relative;
+  padding: 40px 50px 0;
+  flex: 1;
+  color: inherit;
+}
+
+.home-page-about-item-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: inherit;
+}
+
+.home-page-about-item-index {
+  top: -50px;
+  left: 0;
+  position: absolute;
+  color: #f4f4f43a;
+  z-index: -1;
+  user-select: none;
+}
+
+.home-page-about-item-index span {
+  font-size: 150px;
+  font-weight: bold;
+}
+
+.home-page-about-item-heading {
+  font-weight: 500;
+}
+
+.about-page {
+  padding: 50px 0 100px;
+}
+
+.about-page-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.about-page-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-page-section-content {
+  color: rgb(75, 75, 75);
+}
+
+.about-page-section .about-page-section-head {
+  text-align: center;
+}
+
+.about-page-section-title {
+  font-size: xx-large;
+}
+
+.about-us-who-are-we-container {
+  display: flex;
+  justify-content: center;
+}
+
+.about-us-who-are-we {
+  width: 40%;
+  text-align: center;
+}
+
+.about-page-section-styled-container {
+  height: 500px;
+}
+
+.about-page-section-styled {
+  position: relative;
+  height: 100%;
+}
+
+.about-page-section-styled-content {
+  height: 100%;
+  width: 60%;
+  background-color: #f6f6f6;
+}
+
+.about-page-section-styled-content-inner {
+  padding: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-page-section-styled-image {
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  width: 50%;
+  height: 80%;
+  background-color: rgb(195, 216, 255);
+}
+
+.about-page-section-mission-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.provided-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
 }

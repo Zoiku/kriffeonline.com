@@ -7,6 +7,8 @@ import emailIcon from "../assets/Svgs/New message-cuate.svg";
 import callIcon from "../assets/Svgs/Calling-cuate.svg";
 import locationIcon from "../assets/Svgs/Smart mobility-pana.svg";
 
+
+
 const Contact = () => {
   const {
     faqs,
@@ -50,10 +52,10 @@ const Contact = () => {
           <div className="faqs-container">
             <div className="faqs-section-header">
               <div className="faqs-section-title">
-                Frequently Asked Questions
+                Frequently asked questions
               </div>
               <div className="faqs-section-title-helper">
-                Find answers to some of our Frequently Asked Questions
+                Find answers to some of our FAQs
               </div>
             </div>
 
