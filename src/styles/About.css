@@ -52,7 +52,7 @@
 .about-page-sections {
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 150px;
 }
 
 .about-page-section {
@@ -95,7 +95,7 @@
 .about-page-section-styled-content {
   height: 100%;
   width: 60%;
-  background-color: #f6f6f6;
+  background-color: #f6f6f6bd;
 }
 
 .about-page-section-styled-content-inner {

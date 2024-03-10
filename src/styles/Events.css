@@ -82,7 +82,8 @@
   place-content: center;
   text-align: center;
   padding: 10px 15px;
-  background-color: #efefef;
+  background-color: #24252a;
+  color: white;
 }
 
 .event-item-skeleton-details {

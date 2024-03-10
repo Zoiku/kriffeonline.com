@@ -1,4 +1,5 @@
-.events-loading-page {
+.events-loading-page,
+.event-detail-error-page {
   min-height: 100vh;
 }
 
@@ -16,7 +17,6 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-  display: none;
 }
 
 .event-detail-page-header-backdrop {
@@ -25,7 +25,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(83, 83, 83);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,13 +35,14 @@
 .event-detail-page-header-details {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   text-align: center;
-  display: none;
+  gap: 50px;
+  color: #fbfbfb;
 }
 
 .event-details-name {
-  font-size: 45px;
+  font-size: 50px;
+  font-weight: 600;
   text-transform: capitalize;
 }
 
@@ -103,5 +104,89 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  list-style-position: inside;
+  list-style: none;
+}
+
+.event-checkout-header {
+  font-size: x-large;
+  font-weight: 600;
+  padding: 20px;
+  text-transform: capitalize;
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.event-checkout-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-checkout-stepper {
+  padding: 20px;
+}
+
+.event-checkout-content {
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.event-checkout-form {
+  width: 450px;
+}
+
+.event-checkout-summary {
+  flex: 1;
+  border: 1px solid #c5c5c5;
+}
+
+.event-checkout-footer {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.event-checkout-form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c5c5c5;
+}
+
+.event-checkout-form-head {
+  background-color: #fafafa;
+  padding: 20px;
+  font-weight: 600;
+}
+
+.event-checkout-form-body {
+  padding: 20px;
+}
+
+.event-checkout-contact-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.event-checkout-ticket-types:not(:last-child) {
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.event-checkout-ticket-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.event-checkout-ticket-type-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.event-ticket-type-quantity-input {
+  padding: 5px;
+  border-color: white;
+  border-radius: 5px;
 }

@@ -2,37 +2,21 @@ import "../styles/EventDetails.css";
 import { useParams } from "react-router-dom";
 import useEvent from "../hooks/useEvent";
 import {
+  EventCheckout,
+  EventCountdown,
   EventDetailErrorPage,
+  EventDetailsSection,
   EventPageLoading,
 } from "../components/Events/Index";
 import CenteredSection from "../components/Centered";
 import image from "../assets/Placeholder/wp7488228.jpg";
-import { getLongDate } from "../utils/date";
 import ReadMore from "../components/ReadMore";
-
-const EventDetailsSection = ({ title, children }) => (
-  <div className="event-detail-section">
-    <div className="event-detail-section-title">{title}</div>
-    <div className="event-detail-section-inner">{children}</div>
-  </div>
-);
-
-const EventCountdown = ({ countdown }) =>
-  countdown ? (
-    <div className="event-page-countdown-values">
-      <div>{countdown?.days}d</div>
-      <div>:</div>
-      <div>{countdown?.hours}h</div>
-      <div>:</div>
-      <div>{countdown?.minutes}m</div>
-      <div>:</div>
-      <div>{countdown?.seconds}s</div>
-    </div>
-  ) : (
-    <span>- - - -</span>
-  );
+import Button from "../components/Button";
+import Drawer from "../components/Drawer";
+import useDrawer from "../hooks/useDrawer";
 
 const EventDetails = () => {
+  const { anchor, open, handleClose, handleOpen } = useDrawer("right");
   const { eventNo } = useParams();
   const { event, isFetchingEvent, isFetchingEventError, countdown } =
     useEvent(eventNo);
@@ -45,6 +29,15 @@ const EventDetails = () => {
         <EventDetailErrorPage />
       ) : event ? (
         <div className="event-details-page">
+          <Drawer
+            anchor={anchor}
+            open={open}
+            handleOpen={handleOpen}
+            handleClose={handleClose}
+          >
+            <EventCheckout event={event} />
+          </Drawer>
+
           <div className="event-detail-page-header">
             <div className="event-detail-page-header-image">
               <img src={image} alt="" />
@@ -52,11 +45,17 @@ const EventDetails = () => {
 
             <div className="event-detail-page-header-backdrop">
               <div className="event-detail-page-header-details">
-                <div>{event.host}</div>
-                <div className="event-details-name">{event.name}</div>
-                <div>{event.location}</div>
                 <div>
-                  <span>{getLongDate(event.date)}</span>
+                  <div>{event.host}</div>
+                  <div className="event-details-name">{event.name}</div>
+                </div>
+                <div>
+                  <Button
+                    onClick={handleOpen}
+                    sx={{ bgcolor: "white" }}
+                    size={"large"}
+                    label={"Buy Ticket"}
+                  />
                 </div>
               </div>
             </div>
@@ -82,8 +81,8 @@ const EventDetails = () => {
 
               <EventDetailsSection title={"About Organizers"}>
                 <ul className="event-organizer-profile">
-                  <li>{event.host}</li>
-                  <li>{event.companyemail}</li>
+                  <li>Host: {event.host}</li>
+                  <li>Company Email: {event.companyemail}</li>
                 </ul>
               </EventDetailsSection>
             </div>

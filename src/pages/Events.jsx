@@ -69,7 +69,7 @@ const Events = () => {
         <div className="events-container">
           {isFetchingEvents ? (
             <div className="events">
-              {Array.from(Array(10)).map((_, index) => (
+              {Array.from(Array(12)).map((_, index) => (
                 <EventItemSkeleton key={index} />
               ))}
             </div>
