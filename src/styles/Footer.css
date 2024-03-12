@@ -1,7 +1,6 @@
 .footer-component {
   background-color: rgb(20 30 36);
   color: white;
-  font-size: small;
 }
 
 .footer-header {
@@ -20,7 +19,8 @@
 }
 
 .footer-company-logo {
-  height: 150px;
+  height: 100px;
+  width: 200px;
 }
 
 .footer-company-logo img {

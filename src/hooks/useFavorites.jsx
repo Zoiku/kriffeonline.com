@@ -3,9 +3,9 @@ import { atomWithStorage } from "jotai/utils";
 import useAlert from "./useAlert";
 
 const favoriteItemsAtom = atomWithStorage(
-  "favorites",
-  localStorage.getItem("favorites")
-    ? JSON.parse(localStorage.getItem("favorites"))
+  "kriffe_online_favorites",
+  localStorage.getItem("kriffe_online_favorites")
+    ? JSON.parse(localStorage.getItem("kriffe_online_favorites"))
     : []
 );
 

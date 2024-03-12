@@ -26,6 +26,7 @@ import {
   MarketplaceProductSeleton,
 } from "../components/Marketplace/Index";
 import { selectRandomN } from "../utils/array";
+import ReadMore from "../components/ReadMore";
 
 const ProductDetails = () => {
   const { isLogged } = useAuth();
@@ -55,7 +56,9 @@ const ProductDetails = () => {
             <div className="product-detail-name">{product.name}</div>
           </ProductOverviewSection>
           <ProductOverviewSection>
-            <p>{product.description}</p>
+            <p>
+              <ReadMore text={product.description} maxLength={200} />
+            </p>
           </ProductOverviewSection>
 
           {product.product_details && product.product_details.length > 0 && (

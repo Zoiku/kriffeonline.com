@@ -12,7 +12,6 @@ const getFilterOptions = async () => {
 
 const useFilterOptions = () => {
   const { data } = useQuery("filterOptions", getFilterOptions);
-  console.log(data);
 };
 
 export default useFilterOptions;

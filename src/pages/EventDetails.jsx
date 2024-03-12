@@ -29,13 +29,8 @@ const EventDetails = () => {
         <EventDetailErrorPage />
       ) : event ? (
         <div className="event-details-page">
-          <Drawer
-            anchor={anchor}
-            open={open}
-            handleOpen={handleOpen}
-            handleClose={handleClose}
-          >
-            <EventCheckout event={event} />
+          <Drawer anchor={anchor} open={open} handleOpen={handleOpen}>
+            <EventCheckout handleCloseDrawer={handleClose} event={event} />
           </Drawer>
 
           <div className="event-detail-page-header">
@@ -45,7 +40,7 @@ const EventDetails = () => {
 
             <div className="event-detail-page-header-backdrop">
               <div className="event-detail-page-header-details">
-                <div>
+                <div className="event-detail-page-header-tiny-info">
                   <div>{event.host}</div>
                   <div className="event-details-name">{event.name}</div>
                 </div>
