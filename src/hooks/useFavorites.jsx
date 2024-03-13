@@ -1,40 +1,36 @@
-import { useAtom } from "jotai";
-import { atomWithStorage } from "jotai/utils";
-import useAlert from "./useAlert";
+import { useQuery, useMutation } from "react-query";
+import axios from "../services/axios";
 
-const favoriteItemsAtom = atomWithStorage(
-  "kriffe_online_favorites",
-  localStorage.getItem("kriffe_online_favorites")
-    ? JSON.parse(localStorage.getItem("kriffe_online_favorites"))
-    : []
-);
+const getFavorites = async () => {
+  return (await axios.get("/current_user_favorites")).data;
+};
+
+const addProductToFavorites = async (productNo) => {
+  const response = await axios.post("/add_to_favorites", {
+    product_id: productNo,
+  });
+  if (response.status !== 200) {
+    throw new Error("Failed to add product to favorites");
+  }
+  return response;
+};
 
 const useFavorites = () => {
-  const { handleOpenSuccessAlert } = useAlert();
-  const [favoriteItems, setFavoriteItems] = useAtom(favoriteItemsAtom);
-  const handleAddFavoriteItem = (productItem) => {
-    if (isProductAddedToFavorite(productItem.id)) {
-      setFavoriteItems((previousFavoriteItems) => {
-        return previousFavoriteItems.filter(
-          (previousFavoriteItem) => previousFavoriteItem.id !== productItem.id
-        );
-      });
-      handleOpenSuccessAlert("Removed from Favorites");
-    } else {
-      setFavoriteItems([...favoriteItems, productItem]);
-      handleOpenSuccessAlert("Added to Favorites");
+  const { data, isLoading, isError } = useQuery("favorites", getFavorites);
+  const mutate = useMutation(addProductToFavorites);
+  const handleAddProductToFavorites = async (productNo) => {
+    try {
+      await mutate.mutateAsync(productNo);
+    } catch (error) {
+      throw new Error(error);
     }
-  };
-  const isProductAddedToFavorite = (productItemId) => {
-    return favoriteItems.some(
-      (favoriteItem) => favoriteItem.id === productItemId
-    );
   };
 
   return {
-    favoriteItems,
-    handleAddFavoriteItem,
-    isProductAddedToFavorite,
+    favoriteItems: data,
+    isFetchingFavoriteItems: isLoading,
+    isFetchingFavoriteItemsError: isError,
+    handleAddProductToFavorites,
   };
 };
 

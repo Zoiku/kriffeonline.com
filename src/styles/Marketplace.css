@@ -94,6 +94,17 @@
   font-weight: 500;
 }
 
+.marketplace-product:hover .marketplace-product-add-to-favorite {
+  bottom: 10px;
+}
+
+.marketplace-product-add-to-favorite {
+  position: absolute;
+  bottom: -50px;
+  left: 10px;
+  transition: all 0.2s ease;
+}
+
 .marketplace-product-image img {
   height: 100%;
   width: 100%;

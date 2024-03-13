@@ -2,14 +2,26 @@ import "../styles/Favorites.css";
 import CenteredSection from "../components/Centered";
 import useFavorites from "../hooks/useFavorites";
 import { MarketplaceProduct } from "../components/Marketplace/Index";
-import { NoFavoritesPage } from "../components/Favorites/Index";
+import {
+  NoFavoritesPage,
+  FavoritesErrorPage,
+  FavoritesLoadingPage,
+} from "../components/Favorites/Index";
 
 const Favorites = () => {
-  const { favoriteItems } = useFavorites();
+  const {
+    favoriteItems,
+    isFetchingFavoriteItems,
+    isFetchingFavoriteItemsError,
+  } = useFavorites();
 
   return (
     <div className="favorites-page">
-      {favoriteItems ? (
+      {isFetchingFavoriteItems ? (
+        <FavoritesLoadingPage />
+      ) : isFetchingFavoriteItemsError ? (
+        <FavoritesErrorPage />
+      ) : favoriteItems ? (
         favoriteItems.length > 0 ? (
           <CenteredSection className={"favorite-items-container"}>
             <div className="page-title">Favorites Products</div>
@@ -23,7 +35,7 @@ const Favorites = () => {
           <NoFavoritesPage />
         )
       ) : (
-        <NoFavoritesPage />
+        <FavoritesErrorPage />
       )}
     </div>
   );

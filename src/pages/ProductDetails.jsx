@@ -56,9 +56,7 @@ const ProductDetails = () => {
             <div className="product-detail-name">{product.name}</div>
           </ProductOverviewSection>
           <ProductOverviewSection>
-            <p>
-              <ReadMore text={product.description} maxLength={200} />
-            </p>
+            <ReadMore text={product.description} maxLength={200} />
           </ProductOverviewSection>
 
           {product.product_details && product.product_details.length > 0 && (

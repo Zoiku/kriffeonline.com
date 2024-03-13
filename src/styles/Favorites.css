@@ -1,4 +1,6 @@
-.no-favorites-page {
+.no-favorites-page,
+.favorites-loading-page,
+.favorites-error-pagee {
   min-height: calc(100vh - 100px);
 }
 

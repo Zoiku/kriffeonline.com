@@ -310,7 +310,7 @@ export const EventCheckout = ({ event, handleCloseDrawer }) => {
         handleClose={dialog.handleClose}
         handleAgree={handleExitEventCheckout}
         title={"Close checkout?"}
-        content={"You will lose this form if you proceed"}
+        content={"Your progress will be lost if you proceed"}
       />
 
       <div className="event-checkout-header">

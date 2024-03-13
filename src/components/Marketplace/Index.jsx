@@ -5,6 +5,9 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import Currency from "../Currency";
 import { useState } from "react";
 import Collapse from "@mui/material/Collapse";
+import IconButton from "@mui/material/IconButton";
+import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+import useFavorites from "../../hooks/useFavorites";
 
 export const MarketplaceErrorPage = () => <div>Something went wrong...</div>;
 
@@ -51,14 +54,29 @@ export const MarketplaceProductSeleton = () => (
 );
 
 export const MarketplaceProduct = ({ product }) => {
+  const { handleAddProductToFavorites } = useFavorites();
+
   return (
     <NavLink
+      onClick={(e) => e.stopPropagation()}
       to={`/marketplace/${product.product_no}`}
       className="marketplace-product"
     >
       <div className="marketplace-product-image">
         <div className="marketplace-product-price">
           <Currency value={product.price} />
+        </div>
+        <div className="marketplace-product-add-to-favorite">
+          <IconButton
+            onClick={() => handleAddProductToFavorites(product.product_no)}
+            sx={{ bgcolor: "white" }}
+          >
+            {product.is_saved ? (
+              <FavoriteRoundedIcon fontSize="small" />
+            ) : (
+              <FavoriteBorderRoundedIcon fontSize="small" />
+            )}
+          </IconButton>
         </div>
         <img src="/" alt="" />
       </div>

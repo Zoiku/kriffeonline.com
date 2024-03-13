@@ -111,6 +111,10 @@
   list-style: none;
 }
 
+.event-checkout {
+  width: 900px;
+}
+
 .event-checkout-header {
   font-size: x-large;
   font-weight: 600;
@@ -142,7 +146,7 @@
   display: flex;
   flex-direction: column;
   border: 1px solid #c5c5c5;
-  width: 600px;
+  width: 500px;
 }
 
 .event-checkout-form-body {
@@ -192,7 +196,7 @@
 
 .event-checkout-summary {
   border: 1px solid #c5c5c5;
-  width: 400px;
+  flex: 1;
 }
 
 .event-checkout-summary-ticket-row {

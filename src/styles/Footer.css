@@ -10,7 +10,7 @@
 .footer-inner {
   display: flex;
   align-items: center;
-  gap: 100px;
+  gap: 50px;
 }
 
 .footer-company-profile {
@@ -31,13 +31,13 @@
 .footer-company-links-sections {
   flex: 1;
   display: flex;
-  gap: 50px;
 }
 
 .footer-company-links-section {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
 }
 
 .footer-company-links-section-title {
