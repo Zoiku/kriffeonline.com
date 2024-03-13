@@ -1,8 +1,12 @@
 import { useQuery, useMutation } from "react-query";
+import useAuth from "./useAuth";
 import axios from "../services/axios";
 
-const getFavorites = async () => {
-  return (await axios.get("/current_user_favorites")).data;
+const getFavorites = async (isLogged) => {
+  if(isLogged) {
+    return (await axios.get("/current_user_favorites")).data;
+  }
+  return 0;
 };
 
 const addProductToFavorites = async (productNo) => {
@@ -16,7 +20,8 @@ const addProductToFavorites = async (productNo) => {
 };
 
 const useFavorites = () => {
-  const { data, isLoading, isError } = useQuery("favorites", getFavorites);
+  const { isLogged } = useAuth();
+  const { data, isLoading, isError } = useQuery("favorites", () => getFavorites(isLogged));
   const mutate = useMutation(addProductToFavorites);
   const handleAddProductToFavorites = async (productNo) => {
     try {
