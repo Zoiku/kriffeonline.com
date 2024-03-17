@@ -1,6 +1,5 @@
 import "../styles/Menu.css";
 import MuiMenu from "@mui/material/Menu";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const positionMap = {
   left: {
@@ -16,10 +15,8 @@ const positionMap = {
 const Menu = ({
   anchorEl,
   open,
-  handleClick,
   handleClose,
   children,
-  selectedItem,
   label,
   custom,
   position = "left",
@@ -27,14 +24,10 @@ const Menu = ({
   return (
     <>
       {custom ?? (
-        <div onClick={handleClick} className="menu-box">
-          <div className="menu-box-inner">
-            <span>{selectedItem ?? label}</span>
-            <span>
-              <KeyboardArrowDownIcon  />
-            </span>
-          </div>
-        </div>
+        <select className="menu" defaultValue={null}>
+          <option value={null}>{label}</option>
+          {children}
+        </select>
       )}
 
       <MuiMenu
@@ -49,7 +42,7 @@ const Menu = ({
         slotProps={{
           paper: {
             elevation: 0,
-            className: "menu",
+            className: "menu-styled",
             sx: {
               mt: 1,
             },
