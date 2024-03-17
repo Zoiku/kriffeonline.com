@@ -31,7 +31,7 @@
   top: -50px;
   left: 0;
   position: absolute;
-  color: #f4f4f43a;
+  color: #f4f4f49d;
   z-index: -1;
   user-select: none;
 }
@@ -42,7 +42,7 @@
 }
 
 .home-page-about-item-heading {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .about-page {
@@ -113,6 +113,7 @@
   width: 50%;
   height: 80%;
   background-color: rgb(195, 216, 255);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .about-page-section-mission-content {

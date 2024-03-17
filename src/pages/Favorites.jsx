@@ -1,34 +1,37 @@
 import "../styles/Favorites.css";
 import CenteredSection from "../components/Centered";
-import useFavorites from "../hooks/useFavorites";
+import { getFavorites } from "../hooks/useFavorites";
 import { MarketplaceProduct } from "../components/Marketplace/Index";
 import {
   NoFavoritesPage,
   FavoritesErrorPage,
   FavoritesLoadingPage,
 } from "../components/Favorites/Index";
+import { useQuery } from "react-query";
 
 const Favorites = () => {
-  const {
-    favoriteItems,
-    isFetchingFavoriteItems,
-    isFetchingFavoriteItemsError,
-  } = useFavorites();
+  const favoriteItemsQuery = useQuery({
+    queryKey: ["favorites"],
+    queryFn: getFavorites,
+  });
 
   return (
     <div className="favorites-page">
-      {isFetchingFavoriteItems ? (
+      {favoriteItemsQuery.isLoading ? (
         <FavoritesLoadingPage />
-      ) : isFetchingFavoriteItemsError ? (
+      ) : favoriteItemsQuery.isError ? (
         <FavoritesErrorPage />
-      ) : favoriteItems ? (
-        favoriteItems.length > 0 ? (
+      ) : favoriteItemsQuery.data ? (
+        favoriteItemsQuery.data.length > 0 ? (
           <CenteredSection className={"favorite-items-container"}>
             <div className="page-title">Favorites Products</div>
             <div className="favorite-items">
-              {favoriteItems.map((favoriteItem) => (
-                <MarketplaceProduct product={favoriteItem} />
-              ))}
+              {favoriteItemsQuery.data.map(
+                (favoriteItem, index) =>
+                  favoriteItem && (
+                    <MarketplaceProduct key={index} product={favoriteItem} />
+                  )
+              )}
             </div>
           </CenteredSection>
         ) : (

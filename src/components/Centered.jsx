@@ -1,9 +1,15 @@
 import "../styles/Centered.css";
 
-const Centered = ({ children, className, style }) => {
+const Centered = ({ children, className, mobileWithPadding, style }) => {
   return (
     <div style={style} className={`centered-section ${className}-wrapper`}>
-      <div className={`centered-section-inner ${className}`}>{children}</div>
+      <div
+        className={`centered-section-inner ${
+          mobileWithPadding && "centered-section-inner-with-padding"
+        } ${className}`}
+      >
+        {children}
+      </div>
     </div>
   );
 };

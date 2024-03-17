@@ -5,16 +5,23 @@ import {
   MarketplaceProduct,
   MarketplaceProductSeleton,
 } from "../components/Marketplace/Index";
-import useMarketplace from "../hooks/useMarketplace";
-import useEvents from "../hooks/useEvents";
+import { getProducts } from "../hooks/useMarketplace";
+import { getEvents } from "../hooks/useEvents";
 import { HomeSectionWithHeading } from "../components/Home/Index";
 import { providedServices } from "../utils/about";
 import { ProvidedService } from "../components/About/Index";
+import { useQuery } from "react-query";
 
 const HomePage = () => {
-  const { events, isFetchingEvents, isFetchingEventsError } = useEvents();
-  const { products, isFetchingProducts, isFetchingProductsError } =
-    useMarketplace();
+  const productsQuery = useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
+
+  const eventsQuery = useQuery({
+    queryKey: ["events"],
+    queryFn: getEvents,
+  });
 
   return (
     <div className="home-page">
@@ -45,17 +52,17 @@ const HomePage = () => {
           headingHelper={"Discover the latest and hottest ads and deals"}
         >
           <div className="home-page-section-trending-grid">
-            {isFetchingProducts ? (
+            {productsQuery.isLoading ? (
               Array.from(Array(4)).map((_, index) => (
                 <MarketplaceProductSeleton key={index} />
               ))
-            ) : isFetchingProductsError ? (
+            ) : productsQuery.isError ? (
               <>Something went wrong...</>
-            ) : products ? (
-              products.length === 0 ? (
+            ) : productsQuery.data ? (
+              productsQuery.data.length === 0 ? (
                 <>New products coming soon</>
               ) : (
-                products
+                productsQuery.data
                   ?.sort((a, b) => b.views - a.views)
                   .slice(0, 4)
                   .map((product, index) => (
@@ -75,17 +82,17 @@ const HomePage = () => {
           }
         >
           <div className="home-page-section-trending-grid">
-            {isFetchingEvents ? (
+            {eventsQuery.isLoading ? (
               Array.from(Array(4)).map((_, index) => (
                 <EventItemSkeleton key={index} />
               ))
-            ) : isFetchingEventsError ? (
+            ) : eventsQuery.isError ? (
               <>Something went wrong...</>
-            ) : events ? (
-              events.length === 0 ? (
+            ) : eventsQuery.data ? (
+              eventsQuery.data.length === 0 ? (
                 <>New events coming soon</>
               ) : (
-                events
+                eventsQuery.data
                   ?.sort((a, b) => b.views - a.views)
                   .slice(0, 4)
                   .map((event, index) => (

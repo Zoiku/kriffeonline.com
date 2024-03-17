@@ -3,7 +3,6 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 
 const Stepper = ({ activeStep, steps }) => {
-
   return (
     <MuiStepper activeStep={activeStep}>
       {steps.map((label) => (

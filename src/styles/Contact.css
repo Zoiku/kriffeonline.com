@@ -38,19 +38,19 @@
 }
 
 .contact-card {
-  background-color: #efefef;
   position: relative;
   padding: 20px;
+  background-color: #f9f9f9;
+  color: #f9f9f9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
 }
 
-.contact-card-icon {
-  height: 150px;
-}
-
-.contact-card-icon img {
-  height: 100%;
-  width: 100%;
-  display: none;
+.contact-card-header {
+  font-weight: 600;
 }
 
 .contact-card-details {
@@ -58,12 +58,22 @@
   flex-direction: column;
   gap: 20px;
   text-align: center;
-  display: none;
 }
 
 .contact-card-details-title {
   font-weight: 800;
-  font-size: larger;
+}
+
+.contact-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.contact-card-footer > div {
+  display: flex;
+  align-items: center;
 }
 
 .faqs-container {

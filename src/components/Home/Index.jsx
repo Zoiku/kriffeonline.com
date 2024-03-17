@@ -8,7 +8,7 @@ export const HomeSectionWithHeading = ({
   headingHelper,
   to,
 }) => (
-  <CenteredSection className="home-section">
+  <CenteredSection mobileWithPadding className="home-section">
     <div className="home-section-head">
       <div className={"home-section-head-text"}>
         <div className="home-section-head-title">{heading}</div>

@@ -156,3 +156,18 @@
 .marketplace-filter-single-input span:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 1100px) {
+  .marketplace-display-wrapper {
+    border-top: none;
+  }
+
+  .marketplace-display {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .marketplace-display-filters {
+    display: none;
+  }
+}

@@ -1,21 +1,14 @@
-import { useQuery } from "react-query";
 import filters from "../utils/marketplacefilters";
 import axios from "../services/axios";
 import { JsonParam, useQueryParam } from "use-query-params";
 import useMenu from "./useMenu";
-import useAuth from "./useAuth";
 
-const getProducts = async () => {
+export const getProducts = async () => {
   return (await axios.get("/list_products")).data.products.data;
 };
 
 const useMarketplace = () => {
   const sortMenu = useMenu();
-  const { isLogged } = useAuth();
-  const { data, isLoading, isError } = useQuery(
-    ["products", isLogged],
-    getProducts
-  );
   const [filterSelection, setFilterSelection] = useQueryParam(
     "filter",
     JsonParam
@@ -60,9 +53,6 @@ const useMarketplace = () => {
   };
 
   return {
-    products: data,
-    isFetchingProducts: isLoading,
-    isFetchingProductsError: isError,
     filters,
     handleSelectFilterValue,
     handleCheckboxFilterValues,

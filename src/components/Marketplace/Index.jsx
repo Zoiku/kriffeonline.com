@@ -54,11 +54,10 @@ export const MarketplaceProductSeleton = () => (
 );
 
 export const MarketplaceProduct = ({ product }) => {
-  const { handleAddProductToFavorites } = useFavorites();
+  const { handletoggleFavoriteProduct } = useFavorites();
 
   return (
     <NavLink
-      onClick={(e) => e.stopPropagation()}
       to={`/marketplace/${product.product_no}`}
       className="marketplace-product"
     >
@@ -68,8 +67,11 @@ export const MarketplaceProduct = ({ product }) => {
         </div>
         <div className="marketplace-product-add-to-favorite">
           <IconButton
-            onClick={() => handleAddProductToFavorites(product.product_no)}
-            sx={{ bgcolor: "white" }}
+            onClick={(e) => {
+              e.preventDefault();
+              handletoggleFavoriteProduct(product.product_no, product.is_saved);
+            }}
+            sx={{ backgroundColor: "white" }}
           >
             {product.is_saved ? (
               <FavoriteRoundedIcon fontSize="small" />

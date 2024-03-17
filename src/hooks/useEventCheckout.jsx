@@ -12,7 +12,6 @@ const checkoutAtom = atom({
 
 const useEventCheckout = () => {
   const [checkout, setCheckout] = useAtom(checkoutAtom);
-
   const checkoutSummary = useMemo(() => {
     if (checkout.tickets.length > 0) {
       return {

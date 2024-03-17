@@ -7,13 +7,11 @@ const getEventDetailByEventNo = async (eventNo) => {
 };
 
 const useEvent = (eventNo) => {
-  const { data, isLoading, isError } = useQuery(
-    "event",
-    () => getEventDetailByEventNo(eventNo),
-    {
-      cacheTime: 0,
-    }
-  );
+  const { data, isLoading, isError } = useQuery({
+    queryKey: "event",
+    queryFn: () => getEventDetailByEventNo(eventNo),
+    cacheTime: 0,
+  });
 
   const countdown = useCountdown(data?.date);
 

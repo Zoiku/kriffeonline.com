@@ -1,5 +1,5 @@
 import "../styles/Marketplace.css";
-import useMarketplace from "../hooks/useMarketplace";
+import useMarketplace, { getProducts } from "../hooks/useMarketplace";
 import {
   SelectCheckboxFilterValues,
   MarketplaceProduct,
@@ -10,12 +10,15 @@ import {
   MarketplaceErrorPage,
 } from "../components/Marketplace/Index";
 import CenteredSection from "../components/Centered";
+import { useQuery } from "react-query";
 
 const Marketplace = () => {
+  const productsQuery = useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
+
   const {
-    products,
-    isFetchingProducts,
-    isFetchingProductsError,
     filters,
     handleSelectFilterValue,
     handleCheckboxFilterValues,
@@ -25,10 +28,12 @@ const Marketplace = () => {
 
   return (
     <div className="marketplace-page">
-      <CenteredSection className="marketplace-display">
+      <CenteredSection mobileWithPadding className={"marketplace-display"}>
         <div className="marketplace-display-inner marketplace-display-filters">
           <div className="marketplace-display-filters-sticky">
-            <div className="marketplace-display-filters-container-label page-title">Marketplace</div>
+            <div className="marketplace-display-filters-container-label page-title">
+              Marketplace
+            </div>
             <div className="marketplace-display-filters-options">
               {filters.map((filter, index) => (
                 <MarketFilterGroupCollapsable key={index} title={filter.title}>
@@ -65,21 +70,22 @@ const Marketplace = () => {
             </div>
           </div>
         </div>
+
         <div className="marketplace-display-inner marketplace-display-products">
-          {isFetchingProducts ? (
+          {productsQuery.isLoading ? (
             <div className="marketplace-products">
-              {Array.from(Array(20)).map((_, index) => (
+              {Array.from(Array(18)).map((_, index) => (
                 <MarketplaceProductSeleton key={index} />
               ))}
             </div>
-          ) : isFetchingProductsError ? (
+          ) : productsQuery.isError ? (
             <MarketplaceErrorPage />
-          ) : products ? (
-            products.length === 0 ? (
+          ) : productsQuery.data ? (
+            productsQuery.data.length === 0 ? (
               <MarketplaceNoProductsPage />
             ) : (
               <div className="marketplace-products">
-                {products.map((product, index) => (
+                {productsQuery.data.map((product, index) => (
                   <MarketplaceProduct key={index} product={product} />
                 ))}
               </div>

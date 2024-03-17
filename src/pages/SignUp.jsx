@@ -21,9 +21,9 @@ const SignUp = () => {
                 required
                 autoFocus
                 onChange={handleChange}
-                name={"name"}
+                name={"fullname"}
                 label={"Your name"}
-                value={values.name}
+                value={values.fullname}
               />
               <Input
                 required
@@ -36,15 +36,15 @@ const SignUp = () => {
               <Input
                 required
                 onChange={handleChange}
-                name={"mobile"}
+                name={"phonenumber"}
                 label={"Mobile"}
-                value={values.mobile}
+                value={values.phonenumber}
               />
               <Input
                 required
                 onChange={handleChange}
                 name={"password"}
-                label={"Enter password"}
+                label={"Password"}
                 type={"password"}
                 value={values.password}
               />

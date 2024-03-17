@@ -10,6 +10,8 @@ import Input from "../Input";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Dialog from "../Dialog";
 import useDialog from "../../hooks/useDialog";
+import useAlert from "../../hooks/useAlert";
+import qr from "../../assets/Misc/qr.png";
 
 export const EventDetailErrorPage = () => (
   <div>
@@ -24,6 +26,12 @@ export const EventPageLoading = () => (
     <CenteredSection className={"events-loading-page"}>
       Please wait...
     </CenteredSection>
+  </div>
+);
+
+export const EventsErrorPage = () => (
+  <div className="events-error-page">
+    <div>Something went wrong...</div>
   </div>
 );
 
@@ -97,20 +105,23 @@ export const EventDetailsSection = ({ title, children }) => (
   </div>
 );
 
-export const EventCountdown = ({ countdown }) =>
-  countdown ? (
-    <div className="event-page-countdown-values">
-      <div>{countdown?.days}d</div>
-      <div>:</div>
-      <div>{countdown?.hours}h</div>
-      <div>:</div>
-      <div>{countdown?.minutes}m</div>
-      <div>:</div>
-      <div>{countdown?.seconds}s</div>
-    </div>
-  ) : (
-    <span>- - - -</span>
-  );
+export const EventCountdown = ({ countdown }) => (
+  <div className="event-page-countdown-values">
+    {countdown ? (
+      <>
+        <div>{countdown?.days}d</div>
+        <div>:</div>
+        <div>{countdown?.hours}h</div>
+        <div>:</div>
+        <div>{countdown?.minutes}m</div>
+        <div>:</div>
+        <div>{countdown?.seconds}s</div>
+      </>
+    ) : (
+      <span className="countdown-expired">Expired</span>
+    )}
+  </div>
+);
 
 const EventCheckoutTicketTypeForm = ({ event }) => {
   const { handleChangeTickets, tickets } = useEventCheckout();
@@ -127,7 +138,9 @@ const EventCheckoutTicketTypeForm = ({ event }) => {
                 <div className="event-checkout-ticket-type-name">
                   {ticketType.name}
                 </div>
-                <div>{ticketType.description}</div>
+                <div className="event-checkout-ticket-type-description">
+                  {ticketType.description}
+                </div>
                 <div className="event-checkout-ticket-type-information">
                   {ticketType.package_info}
                 </div>
@@ -221,12 +234,33 @@ const EventCheckoutContactInformationForm = () => {
 };
 
 const EventCheckoutReviewForm = () => {
+  const { contactInformation } = useEventCheckout();
+
   return (
     <div className="event-checkout-form">
       <div className="event-checkout-form-head">
-        <div>Review and Submit</div>
+        <div>Contact Information Summary</div>
       </div>
-      <div className="event-checkout-form-body"></div>
+      <div className="event-checkout-form-body">
+        <div className="event-checkout-contact-inputs">
+          <Input
+            label={"First Name"}
+            value={contactInformation.firstName}
+            disabled
+          />
+          <Input
+            label={"Last Name"}
+            value={contactInformation.lastName}
+            disabled
+          />
+          <Input label={"Email"} value={contactInformation.email} disabled />
+          <Input
+            label={"Phone Number"}
+            value={contactInformation.phoneNumber}
+            disabled
+          />
+        </div>
+      </div>
     </div>
   );
 };
@@ -236,7 +270,7 @@ const EventCheckoutSummary = ({ event }) => {
 
   return (
     <div className="event-checkout-summary">
-      <div className="event-checkout-form-head">Summary</div>
+      <div className="event-checkout-form-head">Ticket Information Summary</div>
       <div className="event-checkout-form-body no-padding">
         {tickets.length > 0 ? (
           <div>
@@ -274,7 +308,22 @@ const EventCheckoutSummary = ({ event }) => {
   );
 };
 
+const EventPaymentReceiptConfirmation = () => (
+  <div className="event-payment-receipt-confirmation-container">
+    <div className="event-payment-receipt-confirmation">
+      <div className="event-payment-receipt-confirmation-qr-code">
+        <img src={qr} alt="" />
+      </div>
+      <div className="event-payment-receipt-confirmation">
+        Scan or check your email for your receipt
+      </div>
+    </div>
+  </div>
+);
+
 export const EventCheckout = ({ event, handleCloseDrawer }) => {
+  const { handleOpenSuccessAlert } = useAlert();
+
   const {
     activeStep,
     steps,
@@ -287,6 +336,7 @@ export const EventCheckout = ({ event, handleCloseDrawer }) => {
     1: <EventCheckoutTicketTypeForm event={event} />,
     2: <EventCheckoutContactInformationForm />,
     3: <EventCheckoutReviewForm />,
+    4: <EventPaymentReceiptConfirmation />,
   };
 
   const activeForm = activeFormMap[activeStep];
@@ -303,8 +353,13 @@ export const EventCheckout = ({ event, handleCloseDrawer }) => {
     dialog.handleClose();
   };
 
+  const handleCompletEventCheckout = () => {
+    handleExitEventCheckout();
+    handleOpenSuccessAlert("Order placed successuflly");
+  };
+
   return (
-    <div className="event-checkout">
+    <div className={"event-checkout"}>
       <Dialog
         open={dialog.open}
         handleClose={dialog.handleClose}
@@ -325,23 +380,33 @@ export const EventCheckout = ({ event, handleCloseDrawer }) => {
         <div className="event-checkout-stepper">
           <Stepper activeStep={activeStep} steps={steps} />
         </div>
-        <div className="event-checkout-content">
-          {activeStep !== steps.length - 1 && <div>{activeForm}</div>}
-          <EventCheckoutSummary event={event} />
+        <div className={"event-checkout-content"}>
+          {activeStep < 4 && activeForm}
+          {activeStep < 4 && <EventCheckoutSummary event={event} />}
+          {activeStep === 4 && activeForm}
         </div>
       </div>
       <div className="event-checkout-footer">
-        {activeStep > 1 && (
+        {activeStep > 1 && activeStep !== 4 && (
           <Button
             sx={{ width: 150 }}
             onClick={handlePreviousStep}
             label={"Back"}
           />
         )}
-        {activeStep < steps.length - 1 ? (
+
+        {activeStep < 4 && (
           <Button sx={{ width: 150 }} onClick={handleNextStep} label={"Next"} />
-        ) : (
-          <Button sx={{ width: 150 }} label={"Checkout"} />
+        )}
+
+        {activeStep === 4 && (
+          <div className="event-payment-receipt-confirmation-button">
+            <Button
+              onClick={handleCompletEventCheckout}
+              sx={{ width: 150 }}
+              label={"Done"}
+            />
+          </div>
         )}
       </div>
     </div>

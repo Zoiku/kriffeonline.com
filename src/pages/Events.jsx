@@ -1,24 +1,25 @@
 import "../styles/Events.css";
 import CenteredSection from "../components/Centered";
-import useEvents from "../hooks/useEvents";
+import useEvents, { getEvents } from "../hooks/useEvents";
 import {
   EventItem,
   EventItemSkeleton,
   EventDetailErrorPage,
+  EventsErrorPage,
 } from "../components/Events/Index";
 import Menu from "../components/Menu";
 import { MenuItem } from "@mui/material";
 import headerImage from "../assets/Overview/manreadings.6198af54313c7212de20.png";
+import { useQuery } from "react-query";
 
 const Events = () => {
-  const {
-    events,
-    isFetchingEvents,
-    isFetchingEventsError,
-    categoryFilterMenu,
-    dateFilterMenu,
-    eventTypeFilterMenu,
-  } = useEvents();
+  const eventsQuery = useQuery({
+    queryKey: ["events"],
+    queryFn: getEvents,
+  });
+
+  const { categoryFilterMenu, dateFilterMenu, eventTypeFilterMenu } =
+    useEvents();
 
   return (
     <div className="events-page">
@@ -29,8 +30,8 @@ const Events = () => {
         <div className="event-page-header-text-container"></div>
       </div>
 
-      <CenteredSection className={"events-container"}>
-        <div className="events-header">
+      <CenteredSection mobileWithPadding className={"events-container"}>
+        <div className={"events-header"}>
           <div className="page-title">Upcoming Events</div>
           <div className="events-header-filters">
             <Menu
@@ -67,20 +68,20 @@ const Events = () => {
         </div>
 
         <div className="events-container">
-          {isFetchingEvents ? (
+          {eventsQuery.isLoading ? (
             <div className="events">
               {Array.from(Array(12)).map((_, index) => (
                 <EventItemSkeleton key={index} />
               ))}
             </div>
-          ) : isFetchingEventsError ? (
-            <>Something went wrong...</>
-          ) : events ? (
-            events.length === 0 ? (
+          ) : eventsQuery.isError ? (
+            <EventsErrorPage />
+          ) : eventsQuery.data ? (
+            eventsQuery.data.length === 0 ? (
               <>No events</>
             ) : (
               <div className="events">
-                {events.map((event, index) => (
+                {eventsQuery.data.map((event, index) => (
                   <EventItem key={index} event={event} />
                 ))}
               </div>

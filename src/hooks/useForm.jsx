@@ -2,10 +2,12 @@ import { useFormik } from "formik";
 import useAlert from "./useAlert";
 import axios from "../services/axios";
 import useAuth from "./useAuth";
+import { useNavigate } from "react-router-dom";
 
 const useForm = (name) => {
   const { signIn } = useAuth();
-  const { handleOpenFailAlert } = useAlert();
+  const { handleOpenFailAlert, handleOpenSuccessAlert } = useAlert();
+  const navigate = useNavigate();
 
   const signInForm = {
     initialValues: {
@@ -25,14 +27,20 @@ const useForm = (name) => {
 
   const signUpForm = {
     initialValues: {
-      name: "",
+      fullname: "",
       email: "",
-      mobile: "",
+      phonenumber: "",
       password: "",
     },
     onSubmit: async (values) => {
       try {
-        await axios.get("/singup", values);
+        const result = await axios.post("/register", values);
+        if (result.status === 200) {
+          handleOpenSuccessAlert(
+            "Account created successfully, please sign in"
+          );
+          navigate("/signin");
+        }
       } catch (error) {
         handleOpenFailAlert(error.message);
       }

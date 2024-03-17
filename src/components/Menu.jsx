@@ -1,6 +1,6 @@
 import "../styles/Menu.css";
 import MuiMenu from "@mui/material/Menu";
-import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const positionMap = {
   left: {
@@ -31,7 +31,7 @@ const Menu = ({
           <div className="menu-box-inner">
             <span>{selectedItem ?? label}</span>
             <span>
-              <UnfoldMoreIcon sx={{ height: 12 }} />
+              <KeyboardArrowDownIcon  />
             </span>
           </div>
         </div>

@@ -7,7 +7,10 @@ const getFaqs = async () => {
 };
 
 const useFaqs = () => {
-  const { data, isLoading, isError } = useQuery("faqs", getFaqs);
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["faqs"],
+    queryFn: getFaqs,
+  });
   const [selectedFaqIndex, setSeelctedFaqIndex] = useState(null);
   const handleChangeSelectedFaqIndex = (index) => {
     if (index === selectedFaqIndex) {

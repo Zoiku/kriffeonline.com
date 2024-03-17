@@ -7,3 +7,13 @@
 .centered-section-inner {
   width: 1100px;
 }
+
+@media screen and (max-width: 1100px) {
+  .centered-section-inner {
+    width: 100%;
+  }
+
+  .centered-section-inner-with-padding {
+    padding: 10px;
+  }
+}

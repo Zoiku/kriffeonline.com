@@ -24,15 +24,15 @@ const FooterLink = ({ label, to, onClick }) => (
 const Footer = () => {
   return (
     <div className="footer-component">
-      <CenteredSection className={"footer-header"}>
-        <div className="footer-inner">
+      <CenteredSection mobileWidthPadding className={"footer-header"}>
+        <div className={"footer-inner"}>
           <div className="footer-company-profile">
-            <div className="footer-company-logo">
+            <div className={"footer-company-logo"}>
               <img src={logo} alt="" />
             </div>
             <div>Empowering the Christian Community</div>
           </div>
-          <div className="footer-company-links-sections">
+          <div className={"footer-company-links-sections"}>
             <FooterLinksSection title={"Company"}>
               <FooterLink to={"/about"} label={"About Us"} />
             </FooterLinksSection>
@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
         <div></div>
       </CenteredSection>
-      <CenteredSection className={"footer-footer"}>
+      <CenteredSection mobileWidthPadding className={"footer-footer"}>
         <div>© 2023 KriffeOnline LTD™. All Rights Reserved.</div>
       </CenteredSection>
     </div>

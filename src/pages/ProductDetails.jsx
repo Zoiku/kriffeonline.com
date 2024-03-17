@@ -2,7 +2,10 @@ import "../styles/ProductDetails.css";
 import CenteredSection from "../components/Centered";
 import ThumbsGallery from "../components/ThumbGallery";
 import { NavLink, useParams } from "react-router-dom";
-import useProduct from "../hooks/useProduct";
+import useProduct, {
+  getRelatedProducts,
+  getReviewsBySellerId,
+} from "../hooks/useProduct";
 import { useQuery } from "react-query";
 import {
   ProductDetailsError,
@@ -18,10 +21,6 @@ import {
 import Chip from "@mui/material/Chip";
 import useAuth from "../hooks/useAuth";
 import {
-  getRelatedProducts,
-  getReviewsBySellerId,
-} from "../utils/product-details";
-import {
   MarketplaceProduct,
   MarketplaceProductSeleton,
 } from "../components/Marketplace/Index";
@@ -31,14 +30,19 @@ import ReadMore from "../components/ReadMore";
 const ProductDetails = () => {
   const { isLogged } = useAuth();
   const { productNo } = useParams();
+
   const { product, isFetchingProduct, isFetchingProductError } =
     useProduct(productNo);
-  const reviewsQuery = useQuery(["reviews", product], () =>
-    getReviewsBySellerId(product?.user_id)
-  );
-  const relatedProductsQuery = useQuery(["relatedProducts", product], () =>
-    getRelatedProducts(product?.category)
-  );
+
+  const reviewsQuery = useQuery({
+    queryKey: ["reviews", product?.category],
+    queryFn: () => getReviewsBySellerId(product?.user_id),
+  });
+
+  const relatedProductsQuery = useQuery({
+    queryKey: ["relatedProducts", product?.category],
+    queryFn: () => getRelatedProducts(product?.category),
+  });
 
   return isFetchingProduct ? (
     <ProductDetailsLoading />
@@ -47,10 +51,10 @@ const ProductDetails = () => {
   ) : (
     <div className="product-details-page">
       <CenteredSection className={"product-details"}>
-        <div className="product-details-gallery">
+        <div className={"product-details-gallery"}>
           <ThumbsGallery imageSrcs={[{}, {}, {}, {}]} />
         </div>
-        <div className="product-overview-sections">
+        <div className={"product-overview-sections"}>
           <ProductOverviewSection className={"product-overview-head"}>
             <div className="product-detail-category">{product.category}</div>
             <div className="product-detail-name">{product.name}</div>
@@ -92,29 +96,34 @@ const ProductDetails = () => {
             </ProductOverviewSectionCollapsable>
           )}
 
-          <ProductOverviewSectionCollapsable title={"Product Tags"}>
-            <div className="product-tags">
-              {product.tags.map((tag, index) => (
-                <Chip
-                  sx={{ borderRadius: 1 }}
-                  variant="contained"
-                  size="small"
-                  label={tag}
-                  key={index}
-                />
-              ))}
-            </div>
-          </ProductOverviewSectionCollapsable>
+          {product.tags && product.tags.length > 0 && (
+            <ProductOverviewSectionCollapsable title={"Product Tags"}>
+              <div className="product-tags">
+                {product.tags.map((tag, index) => (
+                  <Chip
+                    sx={{ borderRadius: 1 }}
+                    variant="contained"
+                    size="small"
+                    label={tag}
+                    key={index}
+                  />
+                ))}
+              </div>
+            </ProductOverviewSectionCollapsable>
+          )}
 
           <ProductOverviewSection>
             <MarketPlaceProductSellerTip />
           </ProductOverviewSection>
         </div>
       </CenteredSection>
-      <CenteredSection className={"related-products-container"}>
-        <div className="page-title">Similar items you may like</div>
+      <CenteredSection
+        mobileWidthPadding
+        className={"related-products-container"}
+      >
+        <div className="page-title">Similar products</div>
         {relatedProductsQuery.isLoading ? (
-          <div className="related-products">
+          <div className={"related-products"}>
             {Array.from(Array(4)).map((_, index) => (
               <MarketplaceProductSeleton key={index} />
             ))}
@@ -123,7 +132,7 @@ const ProductDetails = () => {
           <>Something went wrong...</>
         ) : relatedProductsQuery.data &&
           relatedProductsQuery.data.length > 0 ? (
-          <div className="related-products">
+          <div className={"related-products"}>
             {selectRandomN(relatedProductsQuery.data, 4).map(
               (relatedProduct, index) => (
                 <MarketplaceProduct key={index} product={relatedProduct} />
@@ -134,7 +143,7 @@ const ProductDetails = () => {
           <>No related products</>
         )}
       </CenteredSection>
-      <CenteredSection className={"seller-review-container"}>
+      <CenteredSection mobileWidthPadding className={"seller-review-container"}>
         <div className="page-title">Customer feedback</div>
         {isLogged ? (
           reviewsQuery.isLoading ? (

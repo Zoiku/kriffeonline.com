@@ -3,11 +3,6 @@ import useFaqs from "../hooks/useFaqs";
 import Skeleton from "@mui/material/Skeleton";
 import Collapse from "@mui/material/Collapse";
 import { ContactCard } from "../components/Contact/Index";
-import emailIcon from "../assets/Svgs/New message-cuate.svg";
-import callIcon from "../assets/Svgs/Calling-cuate.svg";
-import locationIcon from "../assets/Svgs/Smart mobility-pana.svg";
-
-
 
 const Contact = () => {
   const {
@@ -35,19 +30,25 @@ const Contact = () => {
           <div className="contact-cards">
             <ContactCard
               value={"info@kriffeonline.com"}
-              title={"Our Email"}
-              icon={emailIcon}
-            />
+              title={"Email Support"}
+              clickLabel={"Send email"}
+            >
+              Prefer to email? Send us an email and we'll get back to you soon
+            </ContactCard>
             <ContactCard
               value={"info@kriffeonline.com"}
-              title={"Our Contact"}
-              icon={callIcon}
-            />
+              title={"Call Centre"}
+              clickLabel={"Call now"}
+            >
+              Our call help center is open 24/7, we're just a click away
+            </ContactCard>
             <ContactCard
               value={"info@kriffeonline.com"}
-              title={"Our Location"}
-              icon={locationIcon}
-            />
+              title={"Locate Us"}
+              clickLabel={"Visit Us"}
+            >
+              Want to visit us?
+            </ContactCard>
           </div>
           <div className="faqs-container">
             <div className="faqs-section-header">
@@ -71,7 +72,7 @@ const Contact = () => {
                 ))}
               </div>
             ) : isFetchingFaqsError ? (
-              <>Something went wrong...</>
+              <center>Something went wrong...</center>
             ) : (
               <div className="faqs">
                 {faqs.map((faq, index) => (

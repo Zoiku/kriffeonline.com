@@ -1,11 +1,12 @@
-export const ContactCard = ({ icon, title, value }) => (
+export const ContactCard = ({ title, clickLabel, children }) => (
   <div className="contact-card">
-    <div className="contact-card-icon">
-      <img src={icon} alt="" />
-    </div>
+    <div className="contact-card-header">{title}</div>
     <div className="contact-card-details">
-      <div className="contact-card-details-title">{title}</div>
-      <div>{value}</div>
+      <p>{children}</p>
+    </div>
+    <div className="contact-card-footer">
+      <div>{clickLabel}</div>
+      <div></div>
     </div>
   </div>
 );
