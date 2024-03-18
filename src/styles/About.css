@@ -130,7 +130,7 @@
 
 @media screen and (max-width: 1100px) {
   .about-page {
-    padding: 10px;
+    padding: 10px 10px 50px;
   }
 
   .about-page-sections {
@@ -139,10 +139,6 @@
 
   .about-page-section .about-page-section-head {
     text-align: left;
-  }
-
-  .about-page-section {
-    padding: 30px;
   }
 
   .about-us-who-are-we-container {
@@ -174,5 +170,13 @@
   .home-page-about-items {
     flex-direction: column;
     gap: 80px;
+  }
+
+  .home-page-about-item {
+    padding: 0;
+  }
+
+  .home-page-about-item-index {
+    left: -50px;
   }
 }
