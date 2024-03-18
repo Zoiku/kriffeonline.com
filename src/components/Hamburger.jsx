@@ -2,10 +2,11 @@ import "../styles/Hamburger.css";
 import { push as Menu } from "react-burger-menu";
 import useHamburger from "../hooks/useHamburger";
 
-const Hamburger = () => {
+const Hamburger = (props) => {
   const { isOpen } = useHamburger();
-
-  return <Menu width={"90%"} isOpen={isOpen} pageWrapId={"page-wrap"}></Menu>;
+  return (
+    <Menu width={"90%"} {...props} isOpen={isOpen} pageWrapId={"page-wrap"} />
+  );
 };
 
 export default Hamburger;

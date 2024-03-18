@@ -40,7 +40,7 @@ const Nav = () => {
             custom={
               <NavActionButton
                 onClick={accountIconMenu.handleClick}
-                icon={<BiUser size={17} />}
+                icon={<BiUser size={18} />}
               />
             }
           >
@@ -53,7 +53,29 @@ const Nav = () => {
       </div>
     </CenteredSection>
   ) : (
-    <Hamburger />
+    <div className="nav-mobile">
+      <Hamburger />
+      <div>KriffeOnline</div>
+      {isLogged ? (
+        <Menu
+          anchorEl={accountIconMenu.anchorEl}
+          open={accountIconMenu.open}
+          handleClose={accountIconMenu.handleClose}
+          position="right"
+          custom={
+            <NavActionButton
+              onClick={accountIconMenu.handleClick}
+              icon={<BiUser size={25} />}
+            />
+          }
+        >
+          <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
+          <MenuItem onClick={signOut}>Logout</MenuItem>
+        </Menu>
+      ) : (
+        <NavActionButton to={"/signin"} icon={<BiUser size={25} />} />
+      )}
+    </div>
   );
 };
 

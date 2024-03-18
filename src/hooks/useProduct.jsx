@@ -43,7 +43,7 @@ export const getRelatedProducts = async (category) => {
 
 const useProduct = (productNo) => {
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["product"],
+    queryKey: ["product", productNo],
     queryFn: () => getProductByProductNo(productNo),
   });
 

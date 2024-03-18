@@ -1,10 +1,8 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: fixed;
   width: 26px;
   height: 20px;
-  left: 20px;
-  top: 20px;
+  position: relative;
 }
 
 /* Color/shape of burger icon bars */
