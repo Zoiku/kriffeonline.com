@@ -8,7 +8,6 @@ import {
   EventsErrorPage,
 } from "../components/Events/Index";
 import Menu from "../components/Menu";
-import { MenuItem } from "@mui/material";
 import headerImage from "../assets/Overview/manreadings.6198af54313c7212de20.png";
 import { useQuery } from "react-query";
 
@@ -41,7 +40,7 @@ const Events = () => {
               handleClose={categoryFilterMenu.handleClose}
               label={"Category"}
             >
-              <MenuItem>Select Category</MenuItem>
+              <span>Select Category</span>
             </Menu>
 
             <Menu
@@ -51,7 +50,7 @@ const Events = () => {
               handleClose={eventTypeFilterMenu.handleClose}
               label={"Event Type"}
             >
-              <MenuItem>Select Event Type</MenuItem>
+              <span>Select Event Type</span>
             </Menu>
 
             <Menu
@@ -62,7 +61,7 @@ const Events = () => {
               label={"Date"}
               position="right"
             >
-              <MenuItem>Select Date</MenuItem>
+              <span>Select Date</span>
             </Menu>
           </div>
         </div>
