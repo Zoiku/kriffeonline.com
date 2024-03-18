@@ -150,7 +150,6 @@
   .product-details {
     display: flex;
     flex-direction: column;
-    gap: 50px;
   }
 
   .product-details-gallery {

@@ -29,7 +29,7 @@ const ThumbGallery = ({ imageSrcs }) => {
           </div>
         </div>
       ) : (
-        <div className="swiper"></div>
+        <div className="thumb-galler"></div>
       )}
     </div>
   );

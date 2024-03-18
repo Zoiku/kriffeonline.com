@@ -48,7 +48,7 @@ const HomePage = () => {
 
         <HomeSectionWithHeading
           heading={"Top Trending Products"}
-          to={{ path: "/marketplace", label: "View all products" }}
+          to={{ path: "/marketplace", label: "View all" }}
           headingHelper={"Discover the latest and hottest ads and deals"}
         >
           {productsQuery.isLoading ? (
@@ -78,7 +78,7 @@ const HomePage = () => {
         </HomeSectionWithHeading>
         <HomeSectionWithHeading
           heading={"Top Trending Events"}
-          to={{ path: "/events", label: "See all events" }}
+          to={{ path: "/events", label: "See all" }}
           headingHelper={
             "Discover and purchase your tickets for the latest events"
           }

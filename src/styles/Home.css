@@ -103,9 +103,23 @@
   }
 
   .home-section-head {
-    flex-direction: column;
-    align-items: flex-start;
     gap: 10px;
+    align-items: center;
+  }
+
+  .home-section-head > * {
+    display: flex;
+    align-items: center;
+  }
+
+  .home-section-to-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .home-section-to-link > * {
+    display: flex;
+    align-items: center;
   }
 
   .home-section-head-title-helper {

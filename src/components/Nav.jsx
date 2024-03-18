@@ -1,6 +1,7 @@
 import "../styles/Nav.css";
 import CenteredSection from "./Centered";
-import { BiUser, BiHeart } from "react-icons/bi";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import { Link, NavActionButton } from "./Nav/Index";
 import Menu from "../components/Menu";
 import { MenuItem } from "@mui/material";
@@ -30,7 +31,10 @@ const Nav = () => {
       </div>
 
       <div className="nav-action-buttons">
-        <NavActionButton to={"/favorites"} icon={<BiHeart size={17} />} />
+        <NavActionButton
+          to={"/favorites"}
+          icon={<FavoriteBorderRoundedIcon fontSize={"inherit"} />}
+        />
         {isLogged ? (
           <Menu
             anchorEl={accountIconMenu.anchorEl}
@@ -40,7 +44,7 @@ const Nav = () => {
             custom={
               <NavActionButton
                 onClick={accountIconMenu.handleClick}
-                icon={<BiUser size={18} />}
+                icon={<AccountCircleOutlinedIcon fontSize={"inherit"} />}
               />
             }
           >
@@ -48,7 +52,10 @@ const Nav = () => {
             <MenuItem onClick={signOut}>Logout</MenuItem>
           </Menu>
         ) : (
-          <NavActionButton to={"/signin"} icon={<BiUser size={18} />} />
+          <NavActionButton
+            to={"/signin"}
+            icon={<AccountCircleOutlinedIcon fontSize={"inherit"} />}
+          />
         )}
       </div>
     </CenteredSection>
@@ -65,7 +72,7 @@ const Nav = () => {
           custom={
             <NavActionButton
               onClick={accountIconMenu.handleClick}
-              icon={<BiUser size={25} />}
+              icon={<AccountCircleOutlinedIcon fontSize={"inherit"} />}
             />
           }
         >
@@ -73,7 +80,10 @@ const Nav = () => {
           <MenuItem onClick={signOut}>Logout</MenuItem>
         </Menu>
       ) : (
-        <NavActionButton to={"/signin"} icon={<BiUser size={25} />} />
+        <NavActionButton
+          to={"/signin"}
+          icon={<AccountCircleOutlinedIcon fontSize={"inherit"} />}
+        />
       )}
     </div>
   );
