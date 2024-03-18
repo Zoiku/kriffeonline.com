@@ -8,11 +8,14 @@ import {
   FavoritesLoadingPage,
 } from "../components/Favorites/Index";
 import { useQuery } from "react-query";
+import useAuth from "../hooks/useAuth";
 
 const Favorites = () => {
+  const { isLogged } = useAuth();
+
   const favoriteItemsQuery = useQuery({
-    queryKey: ["favorites"],
-    queryFn: getFavorites,
+    queryKey: ["favorites", isLogged],
+    queryFn: () => getFavorites(isLogged),
   });
 
   return (

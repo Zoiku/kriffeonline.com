@@ -3,17 +3,7 @@ import useFavorites from "./useFavorites";
 import axios from "../services/axios";
 
 export const getProductByProductNo = async (productNo) => {
-  // return (await axios.get(`get_product_by_id?id=${productNo}`)).data.product;
-  return {
-    name: "Test",
-    category: "Test",
-    description: "Test",
-    product_details: [{ attribute_name: "age_group", attribute_value: "Test" }],
-    sellername: "Test",
-    sellerphonenumber: "Test",
-    location: "Test",
-    tags: ["Test"],
-  };
+  return (await axios.get(`get_product_by_id?id=${productNo}`)).data.product;
 };
 
 export const getReviewsBySellerId = async (sellerId) => {

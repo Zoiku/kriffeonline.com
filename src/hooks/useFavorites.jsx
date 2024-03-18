@@ -2,8 +2,12 @@ import { useMutation, useQueryClient } from "react-query";
 import axios from "../services/axios";
 import useAlert from "./useAlert";
 
-export const getFavorites = async () => {
-  return (await axios.get("/current_user_favorites")).data.favorites;
+export const getFavorites = async (isLogged) => {
+  if (isLogged) {
+    return (await axios.get("/current_user_favorites")).data.favorites;
+  } else {
+    return null;
+  }
 };
 
 const toggleFavoriteProduct = async (productNo, isFavorited) => {
