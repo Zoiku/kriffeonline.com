@@ -4,11 +4,13 @@ import Footer from "../components/Footer";
 
 const Public = () => {
   return (
-    <>
+    <div id="outer-container">
       <Nav />
-      <Outlet />
-      <Footer />
-    </>
+      <main id="page-wrap">
+        <Outlet />
+        <Footer />
+      </main>
+    </div>
   );
 };
 

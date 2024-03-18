@@ -1,46 +1,3 @@
-.provided-service {
-  display: flex;
-  flex-direction: column;
-  padding: 25px;
-  background-color: #efefef;
-  color: #efefef;
-}
-
-.home-page-about-items {
-  display: flex;
-  justify-content: center;
-  color: inherit;
-  margin-top: 20px;
-}
-
-.home-page-about-item {
-  position: relative;
-  padding: 40px 50px 0;
-  flex: 1;
-  color: inherit;
-}
-
-.home-page-about-item-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  color: inherit;
-}
-
-.home-page-about-item-index {
-  top: -50px;
-  left: 0;
-  position: absolute;
-  color: #f4f4f49d;
-  z-index: -1;
-  user-select: none;
-}
-
-.home-page-about-item-index span {
-  font-size: 150px;
-  font-weight: bold;
-}
-
 .home-page-about-item-heading {
   font-weight: 600;
 }
@@ -116,6 +73,41 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.home-page-about-items {
+  display: flex;
+  justify-content: center;
+  color: inherit;
+  margin-top: 20px;
+}
+
+.home-page-about-item {
+  position: relative;
+  padding: 40px 50px 0;
+  flex: 1;
+  color: inherit;
+}
+
+.home-page-about-item-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: inherit;
+}
+
+.home-page-about-item-index {
+  top: -50px;
+  left: 0;
+  position: absolute;
+  color: #f4f4f49d;
+  z-index: -1;
+  user-select: none;
+}
+
+.home-page-about-item-index span {
+  font-size: 150px;
+  font-weight: bold;
+}
+
 .about-page-section-mission-content {
   display: flex;
   flex-direction: column;
@@ -126,4 +118,61 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 10px;
+}
+
+.provided-service {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background-color: #efefef;
+  color: #efefef;
+}
+
+@media screen and (max-width: 1100px) {
+  .about-page {
+    padding: 10px;
+  }
+
+  .about-page-sections {
+    gap: 70px;
+  }
+
+  .about-page-section .about-page-section-head {
+    text-align: left;
+  }
+
+  .about-page-section {
+    padding: 30px;
+  }
+
+  .about-us-who-are-we-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-us-who-are-we {
+    width: 100%;
+    text-align: left;
+  }
+
+  .about-page-section-styled-container {
+    height: auto;
+  }
+
+  .about-page-section-styled-content {
+    width: 100%;
+  }
+
+  .about-page-section-styled-content-inner {
+    width: 100%;
+  }
+
+  .about-page-section-styled-image {
+    display: none;
+  }
+
+  .home-page-about-items {
+    flex-direction: column;
+    gap: 80px;
+  }
 }

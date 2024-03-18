@@ -14,10 +14,13 @@ import ReadMore from "../components/ReadMore";
 import Button from "../components/Button";
 import Drawer from "../components/Drawer";
 import useDrawer from "../hooks/useDrawer";
+import useScreen from "../hooks/useScreen";
 import Avatar from "@mui/material/Avatar";
 
 const EventDetails = () => {
-  const { anchor, open, handleClose, handleOpen } = useDrawer("right");
+  const { isDesktop } = useScreen();
+  const anchorDirection = isDesktop ? "right" : "bottom";
+  const { anchor, open, handleClose, handleOpen } = useDrawer(anchorDirection);
   const { eventNo } = useParams();
   const { event, isFetchingEvent, isFetchingEventError, countdown } =
     useEvent(eventNo);

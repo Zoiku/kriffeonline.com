@@ -4,7 +4,7 @@
 
 .home-page-header {
   background-color: rgb(20 30 36);
-  height: 450px;
+  height: 550px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,8 +69,7 @@
   color: gray;
 }
 
-.home-page-section-trending-grid,
-.home-page-provided-services {
+.home-page-section-row-items {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 10px;
@@ -109,20 +108,18 @@
     gap: 10px;
   }
 
-  .home-page-section-trending-grid,
-  .home-page-provided-services {
+  .home-section-head-title-helper {
+    display: none;
+  }
+
+  .home-page-section-row-items {
     display: flex;
     gap: 10px;
     flex-wrap: nowrap;
     overflow-x: auto;
   }
 
-  .home-page-section-trending-grid > div {
-    flex: 0 0 auto;
-    width: 80%;
-  }
-
-  .home-page-provided-services > div {
+  .home-page-section-row-items > * {
     flex: 0 0 auto;
     width: 80%;
   }

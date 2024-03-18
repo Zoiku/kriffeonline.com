@@ -39,7 +39,7 @@ const HomePage = () => {
             "Providing services tailored to our different categories of users"
           }
         >
-          <div className="home-page-provided-services">
+          <div className="home-page-section-row-items">
             {providedServices.slice(0, 4).map((providedService, index) => (
               <ProvidedService key={index} providedService={providedService} />
             ))}
@@ -51,28 +51,30 @@ const HomePage = () => {
           to={{ path: "/marketplace", label: "View all products" }}
           headingHelper={"Discover the latest and hottest ads and deals"}
         >
-          <div className="home-page-section-trending-grid">
-            {productsQuery.isLoading ? (
-              Array.from(Array(4)).map((_, index) => (
+          {productsQuery.isLoading ? (
+            <div className="home-page-section-row-items">
+              {Array.from(Array(4)).map((_, index) => (
                 <MarketplaceProductSeleton key={index} />
-              ))
-            ) : productsQuery.isError ? (
-              <>Something went wrong...</>
-            ) : productsQuery.data ? (
-              productsQuery.data.length === 0 ? (
-                <>New products coming soon</>
-              ) : (
-                productsQuery.data
+              ))}
+            </div>
+          ) : productsQuery.isError ? (
+            <>Something went wrong...</>
+          ) : productsQuery.data ? (
+            productsQuery.data.length > 0 ? (
+              <div className="home-page-section-row-items">
+                {productsQuery.data
                   ?.sort((a, b) => b.views - a.views)
                   .slice(0, 4)
                   .map((product, index) => (
                     <MarketplaceProduct product={product} key={index} />
-                  ))
-              )
+                  ))}
+              </div>
             ) : (
-              <>Something went wrong...</>
-            )}
-          </div>
+              <>Coming soon</>
+            )
+          ) : (
+            <>Something went wrong...</>
+          )}
         </HomeSectionWithHeading>
         <HomeSectionWithHeading
           heading={"Top Trending Events"}
@@ -81,28 +83,30 @@ const HomePage = () => {
             "Discover and purchase your tickets for the latest events"
           }
         >
-          <div className="home-page-section-trending-grid">
-            {eventsQuery.isLoading ? (
-              Array.from(Array(4)).map((_, index) => (
+          {eventsQuery.isLoading ? (
+            <div className="home-page-section-row-items">
+              {Array.from(Array(4)).map((_, index) => (
                 <EventItemSkeleton key={index} />
-              ))
-            ) : eventsQuery.isError ? (
-              <>Something went wrong...</>
-            ) : eventsQuery.data ? (
-              eventsQuery.data.length === 0 ? (
-                <>New events coming soon</>
-              ) : (
-                eventsQuery.data
-                  ?.sort((a, b) => b.views - a.views)
+              ))}
+            </div>
+          ) : eventsQuery.isError ? (
+            <>Something went wrong...</>
+          ) : eventsQuery.data ? (
+            eventsQuery.data.length > 0 ? (
+              <div className="home-page-section-row-items">
+                {eventsQuery.data
+                  .sort((a, b) => b.views - a.views)
                   .slice(0, 4)
                   .map((event, index) => (
                     <EventItem event={event} key={index} />
-                  ))
-              )
+                  ))}
+              </div>
             ) : (
-              <>Something went wrong...</>
-            )}
-          </div>
+              <>Coming soon</>
+            )
+          ) : (
+            <>Something went wrong...</>
+          )}
         </HomeSectionWithHeading>
       </div>
     </div>

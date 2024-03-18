@@ -70,7 +70,7 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  font-size: 110px;
+  font-size: 100px;
   font-weight: bolder;
 }
 
@@ -206,10 +206,9 @@
 }
 
 .event-ticket-type-quantity-input {
-  padding: 5px;
-  border-color: white;
-  border-radius: 5px;
+  border: none;
   flex: 1;
+  padding: 5px;
 }
 
 .event-checkout-contact-inputs {
@@ -279,16 +278,45 @@
 }
 
 @media screen and (max-width: 1110px) {
-  .event-checkout-form {
+  .event-page-countdown-values {
+    font-size: xx-large;
+    font-weight: bolder;
+  }
+
+  .event-page-content {
+    flex-direction: column;
+    padding: 0 0 50px;
+  }
+
+  .event-page-images-container {
+    order: 1;
     width: 100%;
+  }
+
+  .event-page-images-sticky {
+    height: 300px;
+  }
+
+  .event-page-detail-sections {
+    order: 2;
+    padding: 10px;
   }
 
   .event-checkout {
     width: 100%;
   }
+
+  .event-checkout-form {
+    width: 100%;
+  }
+
   .event-checkout-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+
+  .event-checkout-summary {
+    width: 100%;
   }
 }

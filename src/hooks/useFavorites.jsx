@@ -62,7 +62,7 @@ const useFavorites = () => {
     try {
       await mutateFavorites.mutateAsync({ productNo, isFavorited });
     } catch (error) {
-      handleOpenFailAlert("Please try again");
+      handleOpenFailAlert(error.message);
     }
   };
 

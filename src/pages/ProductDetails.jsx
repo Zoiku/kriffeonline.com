@@ -118,7 +118,7 @@ const ProductDetails = () => {
         </div>
       </CenteredSection>
       <CenteredSection
-        mobileWidthPadding
+        mobileWithPadding
         className={"related-products-container"}
       >
         <div className="page-title">Similar products</div>
@@ -143,7 +143,7 @@ const ProductDetails = () => {
           <>No related products</>
         )}
       </CenteredSection>
-      <CenteredSection mobileWidthPadding className={"seller-review-container"}>
+      <CenteredSection mobileWithPadding className={"seller-review-container"}>
         <div className="page-title">Customer feedback</div>
         {isLogged ? (
           reviewsQuery.isLoading ? (

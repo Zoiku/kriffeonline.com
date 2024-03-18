@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
         <div></div>
       </CenteredSection>
-      <CenteredSection mobileWidthPadding className={"footer-footer"}>
+      <CenteredSection mobileWithPadding className={"footer-footer"}>
         <div>© 2023 KriffeOnline LTD™. All Rights Reserved.</div>
       </CenteredSection>
     </div>

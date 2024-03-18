@@ -3,6 +3,7 @@ import CenteredSection from "../components/Centered";
 import ReadMore from "../components/ReadMore";
 import { providedServices } from "../utils/about";
 import { ProvidedService } from "../components/About/Index";
+import useScreen from "../hooks/useScreen";
 
 const AboutSectionStyled = ({ title, titleHelper, children }) => (
   <div className="about-page-section-styled">
@@ -42,6 +43,8 @@ const HomeAboutItem = ({ children, heading, index }) => (
 );
 
 const About = () => {
+  const { isDesktop } = useScreen();
+
   return (
     <div className="about-page">
       <div className="about-page-sections">
@@ -91,30 +94,32 @@ const About = () => {
         >
           <CenteredSection className="home-page-about-items">
             <HomeAboutItem index={1} heading={"Bridging the Gap"}>
-              <p>
-                We are filling a vital gap in the market by providing a
-                dedicated platform for Christian products and events in Ghana.
-              </p>
+              We are filling a vital gap in the market by providing a dedicated
+              platform for Christian products and events in Ghana.
             </HomeAboutItem>
             <HomeAboutItem index={2} heading={"Digital Transformation"}>
-              <p>
+              {isDesktop ? (
                 <ReadMore
                   maxLength={110}
                   text={
                     "With the increasing penetration of the internet and growing digital adoption, we envision a digital transformation of the way Ghanaian Christians access faith-based resources and engage with events"
                   }
                 />
-              </p>
+              ) : (
+                "With the increasing penetration of the internet and growing digital adoption, we envision a digital transformation of the way Ghanaian Christians access faith-based resources and engage with events"
+              )}
             </HomeAboutItem>
             <HomeAboutItem index={3} heading={"Convenience and Connection"}>
-              <p>
+              {isDesktop ? (
                 <ReadMore
                   maxLength={100}
                   text={
                     "Our vision is to offer a convenient and accessible platform that provides believers with the resources they need and the connections they seek. We aim to be the bridge that brings faith communities closer, allowing them to thrive and grow in their spiritual journeys."
                   }
                 />
-              </p>
+              ) : (
+                "Our vision is to offer a convenient and accessible platform that provides believers with the resources they need and the connections they seek. We aim to be the bridge that brings faith communities closer, allowing them to thrive and grow in their spiritual journeys."
+              )}
             </HomeAboutItem>
           </CenteredSection>
         </AboutSection>

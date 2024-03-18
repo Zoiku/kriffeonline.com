@@ -47,3 +47,10 @@
   object-fit: fill;
   display: none;
 }
+
+@media screen {
+  .swiper {
+    height: 400px;
+    background-color: #f3f3f3;
+  }
+}

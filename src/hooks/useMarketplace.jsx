@@ -4,7 +4,41 @@ import { JsonParam, useQueryParam } from "use-query-params";
 import useMenu from "./useMenu";
 
 export const getProducts = async () => {
-  return (await axios.get("/list_products")).data.products.data;
+  // return (await axios.get("/list_products")).data.products.data;
+  return [
+    {
+      product_no: 1,
+      price: 100,
+      is_saved: false,
+      name: "Offline Test",
+      saves: 0,
+      views: 0,
+    },
+    {
+      product_no: 2,
+      price: 100,
+      is_saved: true,
+      name: "Offline Test",
+      saves: 1,
+      views: 0,
+    },
+    {
+      product_no: 3,
+      price: 100,
+      is_saved: false,
+      name: "Offline Test",
+      saves: 0,
+      views: 0,
+    },
+    {
+      product_no: 4,
+      price: 100,
+      is_saved: false,
+      name: "Offline Test",
+      saves: 0,
+      views: 0,
+    },
+  ];
 };
 
 const useMarketplace = () => {
