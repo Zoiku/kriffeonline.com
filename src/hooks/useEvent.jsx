@@ -8,7 +8,7 @@ const getEventDetailByEventNo = async (eventNo) => {
 
 const useEvent = (eventNo) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: "event",
+    queryKey: ["event", eventNo],
     queryFn: () => getEventDetailByEventNo(eventNo),
     cacheTime: 0,
   });
