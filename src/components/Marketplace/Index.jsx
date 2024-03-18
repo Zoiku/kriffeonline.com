@@ -8,6 +8,7 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import useFavorites from "../../hooks/useFavorites";
+import useAuth from "../../hooks/useAuth";
 
 export const MarketplaceErrorPage = () => <div>Something went wrong...</div>;
 
@@ -54,6 +55,7 @@ export const MarketplaceProductSeleton = () => (
 );
 
 export const MarketplaceProduct = ({ product }) => {
+  const { isLogged } = useAuth();
   const { handletoggleFavoriteProduct } = useFavorites();
 
   return (
@@ -69,7 +71,11 @@ export const MarketplaceProduct = ({ product }) => {
           <IconButton
             onClick={(e) => {
               e.preventDefault();
-              handletoggleFavoriteProduct(product.product_no, product.is_saved);
+              handletoggleFavoriteProduct(
+                product.product_no,
+                product.is_saved,
+                isLogged
+              );
             }}
             sx={{ backgroundColor: "white" }}
           >

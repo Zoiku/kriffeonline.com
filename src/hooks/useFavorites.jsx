@@ -10,7 +10,7 @@ export const getFavorites = async (isLogged) => {
   }
 };
 
-const toggleFavoriteProduct = async (productNo, isFavorited) => {
+const toggleFavoriteProduct = async ({ productNo, isFavorited }) => {
   if (isFavorited) {
     return await axios.delete(`/remove_from_favorite?product_id=${productNo}`, {
       product_id: productNo,
@@ -62,11 +62,19 @@ const useFavorites = () => {
     },
   });
 
-  const handletoggleFavoriteProduct = async (productNo, isFavorited) => {
-    try {
-      await mutateFavorites.mutateAsync({ productNo, isFavorited });
-    } catch (error) {
-      handleOpenFailAlert(error.message);
+  const handletoggleFavoriteProduct = async (
+    productNo,
+    isFavorited,
+    isLogged
+  ) => {
+    if (isLogged) {
+      try {
+        await mutateFavorites.mutateAsync({ productNo, isFavorited });
+      } catch (error) {
+        handleOpenFailAlert(error.message);
+      }
+    } else {
+      handleOpenFailAlert("Please log in");
     }
   };
 
