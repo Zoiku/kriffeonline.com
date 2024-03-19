@@ -2,7 +2,13 @@ import Modal from "../components/Modal";
 import Drawer from "../components/Drawer";
 import useScreen from "../hooks/useScreen";
 
-const ResponsiveModal = ({ open, handleClose, children, header }) => {
+const ResponsiveModal = ({
+  open,
+  handleClose,
+  handleOpen,
+  children,
+  header,
+}) => {
   const { isDesktop } = useScreen();
 
   return isDesktop ? (
@@ -15,6 +21,7 @@ const ResponsiveModal = ({ open, handleClose, children, header }) => {
       anchor={"bottom"}
       handleClose={handleClose}
       open={open}
+      handleOpen={handleOpen}
     >
       {children}
     </Drawer>

@@ -9,9 +9,15 @@ const Drawer = ({
   anchor,
   handleClose,
   header,
+  handleOpen,
 }) => {
   return (
-    <SwipeableDrawer open={open} anchor={anchor} onClose={handleClose}>
+    <SwipeableDrawer
+      open={open}
+      anchor={anchor}
+      onClose={handleClose}
+      onOpen={handleOpen}
+    >
       <Box className={"drawer-box"}>
         {header && <div className="drawer-header">{header}</div>}
         <div className={`${bodyPadding && "drawer-body-padding"} drawer-body`}>

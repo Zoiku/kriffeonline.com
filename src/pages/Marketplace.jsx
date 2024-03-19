@@ -84,12 +84,55 @@ const Marketplace = () => {
         ) : (
           <div>
             <Drawer
+              handleOpen={handleOpen}
               handleClose={handleClose}
               open={open}
               anchor={anchor}
               header={"Marketplace Filters"}
-              bodyPadding
-            ></Drawer>
+            >
+              <div className="marketplace-display-filters-options">
+                {filters.map((filter, index) => (
+                  <MarketFilterGroupCollapsable
+                    key={index}
+                    title={filter.title}
+                  >
+                    {filter.checkbox ? (
+                      filter.values.map((value, index) => (
+                        <SelectCheckboxFilterValues
+                          key={index}
+                          value={value}
+                          checked={isCheckedFilterValueSelected(
+                            filter.name,
+                            value
+                          )}
+                          onChange={(e) =>
+                            handleCheckboxFilterValues(
+                              filter.name,
+                              value,
+                              e.target.checked
+                            )
+                          }
+                        />
+                      ))
+                    ) : (
+                      <div className="marketplace-display-filters-options-chips">
+                        {filter.values.map((value, index) => (
+                          <SelectFilterValue
+                            chipIcon
+                            key={index}
+                            value={value}
+                            selected={isFilterValueSelected(filter.name, value)}
+                            onClick={() =>
+                              handleSelectFilterValue(filter.name, value)
+                            }
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </MarketFilterGroupCollapsable>
+                ))}
+              </div>
+            </Drawer>
 
             <div>
               <Button

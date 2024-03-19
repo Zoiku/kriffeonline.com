@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import useFavorites from "../../hooks/useFavorites";
 import useAuth from "../../hooks/useAuth";
+import Chip from "@mui/material/Chip";
 
 export const MarketplaceErrorPage = () => <div>Something went wrong...</div>;
 
@@ -111,17 +112,35 @@ export const MarketplaceProduct = ({ product }) => {
   );
 };
 
-export const SelectFilterValue = ({ value, selected, onClick }) => (
+export const SelectFilterValue = ({
+  value,
+  selected,
+  onClick,
+  chipIcon = false,
+}) => (
   <div className="marketplace-filter-single-input">
-    <span
-      onClick={onClick}
-      style={{
-        cursor: "pointer",
-        color: `${selected ? "blue" : ""}`,
-      }}
-    >
-      {value}
-    </span>
+    {chipIcon ? (
+      <Chip
+        sx={{
+          borderRadius: 2,
+          backgroundColor: selected ? "#efefef" : "white",
+          border: selected ? "1px solid white" : "1px solid #c5c5c5",
+        }}
+        label={value}
+        onClick={onClick}
+        size="small"
+      />
+    ) : (
+      <span
+        onClick={onClick}
+        style={{
+          cursor: "pointer",
+          color: `${selected ? "blue" : ""}`,
+        }}
+      >
+        {value}
+      </span>
+    )}
   </div>
 );
 
