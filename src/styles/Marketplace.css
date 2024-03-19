@@ -115,7 +115,6 @@
 .marketplace-product-details {
   display: flex;
   flex-direction: column;
-  gap: 5px;
 }
 
 .marketplace-product-details-name {
@@ -131,6 +130,7 @@
 .marketplace-product-details-name-and-stats {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .marketplace-product-details-stats-container {

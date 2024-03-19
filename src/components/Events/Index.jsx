@@ -55,8 +55,10 @@ export const EventItem = ({ event }) => {
           <div>{getDay(event.date)}</div>
         </div>
         <div className="event-item-details-info">
-          <div>{event.location}</div>
-          <div>{event.name}</div>
+          <div className="event-item-details-info-location">
+            {event.location}
+          </div>
+          <div className="event-item-details-info-name">{event.name}</div>
         </div>
       </div>
     </NavLink>
