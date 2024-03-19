@@ -25,7 +25,7 @@ const useAuth = () => {
   const signOut = () => {
     setToken(null);
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/signin");
   };
 
   return { token, isLogged, signIn, signOut };

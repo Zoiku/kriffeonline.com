@@ -164,7 +164,7 @@
 
   .marketplace-display {
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   }
 
   .marketplace-display-filters {

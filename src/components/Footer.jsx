@@ -34,6 +34,7 @@ const Footer = () => {
           </div>
           <div className={"footer-company-links-sections"}>
             <FooterLinksSection title={"Company"}>
+              <FooterLink to={"/"} label={"Home"} />
               <FooterLink to={"/about"} label={"About Us"} />
             </FooterLinksSection>
             <FooterLinksSection title={"Resources"}>

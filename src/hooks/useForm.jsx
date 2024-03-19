@@ -37,7 +37,7 @@ const useForm = (name) => {
         const result = await axios.post("/register", values);
         if (result.status === 200) {
           handleOpenSuccessAlert(
-            "Account created successfully, please sign in"
+            "Welcome aboard! Your account is ready."
           );
           navigate("/signin");
         }

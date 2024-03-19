@@ -11,8 +11,11 @@ import {
 } from "../components/Marketplace/Index";
 import CenteredSection from "../components/Centered";
 import { useQuery } from "react-query";
+import useScreen from "../hooks/useScreen";
 
 const Marketplace = () => {
+  const { isDesktop } = useScreen();
+
   const productsQuery = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -29,47 +32,56 @@ const Marketplace = () => {
   return (
     <div className="marketplace-page">
       <CenteredSection mobileWithPadding className={"marketplace-display"}>
-        <div className="marketplace-display-inner marketplace-display-filters">
-          <div className="marketplace-display-filters-sticky">
-            <div className="marketplace-display-filters-container-label page-title">
-              Marketplace
-            </div>
-            <div className="marketplace-display-filters-options">
-              {filters.map((filter, index) => (
-                <MarketFilterGroupCollapsable key={index} title={filter.title}>
-                  {filter.checkbox
-                    ? filter.values.map((value, index) => (
-                        <SelectCheckboxFilterValues
-                          key={index}
-                          value={value}
-                          checked={isCheckedFilterValueSelected(
-                            filter.name,
-                            value
-                          )}
-                          onChange={(e) =>
-                            handleCheckboxFilterValues(
+        {isDesktop ? (
+          <div className="marketplace-display-inner marketplace-display-filters">
+            <div className="marketplace-display-filters-sticky">
+              <div className="marketplace-display-filters-container-label page-title">
+                Marketplace
+              </div>
+              <div className="marketplace-display-filters-options">
+                {filters.map((filter, index) => (
+                  <MarketFilterGroupCollapsable
+                    key={index}
+                    title={filter.title}
+                  >
+                    {filter.checkbox
+                      ? filter.values.map((value, index) => (
+                          <SelectCheckboxFilterValues
+                            key={index}
+                            value={value}
+                            checked={isCheckedFilterValueSelected(
                               filter.name,
-                              value,
-                              e.target.checked
-                            )
-                          }
-                        />
-                      ))
-                    : filter.values.map((value, index) => (
-                        <SelectFilterValue
-                          key={index}
-                          value={value}
-                          selected={isFilterValueSelected(filter.name, value)}
-                          onClick={() =>
-                            handleSelectFilterValue(filter.name, value)
-                          }
-                        />
-                      ))}
-                </MarketFilterGroupCollapsable>
-              ))}
+                              value
+                            )}
+                            onChange={(e) =>
+                              handleCheckboxFilterValues(
+                                filter.name,
+                                value,
+                                e.target.checked
+                              )
+                            }
+                          />
+                        ))
+                      : filter.values.map((value, index) => (
+                          <SelectFilterValue
+                            key={index}
+                            value={value}
+                            selected={isFilterValueSelected(filter.name, value)}
+                            onClick={() =>
+                              handleSelectFilterValue(filter.name, value)
+                            }
+                          />
+                        ))}
+                  </MarketFilterGroupCollapsable>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div>
+            <div>Mobile Filter</div>
+          </div>
+        )}
 
         <div className="marketplace-display-inner marketplace-display-products">
           {productsQuery.isLoading ? (

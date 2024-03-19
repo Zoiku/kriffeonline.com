@@ -39,9 +39,7 @@ const Events = () => {
               handleClick={categoryFilterMenu.handleClick}
               handleClose={categoryFilterMenu.handleClose}
               label={"Category"}
-            >
-              <span>Select Category</span>
-            </Menu>
+            ></Menu>
 
             <Menu
               open={eventTypeFilterMenu.open}
@@ -49,9 +47,7 @@ const Events = () => {
               handleClick={eventTypeFilterMenu.handleClick}
               handleClose={eventTypeFilterMenu.handleClose}
               label={"Event Type"}
-            >
-              <span>Select Event Type</span>
-            </Menu>
+            ></Menu>
 
             <Menu
               open={dateFilterMenu.open}
@@ -60,9 +56,7 @@ const Events = () => {
               handleClose={dateFilterMenu.handleClose}
               label={"Date"}
               position="right"
-            >
-              <span>Select Date</span>
-            </Menu>
+            ></Menu>
           </div>
         </div>
 

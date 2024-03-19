@@ -26,6 +26,7 @@ import {
 } from "../components/Marketplace/Index";
 import { selectRandomN } from "../utils/array";
 import ReadMore from "../components/ReadMore";
+import PostReview from "../components/PostReview";
 
 const ProductDetails = () => {
   const { isLogged } = useAuth();
@@ -35,7 +36,7 @@ const ProductDetails = () => {
     useProduct(productNo);
 
   const reviewsQuery = useQuery({
-    queryKey: ["reviews", product?.category],
+    queryKey: ["reviews", product?.user_id],
     queryFn: () => getReviewsBySellerId(product?.user_id),
   });
 
@@ -144,7 +145,7 @@ const ProductDetails = () => {
         )}
       </CenteredSection>
       <CenteredSection mobileWithPadding className={"seller-review-container"}>
-        <div className="page-title">Customer feedback</div>
+        <div className="page-title">Reviews</div>
         {isLogged ? (
           reviewsQuery.isLoading ? (
             <div className="seller-reviews">
@@ -155,7 +156,19 @@ const ProductDetails = () => {
           ) : reviewsQuery.isError ? (
             <>Something went wrong...</>
           ) : reviewsQuery.data && reviewsQuery.data.length > 0 ? (
-            <SellerReviews data={reviewsQuery.data} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 30,
+              }}
+            >
+              <SellerReviews data={reviewsQuery.data} />
+              <PostReview
+                sellerId={product?.user_id}
+                sellerName={product?.sellername}
+              />
+            </div>
           ) : (
             <>No reviews</>
           )

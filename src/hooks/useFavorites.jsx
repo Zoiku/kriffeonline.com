@@ -22,7 +22,7 @@ const toggleFavoriteProduct = async ({ productNo, isFavorited }) => {
 
 const useFavorites = () => {
   const queryClient = useQueryClient();
-  const { handleOpenFailAlert } = useAlert();
+  const { handleOpenFailAlert, handleOpenSuccessAlert } = useAlert();
   const mutateFavorites = useMutation({
     mutationFn: toggleFavoriteProduct,
     onMutate: ({ productNo, isFavorited }) => {
@@ -70,11 +70,16 @@ const useFavorites = () => {
     if (isLogged) {
       try {
         await mutateFavorites.mutateAsync({ productNo, isFavorited });
+        if (isFavorited) {
+          handleOpenSuccessAlert("Removed from your favorites!");
+        } else {
+          handleOpenSuccessAlert("Added to your favorites!");
+        }
       } catch (error) {
         handleOpenFailAlert(error.message);
       }
     } else {
-      handleOpenFailAlert("Please log in");
+      handleOpenFailAlert("Oops! You need to log in to favorite.");
     }
   };
 

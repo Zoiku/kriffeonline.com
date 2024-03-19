@@ -1,6 +1,6 @@
 import "../styles/Nav.css";
 import CenteredSection from "./Centered";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import { Link, NavActionButton } from "./Nav/Index";
 import Menu from "../components/Menu";
@@ -33,7 +33,7 @@ const Nav = () => {
       <div className="nav-action-buttons">
         <NavActionButton
           to={"/favorites"}
-          icon={<FavoriteBorderRoundedIcon fontSize={"inherit"} />}
+          icon={<FavoriteBorderRoundedIcon fontSize={"small"} />}
         />
         {isLogged ? (
           <Menu
@@ -44,7 +44,7 @@ const Nav = () => {
             custom={
               <NavActionButton
                 onClick={accountIconMenu.handleClick}
-                icon={<AccountCircleOutlinedIcon fontSize={"inherit"} />}
+                icon={<PersonOutlineRoundedIcon fontSize={"small"} />}
               />
             }
           >
@@ -54,7 +54,7 @@ const Nav = () => {
         ) : (
           <NavActionButton
             to={"/signin"}
-            icon={<AccountCircleOutlinedIcon fontSize={"inherit"} />}
+            icon={<PersonOutlineRoundedIcon fontSize={"small"} />}
           />
         )}
       </div>
@@ -72,7 +72,7 @@ const Nav = () => {
           custom={
             <NavActionButton
               onClick={accountIconMenu.handleClick}
-              icon={<AccountCircleOutlinedIcon fontSize={"inherit"} />}
+              icon={<PersonOutlineRoundedIcon fontSize={"small"} />}
             />
           }
         >
@@ -82,7 +82,7 @@ const Nav = () => {
       ) : (
         <NavActionButton
           to={"/signin"}
-          icon={<AccountCircleOutlinedIcon fontSize={"inherit"} />}
+          icon={<PersonOutlineRoundedIcon fontSize={"small"} />}
         />
       )}
     </div>
