@@ -17,6 +17,7 @@ const Alert = () => {
         onClose={handleCloseAlert}
         severity={alert.severity}
         action={[]}
+        sx={{ fontWeight: 600 }}
       >
         {alert.message}
       </MuiAlert>

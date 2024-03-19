@@ -120,6 +120,12 @@
 
 .marketplace-product-details-name {
   text-transform: capitalize;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .marketplace-product-details-name-and-stats {
@@ -129,7 +135,7 @@
 
 .marketplace-product-details-stats-container {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .marketplace-product-details-stats {
@@ -169,6 +175,11 @@
 
   .marketplace-display-filters {
     display: none;
+  }
+
+  .marketplace-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 
   .marketplace-product-add-to-favorite {
