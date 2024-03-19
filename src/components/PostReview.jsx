@@ -31,10 +31,11 @@ const PostReview = ({ sellerName, sellerId }) => {
             <div className="review-form-head-stats">
               <div>
                 <Rating
-                  name="simple-controlled"
+                  name="rating"
                   value={rating}
                   onChange={handleRatingChange}
                   required
+                  
                 />
               </div>
               <div>{sellerName}</div>

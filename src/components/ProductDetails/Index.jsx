@@ -111,7 +111,7 @@ export const SellerReview = ({ review }) => (
       </div>
     </div>
     <div>
-      <Rating size="small" name="read-only" value={review.rating} readOnly />
+      <Rating size="small" name="rating" value={review.rating} readOnly />
     </div>
     <div>{review.feedback_text}</div>
   </div>
@@ -123,13 +123,13 @@ export const SellerReviewSkeleton = () => (
       <Skeleton variant="circular">
         <Avatar className="seller-review-profile-icon" />
       </Skeleton>
-      <Skeleton variant="text" width={"10%"} />
-    </div>
-    <div>
-      <Skeleton variant="text" width={"20%"} />
-    </div>
-    <div>
       <Skeleton variant="text" width={"30%"} />
+    </div>
+    <div>
+      <Skeleton variant="text" width={"50%"} />
+    </div>
+    <div>
+      <Skeleton variant="text" width={"50%"} />
     </div>
   </div>
 );

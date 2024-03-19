@@ -12,10 +12,14 @@ import {
 import CenteredSection from "../components/Centered";
 import { useQuery } from "react-query";
 import useScreen from "../hooks/useScreen";
+import Button from "../components/Button";
+import Drawer from "../components/Drawer";
+import useDrawer from "../hooks/useDrawer";
+import TuneIcon from "@mui/icons-material/Tune";
 
 const Marketplace = () => {
+  const { anchor, handleClose, handleOpen, open } = useDrawer("bottom");
   const { isDesktop } = useScreen();
-
   const productsQuery = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -79,7 +83,21 @@ const Marketplace = () => {
           </div>
         ) : (
           <div>
-            <div>Mobile Filter</div>
+            <Drawer
+              handleClose={handleClose}
+              open={open}
+              anchor={anchor}
+              header={"Marketplace Filters"}
+              bodyPadding
+            ></Drawer>
+
+            <div>
+              <Button
+                startIcon={<TuneIcon />}
+                onClick={handleOpen}
+                label={"Filters"}
+              />
+            </div>
           </div>
         )}
 

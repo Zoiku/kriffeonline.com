@@ -73,7 +73,7 @@ const Nav = () => {
           custom={
             <NavActionButton
               onClick={accountIconMenu.handleClick}
-              icon={<AccountCircleOutlinedIcon fontSize={"small"} />}
+              icon={<AccountCircleOutlinedIcon fontSize="large" />}
             />
           }
         >
@@ -83,7 +83,7 @@ const Nav = () => {
       ) : (
         <NavActionButton
           to={"/signin"}
-          icon={<AccountCircleOutlinedIcon fontSize={"small"} />}
+          icon={<AccountCircleOutlinedIcon fontSize="large" />}
         />
       )}
     </div>
