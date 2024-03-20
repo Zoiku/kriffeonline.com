@@ -72,11 +72,12 @@ export const MarketplaceProduct = ({ product }) => {
           <IconButton
             onClick={(e) => {
               e.preventDefault();
-              handletoggleFavoriteProduct(
-                product.product_no,
-                product.is_saved,
-                isLogged
-              );
+              handletoggleFavoriteProduct({
+                productNo: product.product_no,
+                isFavorited: product.is_saved,
+                isLogged,
+                sellerId: product.sellerid,
+              });
             }}
             sx={{ backgroundColor: "white" }}
           >
@@ -124,12 +125,11 @@ export const SelectFilterValue = ({
         clickable
         sx={{
           borderRadius: 2,
-          backgroundColor: selected ? "#efefef" : "white",
-          border: selected ? "1px solid white" : "1px solid #c5c5c5",
         }}
         label={value}
         onClick={onClick}
         size="small"
+        variant={selected ? "filled" : "outlined"}
       />
     ) : (
       <span

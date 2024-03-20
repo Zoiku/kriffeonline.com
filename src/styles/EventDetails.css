@@ -72,6 +72,7 @@
   gap: 20px;
   font-size: 100px;
   font-weight: bolder;
+  color: #24252a;
 }
 
 .event-page-content {
@@ -124,6 +125,7 @@
 
 .event-checkout {
   width: 900px;
+  position: relative;
 }
 
 .event-checkout-header {
@@ -135,6 +137,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
 }
 
 .event-checkout-content-container {

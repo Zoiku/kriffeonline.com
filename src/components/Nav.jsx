@@ -1,6 +1,5 @@
 import "../styles/Nav.css";
 import CenteredSection from "./Centered";
-import PersonOutlineRoundedIcon from "@mui/icons-material/PersonOutlineRounded";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import { Link, NavActionButton } from "./Nav/Index";

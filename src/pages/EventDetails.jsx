@@ -33,7 +33,12 @@ const EventDetails = () => {
         <EventDetailErrorPage />
       ) : event ? (
         <div className="event-details-page">
-          <Drawer anchor={anchor} open={open} handleOpen={handleOpen}>
+          <Drawer
+            anchor={anchor}
+            open={open}
+            handleOpen={handleOpen}
+            handleClose={handleClose}
+          >
             <EventCheckout handleCloseDrawer={handleClose} event={event} />
           </Drawer>
 

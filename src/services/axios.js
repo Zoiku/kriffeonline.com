@@ -6,7 +6,10 @@ let headers = {
 };
 
 // Function to get the token from local storage
-const getToken = () => localStorage.getItem("token");
+const getToken = () =>
+  localStorage.getItem("authState")
+    ? JSON.parse(localStorage.getItem("authState")).token ?? null
+    : null;
 
 // Function to update the authorization header with the token
 const updateHeaders = () => {

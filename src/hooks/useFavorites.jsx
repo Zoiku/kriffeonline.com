@@ -62,21 +62,28 @@ const useFavorites = () => {
     },
   });
 
-  const handletoggleFavoriteProduct = async (
+  const handletoggleFavoriteProduct = async ({
     productNo,
     isFavorited,
-    isLogged
-  ) => {
+    isLogged,
+    sellerId,
+  }) => {
     if (isLogged) {
-      try {
-        await mutateFavorites.mutateAsync({ productNo, isFavorited });
-        if (isFavorited) {
-          handleOpenSuccessAlert("Removed from your favorites!");
-        } else {
-          handleOpenSuccessAlert("Added to your favorites!");
+      if (sellerId) {
+        try {
+          await mutateFavorites.mutateAsync({ productNo, isFavorited });
+          if (isFavorited) {
+            handleOpenSuccessAlert("Removed from your favorites!");
+          } else {
+            handleOpenSuccessAlert("Added to your favorites!");
+          }
+        } catch (error) {
+          handleOpenFailAlert(error.message);
         }
-      } catch (error) {
-        handleOpenFailAlert(error.message);
+      } else {
+        handleOpenFailAlert(
+          "Oops! You cannot add your product to favorites list."
+        );
       }
     } else {
       handleOpenFailAlert("Oops! You need to log in to favorite.");

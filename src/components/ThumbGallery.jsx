@@ -1,6 +1,7 @@
 import "../styles/ThumbGallery.css";
 import useThumbGallery from "../hooks/useThumbGallery";
 import useScreen from "../hooks/useScreen";
+import ThumbSwiper from "./ThumbSwiper";
 
 const ThumbGallery = ({ imageSrcs }) => {
   const { isDesktop } = useScreen();
@@ -29,7 +30,9 @@ const ThumbGallery = ({ imageSrcs }) => {
           </div>
         </div>
       ) : (
-        <div className="thumb-galler"></div>
+        <div className="thumb-gallery">
+          <ThumbSwiper />
+        </div>
       )}
     </div>
   );

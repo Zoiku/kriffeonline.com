@@ -8,6 +8,8 @@
   border-bottom: 1px solid #c5c5c5;
   font-weight: 600;
   background-color: white;
+  position: sticky;
+  top: 0;
 }
 
 .drawer-body-padding {
@@ -15,8 +17,4 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .drawer-header {
-    position: sticky;
-    top: 0;
-  }
 }

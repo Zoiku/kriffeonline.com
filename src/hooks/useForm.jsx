@@ -17,7 +17,7 @@ const useForm = (name) => {
     onSubmit: async (values) => {
       try {
         const { data } = await axios.post("/login", values);
-        signIn(data.usertoken);
+        await signIn(data.usertoken);
       } catch (error) {
         handleOpenFailAlert(error.message);
       }
@@ -36,9 +36,7 @@ const useForm = (name) => {
       try {
         const result = await axios.post("/register", values);
         if (result.status === 200) {
-          handleOpenSuccessAlert(
-            "Welcome aboard! Your account is ready."
-          );
+          handleOpenSuccessAlert("Welcome aboard! Your account is ready.");
           navigate("/signin");
         }
       } catch (error) {
