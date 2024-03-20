@@ -12,9 +12,8 @@ import useAuth from "../hooks/useAuth";
 
 const Favorites = () => {
   const { isLogged } = useAuth();
-
   const favoriteItemsQuery = useQuery({
-    queryKey: ["favorites", isLogged],
+    queryKey: ["favorites"],
     queryFn: () => getFavorites(isLogged),
   });
 
@@ -29,12 +28,7 @@ const Favorites = () => {
           <CenteredSection className={"favorite-items-container"}>
             <div className="page-title">Favorites Products</div>
             <div className="favorite-items">
-              {favoriteItemsQuery.data.map(
-                (favoriteItem, index) =>
-                  favoriteItem && (
-                    <MarketplaceProduct key={index} product={favoriteItem} />
-                  )
-              )}
+              <span>Under construction</span>
             </div>
           </CenteredSection>
         ) : (

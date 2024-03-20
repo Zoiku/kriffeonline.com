@@ -1,12 +1,13 @@
 import { useMutation, useQueryClient } from "react-query";
 import axios from "../services/axios";
 import useAlert from "./useAlert";
+import useAuth from "./useAuth";
 
 export const getFavorites = async (isLogged) => {
   if (isLogged) {
-    return (await axios.get("/current_user_favorites")).data.favorites;
+    return (await axios.get("/current_user_favorites")).data.favorites.data;
   } else {
-    return null;
+    return [];
   }
 };
 
@@ -21,6 +22,8 @@ const toggleFavoriteProduct = async ({ productNo, isFavorited }) => {
 };
 
 const useFavorites = () => {
+  const { getUser, isLogged } = useAuth();
+  const user = getUser();
   const queryClient = useQueryClient();
   const { handleOpenFailAlert, handleOpenSuccessAlert } = useAlert();
   const mutateFavorites = useMutation({
@@ -65,11 +68,14 @@ const useFavorites = () => {
   const handletoggleFavoriteProduct = async ({
     productNo,
     isFavorited,
-    isLogged,
     sellerId,
   }) => {
     if (isLogged) {
-      if (sellerId) {
+      if (sellerId === user.id) {
+        handleOpenFailAlert(
+          "Sorry, you can't add your own product to favorites."
+        );
+      } else {
         try {
           await mutateFavorites.mutateAsync({ productNo, isFavorited });
           if (isFavorited) {
@@ -80,10 +86,6 @@ const useFavorites = () => {
         } catch (error) {
           handleOpenFailAlert(error.message);
         }
-      } else {
-        handleOpenFailAlert(
-          "Oops! You cannot add your product to favorites list."
-        );
       }
     } else {
       handleOpenFailAlert("Oops! You need to log in to favorite.");

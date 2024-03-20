@@ -2,17 +2,20 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "../services/axios";
 import useAlert from "./useAlert";
+import useAuth from "./useAuth";
 
-const postReview = async ({ rating, review, sellerId }) => {
+const postReview = async ({ rating, review, sellerId, user }) => {
   return axios.post("/rate_user", {
     feedback_to: sellerId,
     feedback: review,
     rating,
-    feedback_from: null,
+    feedback_from: user,
   });
 };
 
 const usePostReview = (sellerId, handleClose) => {
+  const { getUser } = useAuth();
+  const user = getUser();
   const queryClient = useQueryClient();
   const { handleOpenFailAlert, handleOpenSuccessAlert } = useAlert();
   const [rating, setRating] = useState(0);
@@ -33,7 +36,12 @@ const usePostReview = (sellerId, handleClose) => {
   const handlePostReview = async (e) => {
     e.preventDefault();
     try {
-      await mutateReview.mutateAsync({ rating, review, sellerId });
+      await mutateReview.mutateAsync({
+        rating,
+        review,
+        sellerId,
+        user: user.fullname,
+      });
       handleOpenSuccessAlert("Thanks for sharing your feedback!");
       setRating(0);
       setReview("");

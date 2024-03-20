@@ -23,6 +23,7 @@ const PostReview = ({ sellerName, sellerId }) => {
       <ResponsiveModal
         open={open}
         handleClose={handleClose}
+        handleOpen={handleOpen}
         header={"Rate and Review"}
       >
         <form onSubmit={handlePostReview} className="review-form">
@@ -35,7 +36,6 @@ const PostReview = ({ sellerName, sellerId }) => {
                   value={rating}
                   onChange={handleRatingChange}
                   required
-                  
                 />
               </div>
               <div>{sellerName}</div>

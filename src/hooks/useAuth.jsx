@@ -3,6 +3,7 @@ import { atomWithStorage } from "jotai/utils";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../services/axios";
+import { useQueryClient } from "react-query";
 
 const authStateAtom = atomWithStorage(
   "authState",
@@ -12,13 +13,18 @@ const authStateAtom = atomWithStorage(
 );
 
 const useAuth = () => {
+  const queryClient = useQueryClient();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const redirectTo = urlParams.get("redirect_to") ?? null;
   const navigate = useNavigate();
   const [authState, setAuthState] = useAtom(authStateAtom);
   const isLogged = useMemo(() => {
-    return Object.keys(authState).includes("user");
+    if (authState) {
+      return Object.keys(authState).includes("user");
+    } else {
+      return false;
+    }
   }, [authState]);
 
   const getUser = () => {
@@ -41,19 +47,26 @@ const useAuth = () => {
           user: userdetails,
         };
       });
+
+      // refetch the products to included current user favorites
+      queryClient.invalidateQueries(["products"]);
+
       if (redirectTo) {
         navigate(redirectTo);
       } else {
         navigate("/");
       }
     } catch (error) {
-      setAuthState({});
+      setAuthState(null);
+      localStorage.removeItem("authState");
     }
   };
 
   const signOut = () => {
     setAuthState(null);
     localStorage.removeItem("authState");
+    // refetch the products to included current user favorites
+    queryClient.invalidateQueries(["products"]);
     navigate("/signin");
   };
 

@@ -12,7 +12,6 @@ import Dialog from "../Dialog";
 import useDialog from "../../hooks/useDialog";
 import useAlert from "../../hooks/useAlert";
 import qr from "../../assets/Misc/qr.png";
-import useAuth from "../../hooks/useAuth";
 
 export const EventDetailErrorPage = () => (
   <div>
@@ -196,9 +195,6 @@ const EventCheckoutTicketTypeForm = ({ event }) => {
 };
 
 const EventCheckoutContactInformationForm = () => {
-  // const { getUser } = useAuth();
-  // const user = getUser();
-
   const { handleChangeContactInformation, contactInformation } =
     useEventCheckout();
 
