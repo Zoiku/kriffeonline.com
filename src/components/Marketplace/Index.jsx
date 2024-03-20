@@ -121,6 +121,7 @@ export const SelectFilterValue = ({
   <div className="marketplace-filter-single-input">
     {chipIcon ? (
       <Chip
+        clickable
         sx={{
           borderRadius: 2,
           backgroundColor: selected ? "#efefef" : "white",
@@ -133,8 +134,8 @@ export const SelectFilterValue = ({
     ) : (
       <span
         onClick={onClick}
+        className="marketplace-filter-single-input-span"
         style={{
-          cursor: "pointer",
           color: `${selected ? "blue" : ""}`,
         }}
       >

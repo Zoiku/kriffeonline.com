@@ -19,8 +19,4 @@
     position: sticky;
     top: 0;
   }
-
-  .drawer-body {
-    max-height: 400px;
-  }
 }

@@ -159,8 +159,9 @@
   align-items: center;
 }
 
-.marketplace-filter-single-input span:hover {
+.marketplace-filter-single-input-span:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1100px) {
