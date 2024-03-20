@@ -59,6 +59,8 @@ export const MarketplaceProduct = ({ product }) => {
   const { isLogged } = useAuth();
   const { handletoggleFavoriteProduct } = useFavorites();
 
+  console.log(product);
+
   return (
     <NavLink
       to={`/marketplace/${product.product_no}`}
@@ -76,7 +78,7 @@ export const MarketplaceProduct = ({ product }) => {
                 productNo: product.product_no,
                 isFavorited: product.is_saved,
                 isLogged,
-                sellerId: product.sellerid,
+                sellerId: product.seller_id,
               });
             }}
             sx={{ backgroundColor: "white" }}

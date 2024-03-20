@@ -18,7 +18,7 @@ const useAuth = () => {
   const navigate = useNavigate();
   const [authState, setAuthState] = useAtom(authStateAtom);
   const isLogged = useMemo(() => {
-    return Object.keys(authState).length > 0;
+    return Object.keys(authState).includes("user");
   }, [authState]);
 
   const getUser = () => {
@@ -52,7 +52,7 @@ const useAuth = () => {
   };
 
   const signOut = () => {
-    setAuthState({});
+    setAuthState(null);
     localStorage.removeItem("authState");
     navigate("/signin");
   };
