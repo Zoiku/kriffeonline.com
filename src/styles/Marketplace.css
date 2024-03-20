@@ -186,6 +186,10 @@
     padding: 20px;
   }
 
+  .marketplace-display-filters-options {
+    font-size: medium;
+  }
+
   .marketplace-display-filters-options-chips {
     display: flex;
     gap: 5px;

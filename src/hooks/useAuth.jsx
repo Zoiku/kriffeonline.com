@@ -31,19 +31,23 @@ const useAuth = () => {
 
   const signIn = async (authToken) => {
     setAuthState({ token: authToken });
-    const { userdetails } = await (
-      await axios.get("/get_current_user_info")
-    ).data;
-    setAuthState((previousAuthState) => {
-      return {
-        ...previousAuthState,
-        user: userdetails,
-      };
-    });
-    if (redirectTo) {
-      navigate(redirectTo);
-    } else {
-      navigate("/");
+    try {
+      const { userdetails } = await (
+        await axios.get("/get_current_user_info")
+      ).data;
+      setAuthState((previousAuthState) => {
+        return {
+          ...previousAuthState,
+          user: userdetails,
+        };
+      });
+      if (redirectTo) {
+        navigate(redirectTo);
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      setAuthState({});
     }
   };
 
