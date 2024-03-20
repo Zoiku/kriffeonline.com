@@ -37,7 +37,7 @@ const EventDetails = () => {
             anchor={anchor}
             open={open}
             handleOpen={handleOpen}
-            handleClose={handleClose}
+            handleClose={undefined}
           >
             <EventCheckout handleCloseDrawer={handleClose} event={event} />
           </Drawer>

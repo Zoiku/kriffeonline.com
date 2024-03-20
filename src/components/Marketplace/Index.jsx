@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import useFavorites from "../../hooks/useFavorites";
 import Chip from "@mui/material/Chip";
+import DoneIcon from '@mui/icons-material/Done';
 
 export const MarketplaceErrorPage = () => <div>Something went wrong...</div>;
 
@@ -123,6 +124,7 @@ export const SelectFilterValue = ({
         sx={{
           borderRadius: 2,
         }}
+        deleteIcon={<DoneIcon />}
         label={value}
         onClick={onClick}
         onDelete={selected ? onClick : undefined}

@@ -10,7 +10,7 @@ const Button = (props) => {
       disableElevation
       color="primary"
     >
-      {label}
+      <span>{label}</span>
     </LoadingButton>
   );
 };

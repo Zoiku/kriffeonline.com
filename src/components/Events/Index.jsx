@@ -206,17 +206,11 @@ const EventCheckoutContactInformationForm = () => {
       <div className="event-checkout-form-body">
         <div className="event-checkout-contact-inputs">
           <Input
-            value={contactInformation.firstName}
+            value={contactInformation.fullName}
             onChange={handleChangeContactInformation}
             autoFocus
-            name={"firstName"}
-            label={"First Name"}
-          />
-          <Input
-            value={contactInformation.lastName}
-            onChange={handleChangeContactInformation}
-            name={"lastName"}
-            label={"Last Name"}
+            name={"fullName"}
+            label={"Full Name"}
           />
           <Input
             value={contactInformation.email}
