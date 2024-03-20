@@ -20,11 +20,6 @@ import TuneIcon from "@mui/icons-material/Tune";
 const Marketplace = () => {
   const { anchor, handleClose, handleOpen, open } = useDrawer("bottom");
   const { isDesktop } = useScreen();
-  const productsQuery = useQuery({
-    queryKey: ["products"],
-    queryFn: getProducts,
-  });
-
   const {
     filters,
     handleSelectFilterValue,
@@ -32,6 +27,10 @@ const Marketplace = () => {
     isFilterValueSelected,
     isCheckedFilterValueSelected,
   } = useMarketplace();
+  const productsQuery = useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
 
   return (
     <div className="marketplace-page">
