@@ -9,7 +9,6 @@ import useProduct, {
 import { useQuery } from "react-query";
 import {
   ProductDetailsError,
-  ProductDetailsLoading,
   ProductOverviewSection,
   ProductOverviewFeature,
   ProductOverviewSectionCollapsable,
@@ -27,6 +26,7 @@ import {
 import { selectRandomN } from "../utils/array";
 import ReadMore from "../components/ReadMore";
 import PostReview from "../components/PostReview";
+import LoadingPage from "../components/LoadingPage";
 
 const ProductDetails = () => {
   const { isLogged } = useAuth();
@@ -46,7 +46,7 @@ const ProductDetails = () => {
   });
 
   return isFetchingProduct ? (
-    <ProductDetailsLoading />
+    <LoadingPage />
   ) : isFetchingProductError ? (
     <ProductDetailsError />
   ) : (

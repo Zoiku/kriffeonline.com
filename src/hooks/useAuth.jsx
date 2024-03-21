@@ -70,7 +70,7 @@ const useAuth = () => {
     navigate("/signin");
   };
 
-  return { authState, isLogged, getUser, signIn, signOut };
+  return { isLogged, getUser, signIn, signOut };
 };
 
 export default useAuth;

@@ -6,7 +6,6 @@ import {
   EventCountdown,
   EventDetailErrorPage,
   EventDetailsSection,
-  EventPageLoading,
 } from "../components/Events/Index";
 import CenteredSection from "../components/Centered";
 import image from "../assets/Placeholder/wp7488228.jpg";
@@ -16,6 +15,7 @@ import Drawer from "../components/Drawer";
 import useDrawer from "../hooks/useDrawer";
 import useScreen from "../hooks/useScreen";
 import Avatar from "@mui/material/Avatar";
+import LoadingPage from "../components/LoadingPage";
 
 const EventDetails = () => {
   const { isDesktop } = useScreen();
@@ -28,7 +28,7 @@ const EventDetails = () => {
   return (
     <div className="event-details-page-container">
       {isFetchingEvent ? (
-        <EventPageLoading />
+        <LoadingPage />
       ) : isFetchingEventError ? (
         <EventDetailErrorPage />
       ) : event ? (
