@@ -13,7 +13,6 @@
 .review-form-head-stats {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .review-form-product-img {
