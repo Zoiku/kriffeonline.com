@@ -1,10 +1,10 @@
+.menu {
+  padding: 5px;
+  border: 0;
+}
+
 .menu-styled {
   padding: 0 5px;
   min-width: 150px !important;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
-}
-
-.menu {
-  padding: 5px;
-  border: 0;
 }
