@@ -241,13 +241,8 @@ const EventCheckoutReviewForm = () => {
       <div className="event-checkout-form-body">
         <div className="event-checkout-contact-inputs">
           <Input
-            label={"First Name"}
-            value={contactInformation.firstName}
-            disabled
-          />
-          <Input
-            label={"Last Name"}
-            value={contactInformation.lastName}
+            label={"Full Name"}
+            value={contactInformation.fullName}
             disabled
           />
           <Input label={"Email"} value={contactInformation.email} disabled />

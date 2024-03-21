@@ -3,7 +3,7 @@ import { eventCheckoutSteps } from "../utils/event";
 import { useAtom, atom } from "jotai";
 
 const checkoutAtom = atom({
-  fullName: "Mark",
+  fullName: "",
   email: "",
   phoneNumber: "",
   tickets: [],
