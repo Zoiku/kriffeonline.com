@@ -2,6 +2,7 @@ import filters from "../utils/marketplacefilters";
 import axios from "../services/axios";
 import { JsonParam, useQueryParam } from "use-query-params";
 import useMenu from "./useMenu";
+import { useMemo } from "react";
 
 export const getProducts = async () => {
   return (await axios.get("/list_products")).data.products.data;
@@ -14,6 +15,14 @@ const useMarketplace = () => {
     "filter",
     JsonParam
   );
+
+  const activeFiltersLength = useMemo(() => {
+    if (filterSelection && Object.keys(filterSelection).length > 0) {
+      return Object.keys(filterSelection).length;
+    } else {
+      return 0;
+    }
+  }, [filterSelection]);
 
   const handleSelectFilterValue = (name, value) => {
     if (!filterSelection || filterSelection.length === 0) {
@@ -60,7 +69,7 @@ const useMarketplace = () => {
       if (filterValues.length === 0) {
         updatedSelection.splice(existingIndex, 1);
         if (updatedSelection.length === 0) {
-          updateFilterSelection(undefined); // Remove filter from URL when the array becomes empty
+          updateFilterSelection(undefined);
         } else {
           updateFilterSelection(updatedSelection);
         }
@@ -105,6 +114,7 @@ const useMarketplace = () => {
 
   return {
     filters,
+    activeFiltersLength,
     handleSelectFilterValue,
     handleCheckboxFilterValues,
     isFilterValueSelected,

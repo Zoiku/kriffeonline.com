@@ -16,12 +16,14 @@ import Button from "../components/Button";
 import Drawer from "../components/Drawer";
 import useDrawer from "../hooks/useDrawer";
 import TuneIcon from "@mui/icons-material/Tune";
+import { StyledBadge } from "../components/StyledBadge";
 
 const Marketplace = () => {
   const { anchor, handleClose, handleOpen, open } = useDrawer("bottom");
   const { isDesktop } = useScreen();
   const {
     filters,
+    activeFiltersLength,
     handleSelectFilterValue,
     handleCheckboxFilterValues,
     isFilterValueSelected,
@@ -134,11 +136,17 @@ const Marketplace = () => {
             </Drawer>
 
             <div>
-              <Button
-                startIcon={<TuneIcon />}
-                onClick={handleOpen}
-                label={"Filters"}
-              />
+              <StyledBadge
+                badgeContent={activeFiltersLength}
+                showZero={false}
+                color="primary"
+              >
+                <Button
+                  startIcon={<TuneIcon />}
+                  onClick={handleOpen}
+                  label={"Filters"}
+                />
+              </StyledBadge>
             </div>
           </div>
         )}

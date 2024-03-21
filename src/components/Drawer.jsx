@@ -17,6 +17,10 @@ const Drawer = ({
       anchor={anchor}
       onClose={handleClose}
       onOpen={handleOpen}
+      PaperProps={{
+        elevation: 0,
+        square: false,
+      }}
     >
       <Box className={"drawer-box"}>
         {header && <div className="drawer-header">{header}</div>}
