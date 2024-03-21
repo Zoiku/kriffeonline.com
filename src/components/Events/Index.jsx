@@ -352,7 +352,9 @@ export const EventCheckout = ({ event, handleCloseDrawer }) => {
 
   const handleCompletEventCheckout = () => {
     handleExitEventCheckout();
-    handleOpenSuccessAlert("Your ticket order has been placed successfully!");
+    handleOpenSuccessAlert({
+      message: "Your ticket order has been placed successfully!",
+    });
   };
 
   return (

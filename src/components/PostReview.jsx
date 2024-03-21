@@ -61,6 +61,10 @@ const PostReview = ({ sellerName, sellerId }) => {
               label={"Submit Review"}
             />
           </div>
+          <div className="review-form-submission-notice">
+            Please note that by submitting your review, you are consenting to
+            have your name appear in the review list alongside your feedback
+          </div>
         </form>
       </ResponsiveModal>
 

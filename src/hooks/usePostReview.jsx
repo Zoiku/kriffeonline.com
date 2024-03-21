@@ -42,12 +42,12 @@ const usePostReview = (sellerId, handleClose) => {
         sellerId,
         user: user.fullname,
       });
-      handleOpenSuccessAlert("Thanks for sharing your feedback!");
+      handleOpenSuccessAlert({ message: "Thanks for sharing your feedback!" });
       setRating(0);
       setReview("");
       handleClose();
     } catch (error) {
-      handleOpenFailAlert(error.message);
+      handleOpenFailAlert({ message: error.message });
     }
   };
 

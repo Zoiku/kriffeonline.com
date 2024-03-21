@@ -72,23 +72,23 @@ const useFavorites = () => {
   }) => {
     if (isLogged) {
       if (sellerId === user.id) {
-        handleOpenFailAlert(
-          "Sorry, you can't add your own product to favorites."
-        );
+        handleOpenFailAlert({
+          message: "Sorry, you can't add your own product to favorites.",
+        });
       } else {
         try {
           await mutateFavorites.mutateAsync({ productNo, isFavorited });
           if (isFavorited) {
-            handleOpenSuccessAlert("Removed from your favorites!");
+            handleOpenSuccessAlert({ message: "Removed from your favorites!" });
           } else {
-            handleOpenSuccessAlert("Added to your favorites!");
+            handleOpenSuccessAlert({ message: "Added to your favorites!" });
           }
         } catch (error) {
-          handleOpenFailAlert(error.message);
+          handleOpenFailAlert({ message: error.message });
         }
       }
     } else {
-      handleOpenFailAlert("Oops! You need to log in to favorite.");
+      handleOpenFailAlert({ message: "Oops! You need to log in to favorite." });
     }
   };
 

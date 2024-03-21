@@ -15,7 +15,7 @@ const Drawer = ({
     <SwipeableDrawer
       open={open}
       anchor={anchor}
-      onClose={handleClose}
+      onClose={handleClose ? handleClose : () => {}}
       onOpen={handleOpen}
       PaperProps={{
         elevation: 0,

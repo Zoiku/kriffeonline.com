@@ -4,6 +4,7 @@ const alertAtom = atom({
   open: null,
   message: null,
   severity: null,
+  duration: null,
 });
 
 const useAlert = () => {
@@ -17,18 +18,22 @@ const useAlert = () => {
       open: false,
     });
   };
-  const handleOpenSuccessAlert = (message) => {
+  const handleOpenSuccessAlert = ({ message, duration = 7000 }) => {
     setAlert({
+      ...alert,
       open: true,
       message,
       severity: "success",
+      duration,
     });
   };
-  const handleOpenFailAlert = (message) => {
+  const handleOpenFailAlert = ({ message, duration = 7000 }) => {
     setAlert({
+      ...alert,
       open: true,
       message,
       severity: "error",
+      duration,
     });
   };
   return {
