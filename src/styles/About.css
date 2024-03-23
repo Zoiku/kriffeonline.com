@@ -18,10 +18,6 @@
   gap: 20px;
 }
 
-.about-page-section-content {
-  color: rgb(75, 75, 75);
-}
-
 .about-page-section .about-page-section-head {
   text-align: center;
 }
@@ -121,11 +117,8 @@
 }
 
 .provided-service {
-  display: flex;
-  flex-direction: column;
-  padding: 25px;
-  background-color: #efefef;
-  color: #efefef;
+  background-color: #f3f3f3;
+  color: #f3f3f3;
 }
 
 @media screen and (max-width: 1100px) {
