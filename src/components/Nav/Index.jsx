@@ -19,10 +19,17 @@ export const styles = {
     },
   },
   "/events": {
+    mobile: {
+      logo: logoLight,
+      styles: {
+        backgroundColor: "#8ab1c4",
+        color: "white",
+      },
+    },
     desktop: {
       logo: logoLight,
       styles: {
-        backgroundColor: "#007aa2",
+        backgroundColor: "#8ab1c4",
         color: "black",
       },
     },

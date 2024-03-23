@@ -8,7 +8,7 @@
 
 .events-page-header {
   height: 400px;
-  background-color: #007aa2;
+  background-color: #8ab1c4;
   display: flex;
   align-items: center;
 }
@@ -91,8 +91,9 @@
   place-content: center;
   text-align: center;
   padding: 10px 15px;
-  background-color: #24252a;
+  background-color: #007aa2;
   color: white;
+  font-weight: 600;
 }
 
 .event-item-skeleton-details {
