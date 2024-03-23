@@ -30,7 +30,7 @@ export const styles = {
       logo: logoLight,
       styles: {
         backgroundColor: "#8ab1c4",
-        color: "black",
+        color: "white",
       },
     },
   },
