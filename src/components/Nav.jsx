@@ -109,7 +109,7 @@ const Nav = () => {
                 key={index}
                 onClick={() => handleHamburgerNavigate(navLink.to)}
               >
-                {navLink.label}
+                <span>{navLink.label}</span>
               </div>
             ))}
           </div>
