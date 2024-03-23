@@ -82,7 +82,7 @@ const Nav = () => {
             custom={
               <NavActionButton
                 onClick={accountIconMenu.handleClick}
-                icon={<PermIdentityRoundedIcon fontSize={"large"} />}
+                icon={<PermIdentityRoundedIcon fontSize={"medium"} />}
               />
             }
           >
@@ -92,7 +92,7 @@ const Nav = () => {
         ) : (
           <NavActionButton
             to={"/signin"}
-            icon={<PermIdentityRoundedIcon fontSize={"large"} />}
+            icon={<PermIdentityRoundedIcon fontSize={"medium"} />}
           />
         )}
         <Hamburger
