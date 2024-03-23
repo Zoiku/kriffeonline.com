@@ -59,10 +59,21 @@
   .auth-page {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 0px;
   }
 
   .auth-page-inner {
     width: 100%;
+  }
+
+  .auth-form {
+    border: none;
+  }
+
+  .auth-form-footer {
+    margin: 0 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #f3f3f3;
   }
 }
