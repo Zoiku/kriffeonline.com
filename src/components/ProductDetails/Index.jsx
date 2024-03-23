@@ -72,7 +72,6 @@ export const SellerReviews = ({ data }) => {
   const [isCollapsed, setIsCollapsed] = useState(reviewsLength > 1);
   const reviews = isCollapsed ? data.slice(0, 1) : data;
   const handleToggleCollapse = () => setIsCollapsed(!isCollapsed);
-
   return (
     <div className="seller-reviews">
       <div>

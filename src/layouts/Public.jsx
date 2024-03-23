@@ -5,13 +5,11 @@ import Footer from "../components/Footer";
 
 const Public = () => {
   return (
-    <div className="public-layout" id="outer-container">
+    <>
       <Nav />
-      <main className="app-main-layout" id="page-wrap">
-        <Outlet />
-        <Footer />
-      </main>
-    </div>
+      <Outlet />
+      <Footer />
+    </>
   );
 };
 

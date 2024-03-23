@@ -4,12 +4,7 @@ const Button = (props) => {
   const { label, ...rest } = props;
 
   return (
-    <LoadingButton
-      {...rest}
-      variant="outlined"
-      disableElevation
-      color="primary"
-    >
+    <LoadingButton {...rest} variant="contained" disableElevation>
       <span>{label}</span>
     </LoadingButton>
   );

@@ -57,8 +57,8 @@ const PostReview = ({ sellerName, sellerId }) => {
             <Button
               loading={isPosting}
               type={"submit"}
-              fullWidth
               label={"Submit Review"}
+              fullWidth
             />
           </div>
           <div className="review-form-submission-notice">
@@ -69,7 +69,7 @@ const PostReview = ({ sellerName, sellerId }) => {
       </ResponsiveModal>
 
       <span>
-        <Button label={"Leave a review"} size={"small"} onClick={handleOpen} />
+        <Button label={"Leave a review"} onClick={handleOpen} />
       </span>
     </>
   );

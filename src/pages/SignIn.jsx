@@ -45,8 +45,6 @@ const SignIn = () => {
                 type={"submit"}
                 label={"Sign in"}
                 fullWidth
-                variant={"contained"}
-                color={"common"}
               />
             </div>
             <div>

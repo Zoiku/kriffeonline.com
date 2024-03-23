@@ -52,20 +52,31 @@
 
 @media screen and (max-width: 1100px) {
   .nav-mobile {
-    position: fixed;
-    left: 10px;
-    right: 10px;
-    top: 10px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
     display: flex;
-    justify-content: space-between;
-    color: black;
     align-items: center;
-    z-index: 10;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    display: none;
+    justify-content: space-between;
+    padding: 25px;
+  }
+
+  .nav-mobile-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-mobile-logo {
+    height: 80px;
+  }
+
+  .nav-mobile-logo img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
   }
 }

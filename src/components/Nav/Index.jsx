@@ -1,13 +1,31 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import logoLight from "../../assets/logo-light.png";
 
 export const styles = {
   "/": {
-    backgroundColor: "rgb(20 30 36)",
-    color: "white",
+    mobile: {
+      logo: logoLight,
+      styles: {
+        backgroundColor: "#141e24",
+        color: "white",
+      },
+    },
+    desktop: {
+      logo: logoLight,
+      styles: {
+        backgroundColor: "#141e24",
+        color: "white",
+      },
+    },
   },
   "/events": {
-    backgroundColor: "rgba(166, 199, 255)",
-    color: "black",
+    desktop: {
+      logo: logoLight,
+      styles: {
+        backgroundColor: "#007aa2",
+        color: "black",
+      },
+    },
   },
 };
 

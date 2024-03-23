@@ -7,8 +7,8 @@ let headers = {
 
 // Function to get the token from local storage
 const getToken = () =>
-  localStorage.getItem("authState")
-    ? JSON.parse(localStorage.getItem("authState")).token ?? null
+  localStorage.getItem("kriffe_auth")
+    ? JSON.parse(localStorage.getItem("kriffe_auth")).token ?? null
     : null;
 
 // Function to update the authorization header with the token

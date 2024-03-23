@@ -69,7 +69,6 @@ const EventDetails = () => {
                 <div>
                   <Button
                     onClick={handleOpen}
-                    sx={{ backgroundColor: "white" }}
                     size={"large"}
                     label={"Buy Ticket"}
                   />

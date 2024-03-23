@@ -6,9 +6,9 @@ import axios from "../services/axios";
 import { useQueryClient } from "react-query";
 
 const authStateAtom = atomWithStorage(
-  "authState",
-  localStorage.getItem("authState")
-    ? JSON.parse(localStorage.getItem("authState"))
+  "kriffe_auth",
+  localStorage.getItem("kriffe_auth")
+    ? JSON.parse(localStorage.getItem("kriffe_auth"))
     : {}
 );
 
@@ -58,13 +58,13 @@ const useAuth = () => {
       }
     } catch (error) {
       setAuthState(null);
-      localStorage.removeItem("authState");
+      localStorage.removeItem("kriffe_auth");
     }
   };
 
   const signOut = () => {
     setAuthState(null);
-    localStorage.removeItem("authState");
+    localStorage.removeItem("kriffe_auth");
     // refetch the products to included current user favorites
     queryClient.invalidateQueries(["products"]);
     navigate("/signin");

@@ -1,13 +1,15 @@
 import { useState } from "react";
 
 const useHamburger = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-  const handleOpen = () => setIsOpen(true);
-
-  const handleClose = () => setIsOpen(false);
-
-  return { isOpen, handleOpen, handleClose };
+  return { open, handleOpen, handleClose };
 };
 
 export default useHamburger;

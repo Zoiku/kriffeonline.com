@@ -90,7 +90,7 @@ const useEventCheckout = () => {
     handleResetEventCheckout,
     tickets: checkout.tickets,
     contactInformation: {
-      firstName: checkout.firstName,
+      fullName: checkout.fullName,
       lastName: checkout.lastName,
       email: checkout.email,
       phoneNumber: checkout.phoneNumber,

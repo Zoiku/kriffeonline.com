@@ -1,11 +1,18 @@
 import "../styles/Hamburger.css";
-import { push as Menu } from "react-burger-menu";
-import useHamburger from "../hooks/useHamburger";
+import { stack as Menu } from "react-burger-menu";
 
 const Hamburger = (props) => {
-  const { isOpen } = useHamburger();
+  const { bmBurgerBarsColor, ...rest } = props;
+
   return (
-    <Menu width={"90%"} {...props} isOpen={isOpen} pageWrapId={"page-wrap"} />
+    <Menu
+      styles={{
+        bmBurgerBars: {
+          background: bmBurgerBarsColor,
+        },
+      }}
+      {...rest}
+    />
   );
 };
 

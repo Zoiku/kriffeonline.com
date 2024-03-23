@@ -23,8 +23,7 @@
 
 .review-form-submission-notice {
   color: gray;
-  font-size: x-small;
-  font-weight: 500;
+  font-size: small;
 }
 
 @media screen and (max-width: 1100px) {
