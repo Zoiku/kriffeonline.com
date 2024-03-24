@@ -1,7 +1,6 @@
 import "../styles/Nav.css";
 import CenteredSection from "./Centered";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import { Link, NavActionButton } from "./Nav/Index";
 import Menu from "../components/Menu";
 import { MenuItem } from "@mui/material";
@@ -12,6 +11,10 @@ import useHamburger from "../hooks/useHamburger";
 import Hamburger from "./Hamburger";
 import logo from "../assets/logo-dark.png";
 import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Logout from "@mui/icons-material/Logout";
+import Divider from "@mui/material/Divider";
 
 const Nav = () => {
   const { handleClose, handleOpen, open } = useHamburger();
@@ -69,7 +72,14 @@ const Nav = () => {
             }
           >
             <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
-            <MenuItem onClick={signOut}>Logout</MenuItem>
+            <MenuItem onClick={() => handleMenuNavigate("/favorites")}>Favorites</MenuItem>
+            <Divider />
+            <MenuItem onClick={signOut}>
+              <ListItemIcon>
+                <Logout fontSize="inherit" />
+              </ListItemIcon>
+              <ListItemText>Logout</ListItemText>
+            </MenuItem>
           </Menu>
         ) : (
           <NavActionButton
@@ -99,7 +109,14 @@ const Nav = () => {
             }
           >
             <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
-            <MenuItem onClick={signOut}>Logout</MenuItem>
+            <MenuItem onClick={() => handleMenuNavigate("/favorites")}>Favorites</MenuItem>
+            <Divider />
+            <MenuItem onClick={signOut}>
+              <ListItemIcon>
+                <Logout fontSize="inherit" />
+              </ListItemIcon>
+              <ListItemText>Logout</ListItemText>
+            </MenuItem>
           </Menu>
         ) : (
           <NavActionButton

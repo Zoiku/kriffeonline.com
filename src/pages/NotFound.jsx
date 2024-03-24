@@ -20,7 +20,6 @@ const NotFound = () => {
             startIcon={<KeyboardBackspaceIcon fontSize="inherit" />}
             onClick={() => navigate("/")}
             label={"Retun home"}
-            sx={{ padding: "15px 25px" }}
           />
         </center>
       </CenteredSection>
