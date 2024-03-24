@@ -32,17 +32,11 @@
 .event-page-header-text-container {
   flex: 1;
   color: white;
-  max-width: 90ch;
+  max-width: 25ch;
   text-align: right;
-}
-
-.event-page-header-text {
-  font-size: 60px;
+  font-size: 45px;
+  text-transform: capitalize;
   font-weight: 800;
-}
-
-.event-page-header-text-helper {
-  font-weight: 600;
 }
 
 .events-header-filters {
@@ -161,10 +155,6 @@
   .events-page-header-wrapper {
     height: auto;
     padding: 50px 0;
-  }
-
-  .event-page-header-text {
-    font-size: 50px;
   }
 
   .event-page-header-text-container {
