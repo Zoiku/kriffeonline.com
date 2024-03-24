@@ -160,6 +160,10 @@
     gap: 70px;
   }
 
+  .about-page-section-title {
+    font-size: x-large;
+  }
+
   .about-page-section .about-page-section-head {
     text-align: left;
   }
