@@ -46,6 +46,7 @@
   gap: 40px;
   height: 150px;
   position: relative;
+  text-align: center;
 }
 
 .contact-card-head {
@@ -62,7 +63,8 @@
 .contact-card-content {
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 5px;
