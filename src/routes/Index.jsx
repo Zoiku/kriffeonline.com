@@ -8,9 +8,9 @@ import ProductDetailsPage from "../pages/ProductDetails";
 import EventsPage from "../pages/Events";
 import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
-import FavoritesPage from "../pages/Favorites";
 import CheckoutPage from "../pages/Checkout";
 import EventDetailsPage from "../pages/EventDetails";
+import NotFoundPage from "../pages/NotFound";
 
 const AppRoutes = () => {
   return (
@@ -28,8 +28,8 @@ const AppRoutes = () => {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events/:eventNo" element={<EventDetailsPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
