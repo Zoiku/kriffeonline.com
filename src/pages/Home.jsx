@@ -34,11 +34,16 @@ const HomePage = () => {
     <div className="home-page">
       <CenteredSection mobileWithPadding className="home-page-header">
         <div className="home-page-header-text-container">
-          <div className="home-page-header-text">
-            The Best Place Where <span className="key-1">Faith</span> Finds{" "}
-            <span className="key-1">Products</span> and{" "}
-            <span className="key-2">Events</span> Find{" "}
-            <span className="key-2">Purpose</span>
+          <div className="home-page-header-text-head">
+            <p className="home-page-header-text-helper-top">
+              Inspire, shop and gather with hot deals 🔥
+            </p>
+            <div className="home-page-header-text">
+              The Best Place Where <span className="key-1">Faith</span> Finds{" "}
+              <span className="key-1">Products</span> and{" "}
+              <span className="key-2">Events</span> Find{" "}
+              <span className="key-2">Purpose</span>
+            </div>
           </div>
           <p className="home-page-header-text-helper">
             Discover and sell faith-inspired products, manage memorable events,

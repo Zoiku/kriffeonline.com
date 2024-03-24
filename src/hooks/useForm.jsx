@@ -3,8 +3,19 @@ import useAlert from "./useAlert";
 import axios from "../services/axios";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
+import { z } from "zod";
 
-const useForm = (name) => {
+const signUpSchema = z.object({
+  fullname: z.string(),
+  email: z.string().email("Invalid email address"),
+  phonenumber: z
+    .string()
+    .min(10, "Enter exactly 10 digits")
+    .max(10, "Enter exactly 10 digits"),
+  password: z.string().min(8, "Password should be at least 8 characters"),
+});
+
+const useForm = ({ name }) => {
   const { signIn } = useAuth();
   const { handleOpenFailAlert, handleOpenSuccessAlert } = useAlert();
   const navigate = useNavigate();
@@ -26,6 +37,13 @@ const useForm = (name) => {
   };
 
   const signUpForm = {
+    validate: (formValues) => {
+      try {
+        signUpSchema.parse(formValues);
+      } catch (error) {
+        return error.formErrors.fieldErrors;
+      }
+    },
     initialValues: {
       fullname: "",
       email: "",
@@ -53,13 +71,17 @@ const useForm = (name) => {
     signUp: signUpForm,
   };
 
-  const { initialValues, onSubmit } = forms[name];
-  const { values, isSubmitting, handleChange, handleSubmit } = useFormik({
-    initialValues,
-    onSubmit: () => onSubmit(values),
-  });
+  const { initialValues, onSubmit, validate } = forms[name];
+  const { values, isSubmitting, handleChange, handleSubmit, errors } =
+    useFormik({
+      initialValues,
+      onSubmit: () => onSubmit(values),
+      validate: validate ?? undefined,
+      validateOnBlur: false,
+      validateOnChange: false,
+    });
 
-  return { values, isSubmitting, handleChange, handleSubmit };
+  return { values, errors, isSubmitting, handleChange, handleSubmit };
 };
 
 export default useForm;

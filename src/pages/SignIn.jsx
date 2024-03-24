@@ -30,8 +30,9 @@ export const GoBackHome = () => (
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { values, isSubmitting, handleChange, handleSubmit } =
-    useForm("signIn");
+  const { values, isSubmitting, handleChange, handleSubmit } = useForm({
+    name: "signIn",
+  });
 
   return (
     <div className="auth-page">

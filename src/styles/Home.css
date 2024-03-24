@@ -23,14 +23,25 @@
   max-width: 50ch;
 }
 
+.home-page-header-text-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .home-page-header-text {
   font-size: 40px;
   font-weight: 800;
 }
 
 .home-page-header-text-helper {
-  font-size: smaller;
   color: #efefef;
+}
+
+.home-page-header-text-helper-top {
+  font-size: smaller;
+  color: #8ab1c4;
+  font-weight: 500;
 }
 
 .home-page-header-text .key-1 {

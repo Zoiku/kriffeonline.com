@@ -8,8 +8,9 @@ import { GoBackHome } from "./SignIn";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { values, handleChange, isSubmitting, handleSubmit } =
-    useForm("signUp");
+  const { values, errors, handleChange, isSubmitting, handleSubmit } = useForm({
+    name: "signUp",
+  });
 
   return (
     <div className="auth-page">
@@ -28,6 +29,8 @@ const SignUp = () => {
                 name={"fullname"}
                 label={"Your name"}
                 value={values.fullname}
+                error={errors.fullname}
+                helperText={errors.fullname ? errors.fullname : "Please enter your full name"}
               />
               <Input
                 required
@@ -36,6 +39,8 @@ const SignUp = () => {
                 name={"email"}
                 label={"Email"}
                 value={values.email}
+                error={errors.email}
+                helperText={errors.email ? errors.email : "Please enter a valid email"}
               />
               <Input
                 required
@@ -43,6 +48,8 @@ const SignUp = () => {
                 name={"phonenumber"}
                 label={"Mobile"}
                 value={values.phonenumber}
+                error={errors.phonenumber}
+                helperText={errors.phonenumber ? errors.phonenumber : "Enter exactly 10 digits "}
               />
               <Input
                 required
@@ -51,6 +58,8 @@ const SignUp = () => {
                 label={"Password"}
                 type={"password"}
                 value={values.password}
+                error={errors.password}
+                helperText={errors.password ? errors.password : "Password should be at least 8 characters"}
               />
             </div>
             <div>

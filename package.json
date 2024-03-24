@@ -25,7 +25,8 @@
     "react-query": "^3.39.3",
     "react-router-dom": "^6.21.1",
     "react-spinners": "^0.13.8",
-    "use-query-params": "^2.2.1"
+    "use-query-params": "^2.2.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
