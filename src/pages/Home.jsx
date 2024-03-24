@@ -11,8 +11,14 @@ import { HomeSectionWithHeading } from "../components/Home/Index";
 import { providedServices } from "../utils/about";
 import { ProvidedService } from "../components/About/Index";
 import { useQuery } from "react-query";
+import Button from "../components/Button";
+import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const productsQuery = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -26,7 +32,34 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <div className="home-page-header">
-        <div className="home-page-header-text-container"></div>
+        <div className="home-page-header-text-container">
+          <div className="home-page-header-text">
+            The Best Place Where <span className="key-1">Faith</span> Finds{" "}
+            <span className="key-1">Products</span> and{" "}
+            <span className="key-2">Events</span> Find{" "}
+            <span className="key-2">Purpose</span>
+          </div>
+          <p className="home-page-header-text-helper">
+            Discover and sell faith-inspired products, manage memorable events,
+            and connect with our Christian community. Experience faith, hope,
+            and love in every aspect of your journey with us.
+          </p>
+          <div className="home-header-buttons">
+            <Button
+              onClick={() => navigate("/marketplace")}
+              startIcon={<StorefrontOutlinedIcon fontSize={"inherit"} />}
+              sx={{ padding: 2, fontWeight: 600 }}
+              label={"Shop Now"}
+            />
+            <Button
+              onClick={() => navigate("/events")}
+              startIcon={<CalendarMonthOutlinedIcon fontSize={"inherit"} />}
+              sx={{ padding: 2, fontWeight: 600 }}
+              label={"Explore Events"}
+              color={"secondary"}
+            />
+          </div>
+        </div>
         <div className="home-page-header-background-image">
           <img src={headerImage} alt="" />
         </div>

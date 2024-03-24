@@ -117,8 +117,37 @@
 }
 
 .provided-service {
-  background-color: #f3f3f3;
-  color: #f3f3f3;
+  border: 1px solid #c5c5c5;
+}
+
+.provided-service-image {
+  height: 100px;
+  background-color: #efefef;
+}
+
+.provided-service-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.provided-service-content {
+  padding: 20px;
+}
+
+.provided-service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.provided-service-title {
+  font-weight: 600;
+}
+
+.provided-service-body {
+  font-size: small;
+  font-weight: 500;
+  color: gray;
 }
 
 @media screen and (max-width: 1100px) {

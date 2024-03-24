@@ -22,6 +22,17 @@
   width: 100%;
 }
 
+.event-page-header-text-container {
+  flex: 1;
+  margin-right: 200px;
+  color: white;
+}
+
+.event-page-header-text {
+  font-size: 60px;
+  font-weight: 800;
+}
+
 .events-header-filters {
   display: flex;
   gap: 10px;
@@ -135,6 +146,20 @@
 }
 
 @media screen and (max-width: 1100px) {
+  .events-page-header {
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .event-page-header-text-container {
+    margin-right: 0;
+    padding: 10px;
+  }
+
+  .event-page-header-text {
+    font-size: 50px;
+  }
+
   .events-page-header-background-image {
     display: none;
   }

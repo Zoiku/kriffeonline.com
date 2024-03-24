@@ -7,7 +7,7 @@
   flex-direction: column;
   gap: 10px;
   text-align: center;
-  padding: 50px 0;
+  padding: 50px 0 30px;
 }
 
 .contact-page-header-text-title {
@@ -38,42 +38,47 @@
 }
 
 .contact-card {
-  position: relative;
+  background-color: #fafafa;
   padding: 20px;
-  background-color: #f9f9f9;
-  color: #f9f9f9;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
+  height: 150px;
   position: relative;
 }
 
-.contact-card-header {
-  font-weight: 600;
-}
-
-.contact-card-details {
+.contact-card-head {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  text-align: center;
-}
-
-.contact-card-details-title {
-  font-weight: 800;
-}
-
-.contact-card-footer {
-  display: flex;
-  align-items: center;
   gap: 10px;
-  justify-content: center;
 }
 
-.contact-card-footer > div {
+.contact-card-title {
+  font-weight: 500;
+}
+
+.contact-card-helper {
+  color: gray;
+  font-size: small;
+}
+
+.contact-card-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
   display: flex;
   align-items: center;
+  gap: 5px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.contact-card-content span {
+  display: grid;
+  place-content: center;
+  color: #007aa2;
+  font-size: small;
+  font-weight: 600;
 }
 
 .faqs-container {
@@ -126,7 +131,12 @@
 
   .contact-page-header-text {
     text-align: left;
-    padding: 0 0 30px;
+    padding: 0 0 30px 0;
+  }
+
+  .contact-cards-container-inner {
+    gap: 50px;
+    width: 100%;
   }
 
   .contact-cards {

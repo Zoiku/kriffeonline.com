@@ -26,7 +26,10 @@ const Events = () => {
         <div className="events-page-header-background-image">
           <img src={headerImage} alt="" />
         </div>
-        <div className="event-page-header-text-container"></div>
+        <div className="event-page-header-text-container">
+          <div className="event-page-header-text">Made For Those Who Do</div>
+          <div>Fellowship and grow with like-minded individuals</div>
+        </div>
       </div>
 
       <CenteredSection mobileWithPadding className={"events-container"}>

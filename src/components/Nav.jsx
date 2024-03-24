@@ -73,10 +73,6 @@ const Nav = () => {
         <img src={style?.mobile?.logo ?? logo} alt="" />
       </div>
       <div className="nav-mobile-buttons">
-        <NavActionButton
-          to={"/favorites"}
-          icon={<FavoriteBorderRoundedIcon fontSize={"medium"} />}
-        />
         {isLogged ? (
           <Menu
             anchorEl={accountIconMenu.anchorEl}
