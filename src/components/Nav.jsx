@@ -30,7 +30,9 @@ const Nav = () => {
   return isDesktop ? (
     <CenteredSection style={style?.desktop.styles} className={"nav-desktop"}>
       <div className="nav-first">
-        <div>KriffeOnline</div>
+        <div onClick={() => navigate("/")} className="nav-logo">
+          <img src={style?.mobile?.logo ?? logo} alt="" />
+        </div>
         <div className="nav-links">
           {navLinks.map((navLink, index) => (
             <Link key={index} to={navLink.to} label={navLink.label} />

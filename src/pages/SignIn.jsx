@@ -2,8 +2,31 @@ import "../styles/Auth.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+
+export const GoBackHome = () => (
+  <span>
+    <NavLink
+      to={"/"}
+      style={{
+        textDecoration: "none",
+        display: "flex",
+        alignContent: "center",
+        gap: 10,
+        color: "inherit",
+        fontSize: "small",
+        fontWeight: 600,
+      }}
+    >
+      <span style={{ display: "flex", alignItems: "center" }}>
+        <KeyboardBackspaceIcon fontSize="inherit" />
+      </span>
+      <span style={{ display: "flex", alignItems: "center" }}>Home</span>
+    </NavLink>
+  </span>
+);
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -19,6 +42,9 @@ const SignIn = () => {
           className={"auth-form"}
         >
           <div className="auth-form-body">
+            <div>
+              <GoBackHome />
+            </div>
             <div className="auth-form-body-title">Sign in</div>
             <div className="auth-form-inputs">
               <Input
@@ -57,7 +83,10 @@ const SignIn = () => {
           <div className="auth-form-footer">
             <small>
               Don't have an account?{" "}
-              <span onClick={() => navigate("/signup")}>Sign Up</span>
+              <span onClick={() => navigate("/signup")}>
+                {" "}
+                <strong>Sign Up</strong>{" "}
+              </span>
             </small>
           </div>
         </Box>

@@ -4,6 +4,7 @@ import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import useForm from "../hooks/useForm";
+import { GoBackHome } from "./SignIn";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -15,6 +16,9 @@ const SignUp = () => {
       <div className="auth-page-inner">
         <Box component={"form"} onSubmit={handleSubmit} className={"auth-form"}>
           <div className="auth-form-body">
+            <div>
+              <GoBackHome />
+            </div>
             <div className="auth-form-body-title">Sign up</div>
             <div className="auth-form-inputs">
               <Input
@@ -67,7 +71,10 @@ const SignUp = () => {
           <div className="auth-form-footer">
             <small>
               Already have an account?{" "}
-              <span onClick={() => navigate("/signin")}>Sign In</span>
+              <span onClick={() => navigate("/signin")}>
+                {" "}
+                <strong>Sign In</strong>{" "}
+              </span>
             </small>
           </div>
         </Box>
