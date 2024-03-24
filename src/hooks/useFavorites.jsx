@@ -3,12 +3,8 @@ import axios from "../services/axios";
 import useAlert from "./useAlert";
 import useAuth from "./useAuth";
 
-export const getFavorites = async (isLogged) => {
-  if (isLogged) {
-    return (await axios.get("/current_user_favorites")).data.favorites.data;
-  } else {
-    return [];
-  }
+export const getFavorites = async () => {
+  return (await axios.get("/current_user_favorites")).data.favorites.data;
 };
 
 const toggleFavoriteProduct = async ({ productNo, isFavorited }) => {

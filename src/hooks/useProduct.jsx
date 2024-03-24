@@ -7,34 +7,33 @@ export const getProductByProductNo = async (productNo) => {
 };
 
 export const getReviewsBySellerId = async (sellerId) => {
-  if (sellerId) {
-    return (await axios.get(`get_user_ratings?user_id=${sellerId}`)).data
-      .ratings;
-  }
-  return null;
+  return (await axios.get(`get_user_ratings?user_id=${sellerId}`)).data.ratings;
 };
 
 export const getRelatedProducts = async (category) => {
-  if (category) {
+  try {
     const productCategories = (await axios.get("/get_product_category_type"))
       .data;
-    const productCategoryId = productCategories.find((productCateogry) => {
-      if (productCateogry.name === category) {
-        return productCateogry.id;
-      }
-    });
-    if (productCategoryId) {
-      return (await axios.get(`/list_products?category=${productCategoryId}`))
-        .data.products;
+    const macthedProductCategory = productCategories.find(
+      (category) => category.name === "Seasonal"
+    );
+    if (macthedProductCategory) {
+      return axios.get(
+        `/list_products?category=${[macthedProductCategory.id]}`
+      );
+    } else {
+      return null;
     }
+  } catch (error) {
+    throw new Error(error);
   }
-  return null;
 };
 
 const useProduct = (productNo) => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["product", productNo],
     queryFn: () => getProductByProductNo(productNo),
+    enabled: productNo !== undefined,
   });
 
   const { handleAddFavoriteItem } = useFavorites();

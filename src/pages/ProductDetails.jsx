@@ -38,11 +38,13 @@ const ProductDetails = () => {
   const reviewsQuery = useQuery({
     queryKey: ["reviews", product?.user_id],
     queryFn: () => getReviewsBySellerId(product?.user_id),
+    enabled: product?.user_id !== undefined,
   });
 
   const relatedProductsQuery = useQuery({
     queryKey: ["relatedProducts", product?.category],
     queryFn: () => getRelatedProducts(product?.category),
+    enabled: product?.category !== undefined,
   });
 
   return isFetchingProduct ? (

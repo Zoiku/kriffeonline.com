@@ -1,7 +1,6 @@
 import "../styles/Favorites.css";
 import CenteredSection from "../components/Centered";
 import { getFavorites } from "../hooks/useFavorites";
-import { MarketplaceProduct } from "../components/Marketplace/Index";
 import {
   NoFavoritesPage,
   FavoritesErrorPage,
@@ -15,6 +14,7 @@ const Favorites = () => {
   const favoriteItemsQuery = useQuery({
     queryKey: ["favorites"],
     queryFn: () => getFavorites(isLogged),
+    enabled: isLogged,
   });
 
   return (
@@ -25,7 +25,10 @@ const Favorites = () => {
         <FavoritesErrorPage />
       ) : favoriteItemsQuery.data ? (
         favoriteItemsQuery.data.length > 0 ? (
-          <CenteredSection className={"favorite-items-container"}>
+          <CenteredSection
+            mobileWithPadding
+            className={"favorite-items-container"}
+          >
             <div className="page-title">Favorites Products</div>
             <div className="favorite-items">
               <span>Under construction</span>
