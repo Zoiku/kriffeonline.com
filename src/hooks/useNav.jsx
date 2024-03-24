@@ -7,13 +7,14 @@ import { navLinks } from "../utils/nav";
 const useNav = () => {
   const location = useLocation();
   const style = styles[location?.pathname];
-  const { isLogged, signOut } = useAuth();
+  const { isLogged, signOut, getUser } = useAuth();
   const accountIconMenu = useMenu();
 
   return {
     style,
     isLogged,
     signOut,
+    getUser,
     accountIconMenu,
     navLinks,
   };

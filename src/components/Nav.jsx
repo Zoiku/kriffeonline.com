@@ -16,7 +16,8 @@ import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 const Nav = () => {
   const { handleClose, handleOpen, open } = useHamburger();
   const { isDesktop } = useScreen();
-  const { navLinks, style, accountIconMenu, signOut, isLogged } = useNav();
+  const { navLinks, style, accountIconMenu, signOut, isLogged, getUser } =
+    useNav();
   const navigate = useNavigate();
   const handleMenuNavigate = (to) => {
     accountIconMenu.handleClose();
@@ -41,10 +42,6 @@ const Nav = () => {
       </div>
 
       <div className="nav-action-buttons">
-        <NavActionButton
-          to={"/favorites"}
-          icon={<FavoriteBorderRoundedIcon fontSize={"small"} />}
-        />
         {isLogged ? (
           <Menu
             anchorEl={accountIconMenu.anchorEl}
@@ -52,10 +49,23 @@ const Nav = () => {
             handleClose={accountIconMenu.handleClose}
             position="right"
             custom={
-              <NavActionButton
+              <div
                 onClick={accountIconMenu.handleClick}
-                icon={<AccountCircleOutlinedIcon fontSize={"small"} />}
-              />
+                style={{
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 5,
+                  fontWeight: 600,
+                }}
+              >
+                <NavActionButton
+                  icon={<AccountCircleOutlinedIcon fontSize={"small"} />}
+                />
+                <small>
+                  Hello, {String(getUser().fullname).split(" ").at(0)}!
+                </small>
+              </div>
             }
           >
             <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>

@@ -38,7 +38,7 @@ export const EventItem = ({ event }) => {
   return (
     <NavLink to={`/events/${event.event_no}`} className="event-item">
       <div className="event-item-image">
-        <img src={eventImageSrc} alt="" />
+        <img src={eventImageSrc} alt={event.name} />
         <div className="event-item-price">
           <span>
             {event.ticket_type.at(0).package_type === "Free" ? (

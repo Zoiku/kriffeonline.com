@@ -91,7 +91,7 @@ export const MarketplaceProduct = ({ product }) => {
             )}
           </IconButton>
         </div>
-        <img src={productImageSrc} alt="" />
+        <img src={productImageSrc} alt={product.name} />
       </div>
       <div className="marketplace-product-details">
         <div className="marketplace-product-details-name-and-stats">
