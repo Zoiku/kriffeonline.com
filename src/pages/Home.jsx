@@ -15,6 +15,7 @@ import Button from "../components/Button";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import { useNavigate } from "react-router-dom";
+import CenteredSection from "../components/Centered";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <div className="home-page-header">
+      <CenteredSection mobileWithPadding className="home-page-header">
         <div className="home-page-header-text-container">
           <div className="home-page-header-text">
             The Best Place Where <span className="key-1">Faith</span> Finds{" "}
@@ -63,7 +64,7 @@ const HomePage = () => {
         <div className="home-page-header-background-image">
           <img src={headerImage} alt="" />
         </div>
-      </div>
+      </CenteredSection>
       <div className="home-sections">
         <HomeSectionWithHeading
           heading={"Our Provided Services"}

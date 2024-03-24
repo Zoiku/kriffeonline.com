@@ -22,15 +22,15 @@ const Events = () => {
 
   return (
     <div className="events-page">
-      <div className="events-page-header">
+      <CenteredSection mobileWithPadding className="events-page-header">
         <div className="events-page-header-background-image">
           <img src={headerImage} alt="" />
         </div>
         <div className="event-page-header-text-container">
           <div className="event-page-header-text">Made For Those Who Do</div>
-          <div>Fellowship and grow with like-minded individuals</div>
+          <div className="event-page-header-text-helper">Fellowship and grow with like-minded individuals</div>
         </div>
-      </div>
+      </CenteredSection>
 
       <CenteredSection mobileWithPadding className={"events-container"}>
         <div className={"events-header"}>
