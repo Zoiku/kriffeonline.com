@@ -7,7 +7,7 @@ import useForm from "../hooks/useForm";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 export const GoBackHome = () => (
-  <span>
+  <div style={{ display: "inline-block" }}>
     <NavLink
       to={"/"}
       style={{
@@ -16,16 +16,14 @@ export const GoBackHome = () => (
         alignContent: "center",
         gap: 10,
         color: "inherit",
-        fontSize: "small",
-        fontWeight: 600,
       }}
     >
       <span style={{ display: "flex", alignItems: "center" }}>
         <KeyboardBackspaceIcon fontSize="inherit" />
       </span>
-      <span style={{ display: "flex", alignItems: "center" }}>Home</span>
+      <span style={{ display: "flex", alignItems: "center" }}>Return</span>
     </NavLink>
-  </span>
+  </div>
 );
 
 const SignIn = () => {
