@@ -15,7 +15,12 @@ const SignUp = () => {
   return (
     <div className="auth-page">
       <div className="auth-page-inner">
-        <Box component={"form"} onSubmit={handleSubmit} className={"auth-form"}>
+        <Box
+          autoComplete="off"
+          component={"form"}
+          onSubmit={handleSubmit}
+          className={"auth-form"}
+        >
           <div className="auth-form-body">
             <div>
               <GoBackHome />
@@ -30,7 +35,11 @@ const SignUp = () => {
                 label={"Your name"}
                 value={values.fullname}
                 error={!!errors.fullname}
-                helperText={errors.fullname ? errors.fullname : "Please enter your full name"}
+                helperText={
+                  errors.fullname
+                    ? errors.fullname
+                    : "Please enter your full name"
+                }
               />
               <Input
                 required
@@ -40,7 +49,9 @@ const SignUp = () => {
                 label={"Email"}
                 value={values.email}
                 error={!!errors.email}
-                helperText={errors.email ? errors.email : "Please enter a valid email"}
+                helperText={
+                  errors.email ? errors.email : "Please enter a valid email"
+                }
               />
               <Input
                 required
@@ -49,7 +60,11 @@ const SignUp = () => {
                 label={"Mobile"}
                 value={values.phonenumber}
                 error={!!errors.phonenumber}
-                helperText={errors.phonenumber ? errors.phonenumber : "Enter exactly 10 digits "}
+                helperText={
+                  errors.phonenumber
+                    ? errors.phonenumber
+                    : "Enter exactly 10 digits "
+                }
               />
               <Input
                 required
@@ -59,7 +74,11 @@ const SignUp = () => {
                 type={"password"}
                 value={values.password}
                 error={!!errors.password}
-                helperText={errors.password ? errors.password : "Password should be at least 8 characters"}
+                helperText={
+                  errors.password
+                    ? errors.password
+                    : "Password should be at least 8 characters"
+                }
               />
             </div>
             <div>
