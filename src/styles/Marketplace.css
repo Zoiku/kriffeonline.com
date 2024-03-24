@@ -84,6 +84,12 @@
   position: relative;
 }
 
+.marketplace-product-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
 .marketplace-product-price {
   position: absolute;
   top: 10px;
@@ -103,13 +109,6 @@
 
 .marketplace-product:hover .marketplace-product-add-to-favorite {
   bottom: 10px;
-}
-
-.marketplace-product-image img {
-  height: 100%;
-  width: 100%;
-  object-fit: fill;
-  display: none;
 }
 
 .marketplace-product-details {

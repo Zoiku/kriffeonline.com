@@ -84,7 +84,7 @@ const SignIn = () => {
               Don't have an account?{" "}
               <span onClick={() => navigate("/signup")}>
                 {" "}
-                <strong>Sign Up</strong>{" "}
+                <u>Sign Up</u>{" "}
               </span>
             </small>
           </div>

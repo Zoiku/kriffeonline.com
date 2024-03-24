@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import useFavorites from "../../hooks/useFavorites";
 import Chip from "@mui/material/Chip";
-import DoneIcon from '@mui/icons-material/Done';
+import DoneIcon from "@mui/icons-material/Done";
 
 export const MarketplaceErrorPage = () => <div>Something went wrong...</div>;
 
@@ -57,6 +57,11 @@ export const MarketplaceProductSeleton = () => (
 
 export const MarketplaceProduct = ({ product }) => {
   const { handletoggleFavoriteProduct } = useFavorites();
+  const productImageSrc = product.productimages
+    ? product.productimages.length > 0
+      ? product.productimages.at(0)
+      : "/"
+    : "/";
 
   return (
     <NavLink
@@ -86,7 +91,7 @@ export const MarketplaceProduct = ({ product }) => {
             )}
           </IconButton>
         </div>
-        <img src="/" alt="" />
+        <img src={productImageSrc} alt="" />
       </div>
       <div className="marketplace-product-details">
         <div className="marketplace-product-details-name-and-stats">

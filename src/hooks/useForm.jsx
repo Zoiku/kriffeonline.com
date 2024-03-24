@@ -10,8 +10,8 @@ const signUpSchema = z.object({
   email: z.string().email("Invalid email address"),
   phonenumber: z
     .string()
-    .min(10, "Enter exactly 10 digits")
-    .max(10, "Enter exactly 10 digits"),
+    .min(10, "Please enter exactly 10 digits")
+    .max(10, "Please enter exactly 10 digits"),
   password: z.string().min(8, "Password should be at least 8 characters"),
 });
 

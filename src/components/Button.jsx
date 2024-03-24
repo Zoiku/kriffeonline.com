@@ -4,7 +4,11 @@ const Button = (props) => {
   const { label, ...rest } = props;
 
   return (
-    <LoadingButton {...rest} variant="contained" disableElevation>
+    <LoadingButton
+      {...rest}
+      variant={props.variant ?? "contained"}
+      disableElevation
+    >
       <span>{label}</span>
     </LoadingButton>
   );

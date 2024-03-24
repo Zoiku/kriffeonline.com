@@ -12,6 +12,7 @@ import Dialog from "../Dialog";
 import useDialog from "../../hooks/useDialog";
 import useAlert from "../../hooks/useAlert";
 import qr from "../../assets/Misc/qr.png";
+import Box from "@mui/material/Box";
 
 export const EventDetailErrorPage = () => (
   <div>
@@ -28,9 +29,16 @@ export const EventsErrorPage = () => (
 );
 
 export const EventItem = ({ event }) => {
+  const eventImageSrc = event.images
+    ? event.images.length > 0
+      ? event.images.at(0)
+      : "/"
+    : "/";
+
   return (
     <NavLink to={`/events/${event.event_no}`} className="event-item">
       <div className="event-item-image">
+        <img src={eventImageSrc} alt="" />
         <div className="event-item-price">
           <span>
             {event.ticket_type.at(0).package_type === "Free" ? (
@@ -195,7 +203,7 @@ const EventCheckoutContactInformationForm = () => {
       <div className="event-checkout-form-head">
         <div>Contact Information</div>
       </div>
-      <div className="event-checkout-form-body">
+      <Box component={"form"} className="event-checkout-form-body">
         <div className="event-checkout-contact-inputs">
           <Input
             value={contactInformation.fullName}
@@ -217,7 +225,7 @@ const EventCheckoutContactInformationForm = () => {
             label={"Phone Number"}
           />
         </div>
-      </div>
+      </Box>
     </div>
   );
 };

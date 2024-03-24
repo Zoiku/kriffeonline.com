@@ -63,7 +63,7 @@ const SignUp = () => {
                 helperText={
                   errors.phonenumber
                     ? errors.phonenumber
-                    : "Enter exactly 10 digits "
+                    : "Please enter exactly 10 digits"
                 }
               />
               <Input
@@ -101,7 +101,7 @@ const SignUp = () => {
               Already have an account?{" "}
               <span onClick={() => navigate("/signin")}>
                 {" "}
-                <strong>Sign In</strong>{" "}
+                <u>Sign In</u>{" "}
               </span>
             </small>
           </div>
