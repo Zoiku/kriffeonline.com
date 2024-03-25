@@ -54,13 +54,13 @@ const HomePage = () => {
             <Button
               onClick={() => navigate("/marketplace")}
               startIcon={<StorefrontOutlinedIcon fontSize={"inherit"} />}
-              sx={{ padding: 2, fontWeight: 600 }}
+              sx={{ padding: "10px 20px", fontWeight: 600 }}
               label={"Shop Now"}
             />
             <Button
               onClick={() => navigate("/events")}
               startIcon={<CalendarMonthOutlinedIcon fontSize={"inherit"} />}
-              sx={{ padding: 2, fontWeight: 600 }}
+              sx={{ padding: "10px 20px", fontWeight: 600 }}
               label={"Explore Events"}
               color={"secondary"}
             />
