@@ -63,17 +63,12 @@ const Nav = () => {
                   fontWeight: 600,
                 }}
               >
-                <small>
-                  Hello, {String(getUser().fullname).split(" ").at(0)}
-                </small>
+                <small>Hi, {String(getUser().fullname).split(" ").at(0)}</small>
                 <KeyboardArrowDownIcon fontSize="inherit" />
               </div>
             }
           >
             <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
-            <MenuItem onClick={() => handleMenuNavigate("/favorites")}>
-              Favorites
-            </MenuItem>
             <Divider />
             <MenuItem onClick={signOut}>
               <ListItemIcon>
@@ -113,17 +108,12 @@ const Nav = () => {
                   fontWeight: 600,
                 }}
               >
-                <small>
-                  Hello, {String(getUser().fullname).split(" ").at(0)}
-                </small>
+                <small>Hi, {String(getUser().fullname).split(" ").at(0)}</small>
                 <KeyboardArrowDownIcon fontSize="inherit" />
               </div>
             }
           >
             <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
-            <MenuItem onClick={() => handleMenuNavigate("/favorites")}>
-              Favorites
-            </MenuItem>
             <Divider />
             <MenuItem onClick={signOut}>
               <ListItemIcon>
