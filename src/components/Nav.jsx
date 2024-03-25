@@ -15,6 +15,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
 import Divider from "@mui/material/Divider";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const Nav = () => {
   const { handleClose, handleOpen, open } = useHamburger();
@@ -62,17 +63,17 @@ const Nav = () => {
                   fontWeight: 600,
                 }}
               >
-                <NavActionButton
-                  icon={<AccountCircleOutlinedIcon fontSize={"small"} />}
-                />
                 <small>
-                  Hello, {String(getUser().fullname).split(" ").at(0)}!
+                  Hello, {String(getUser().fullname).split(" ").at(0)}
                 </small>
+                <KeyboardArrowDownIcon fontSize="inherit" />
               </div>
             }
           >
             <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
-            <MenuItem onClick={() => handleMenuNavigate("/favorites")}>Favorites</MenuItem>
+            <MenuItem onClick={() => handleMenuNavigate("/favorites")}>
+              Favorites
+            </MenuItem>
             <Divider />
             <MenuItem onClick={signOut}>
               <ListItemIcon>
@@ -102,14 +103,27 @@ const Nav = () => {
             handleClose={accountIconMenu.handleClose}
             position="right"
             custom={
-              <NavActionButton
+              <div
                 onClick={accountIconMenu.handleClick}
-                icon={<PermIdentityRoundedIcon fontSize={"medium"} />}
-              />
+                style={{
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 5,
+                  fontWeight: 600,
+                }}
+              >
+                <small>
+                  Hello, {String(getUser().fullname).split(" ").at(0)}
+                </small>
+                <KeyboardArrowDownIcon fontSize="inherit" />
+              </div>
             }
           >
             <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
-            <MenuItem onClick={() => handleMenuNavigate("/favorites")}>Favorites</MenuItem>
+            <MenuItem onClick={() => handleMenuNavigate("/favorites")}>
+              Favorites
+            </MenuItem>
             <Divider />
             <MenuItem onClick={signOut}>
               <ListItemIcon>
