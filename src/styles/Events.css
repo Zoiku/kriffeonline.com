@@ -144,6 +144,14 @@
   -webkit-box-orient: vertical;
 }
 
+.event-item-details-info-location {
+  color: gray;
+}
+
+.event-item-details-info-name {
+  font-weight: 600;
+}
+
 .event-item-skeleton-details-info {
   display: flex;
   flex-direction: column;
