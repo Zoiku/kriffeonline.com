@@ -21,7 +21,7 @@ export const GoBackHome = () => (
       <span style={{ display: "flex", alignItems: "center" }}>
         <KeyboardBackspaceIcon fontSize="inherit" />
       </span>
-      <span style={{ display: "flex", alignItems: "center" }}>Return</span>
+      <span style={{ display: "flex", alignItems: "center" }}>Return home</span>
     </NavLink>
   </div>
 );

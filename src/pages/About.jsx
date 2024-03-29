@@ -21,13 +21,13 @@ const AboutSectionStyled = ({ title, titleHelper, children }) => (
 );
 
 const AboutSection = ({ children, title, titleHelper }) => (
-  <div className="about-page-section">
+  <CenteredSection mobileWithPadding className="about-page-section">
     <div className="about-page-section-head">
       <div className="about-page-section-title-helper">{titleHelper}</div>
       <div className="about-page-section-title">{title}</div>
     </div>
     <div className="about-page-section-content">{children}</div>
-  </div>
+  </CenteredSection>
 );
 
 const HomeAboutItem = ({ children, heading, index }) => (

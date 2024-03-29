@@ -1,5 +1,5 @@
 .contact-page {
-  padding-bottom: 100px;
+  padding: 50px 0;
 }
 
 .contact-page-header-text {
@@ -7,7 +7,6 @@
   flex-direction: column;
   gap: 10px;
   text-align: center;
-  padding: 50px 0 30px;
 }
 
 .contact-page-header-text-title {
@@ -33,6 +32,7 @@
 }
 
 .contact-cards {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
@@ -113,12 +113,12 @@
   padding: 20px;
   border: 1px solid #c5c5c5;
   user-select: none;
+  cursor: pointer;
 }
 
 .faq-header {
   display: flex;
   justify-content: space-between;
-  font-weight: 600;
 }
 
 .faq-answer {
@@ -127,12 +127,11 @@
 
 @media screen and (max-width: 1100px) {
   .contact-page {
-    padding: 30px 10px 100px;
+    padding: 20px 10px 50px;
   }
 
   .contact-page-header-text {
     text-align: left;
-    padding: 0 0 30px 0;
   }
 
   .contact-page-header-text-title {
@@ -140,8 +139,8 @@
   }
 
   .contact-cards-container-inner {
-    gap: 50px;
     width: 100%;
+    gap: 50px;
   }
 
   .contact-cards {
