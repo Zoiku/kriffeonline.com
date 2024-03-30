@@ -198,23 +198,16 @@
 }
 
 .event-checkout-ticket-type-name {
-  font-size: large;
-  font-weight: 600;
   text-transform: capitalize;
 }
 
 .event-checkout-ticket-type-description {
-  font-size: small;
-  font-weight: 500;
 }
 
 .event-checkout-ticket-type-information {
-  color: gray;
 }
 
 .event-checkout-ticket-type-price {
-  color: #ac7447;
-  font-weight: 800;
 }
 
 .event-ticket-type-quantity-input {

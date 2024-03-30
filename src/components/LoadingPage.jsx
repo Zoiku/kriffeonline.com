@@ -1,5 +1,5 @@
 import "../styles/LoadingPage.css";
-import { SyncLoader as Spinner } from "react-spinners";
+import { PulseLoader as Spinner } from "react-spinners";
 
 const LoadingPage = ({ customMessage, customLoader }) => {
   return (
@@ -12,9 +12,9 @@ const LoadingPage = ({ customMessage, customLoader }) => {
             </div>
           )}
         </div>
-        <div className="loading-message">
-          {customMessage ?? <div>Please wait...</div>}
-        </div>
+        {customMessage && (
+          <div className="loading-message">{customMessage}</div>
+        )}
       </div>
     </div>
   );
