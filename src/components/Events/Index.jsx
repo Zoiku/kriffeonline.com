@@ -13,6 +13,7 @@ import useDialog from "../../hooks/useDialog";
 import useAlert from "../../hooks/useAlert";
 import qr from "../../assets/Misc/qr.png";
 import Box from "@mui/material/Box";
+import ReadMore from "../ReadMore";
 
 export const EventDetailErrorPage = () => (
   <div>
@@ -141,10 +142,10 @@ const EventCheckoutTicketTypeForm = ({ event }) => {
                   {ticketType.name}
                 </div>
                 <div className="event-checkout-ticket-type-description">
-                  {ticketType.description}
+                  <ReadMore text={ticketType.description} maxLength={50} />
                 </div>
                 <div className="event-checkout-ticket-type-information">
-                  {ticketType.package_info}
+                  <ReadMore text={ticketType.package_info} maxLength={50} />
                 </div>
                 <div className="event-checkout-ticket-type-price">
                   {ticketType.package_type === "Free" ? (

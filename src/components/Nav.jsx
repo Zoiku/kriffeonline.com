@@ -65,6 +65,9 @@ const Nav = () => {
             }
           >
             <MenuItem onClick={() => handleMenuNavigate("/")}>Home</MenuItem>
+            <MenuItem onClick={() => handleMenuNavigate("/settings")}>
+              Settings
+            </MenuItem>
             <Divider />
             <MenuItem onClick={signOut}>
               <ListItemIcon>

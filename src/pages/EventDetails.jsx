@@ -8,7 +8,6 @@ import {
   EventDetailsSection,
 } from "../components/Events/Index";
 import CenteredSection from "../components/Centered";
-import image from "../assets/Placeholder/wp7488228.jpg";
 import ReadMore from "../components/ReadMore";
 import Button from "../components/Button";
 import Drawer from "../components/Drawer";
@@ -39,7 +38,7 @@ const EventDetails = () => {
 
           <div className="event-detail-page-header">
             <div className="event-detail-page-header-image">
-              <img src={image} alt="" />
+              <img src={event.images.at(0)} alt={event.name} />
             </div>
 
             <div className="event-detail-page-header-backdrop">

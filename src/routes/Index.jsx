@@ -10,6 +10,7 @@ import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
 import CheckoutPage from "../pages/Checkout";
 import EventDetailsPage from "../pages/EventDetails";
+import SettingsPage from "../pages/Settings";
 import NotFoundPage from "../pages/NotFound";
 
 const AppRoutes = () => {
@@ -29,6 +30,7 @@ const AppRoutes = () => {
         <Route path="/events/:eventNo" element={<EventDetailsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
